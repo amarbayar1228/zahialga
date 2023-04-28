@@ -113,7 +113,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                             <li><Link to="/shop-details" onClick={(e)=> subActive(e)}>Shop Details</Link></li>
                           </ul> */}
                         </li>
-                        <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт</Link></li>
+                        <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт авах</Link></li>
                         <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Үйлдвэр</Link>
                           <ul className="submenu">
                             <li><Link to="/breeder" onClick={(e)=> subActive(e)}>Манай үржүүлэгч</Link></li>
