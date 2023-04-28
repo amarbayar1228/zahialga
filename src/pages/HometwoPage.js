@@ -7,18 +7,21 @@ import Faq from '../components/Faq'
 import Brand from '../components/Brand'
 import Newsletter from '../components/NewsLetter'
 import BlogsHome from '../components/BlogsHome'
-
-
+import BreedServices from '../components/BreedServices' 
+import AdoptionShop from '../components/AdoptionShop' 
 function HometwoPage() {
   return (
 	 <main>
+		 
 		<HomeTwoSlider/>
-		<Find/>
-		<BreederAdoption/>
+		<Find/>    
+		<AdoptionShop/>
+		{/* <BreederAdoption/> */}
+		{/* <BreedServices/> */}
 		<AdoptionPuppies/>
 		<Faq afterElment="faq-area"/>
-		<Brand/>
-		<BlogsHome/>
+		<Brand/> 
+		{/* <BlogsHome/> */}
 		<Newsletter/>
 	 </main>
   )

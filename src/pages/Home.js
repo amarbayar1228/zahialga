@@ -11,15 +11,8 @@ import Testimonial from '../components/Testimonial'
 import Newsletter from '../components/NewsLetter'
 import BlogsHome from '../components/BlogsHome'
 
-
-
-
 function Home() {
-
-
   return (
-
-	
 		  <main>
 				<MainSlider/>
 				<Find/>
@@ -32,9 +25,7 @@ function Home() {
 				<Testimonial/>
 				<BlogsHome/>
 				<Newsletter/>
-				
 		</main>
-	  
   )
 }
 

@@ -2,8 +2,7 @@
 import {HashRouter as Router, Switch} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import './App.css';
-import Home from './pages/Home';
+import './App.css'; 
 import DogList from './pages/DogList';
 import AdoptionsPages from './pages/AdoptionsPages'
 import ContactPage from './pages/ContactPage'
@@ -14,7 +13,7 @@ import ShopDetailsPage from './pages/ShopDetailsPage'
 import BreederPage from './pages/BreederPage'
 import BreederDetailsPage from './pages/BreederDetailsPage'
 import HometwoPage from './pages/HometwoPage'
-import ScrollToTopRoute from './ScrollToTopRoute'
+import ScrollToTopRoute from './ScrollToTopRoute' 
 
 function App() {
   
@@ -25,7 +24,7 @@ function App() {
        <Header/>
        <Switch>
           <ScrollToTopRoute exact={true} path='/'>
-          <Home/>
+            <HometwoPage/>
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/doglist'>
             <DogList/>

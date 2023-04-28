@@ -71,8 +71,8 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
               <div className="col-md-7">
                 <div className="header-top-left">
                   <ul>
-                    <li>Call us: 747-800-9880</li>
-                    <li><i className="far fa-clock" />Opening Hours: 7:00 am - 9:00 pm (Mon - Sun)</li>
+                    <li>Утас: 94262047</li>
+                    <li><i className="far fa-clock" />Нээх цаг: 7:00 am - 9:00 pm (Mon - Sun)</li>
                   </ul>
                 </div>
               </div>
@@ -100,33 +100,33 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                     <div className="logo"><Link to="/"><img src="img/logo/logo.png" alt="" /></Link></div>
                     <div className="navbar-wrap main-menu d-none d-lg-flex">
                       <ul className="navigation">
-                        <li className="active menu-item-has-children"><Link to="/">Home</Link>
-                          <ul className="submenu">
+                        <li className="active menu-item-has-children"><Link to="/">Үндсэн хуудас</Link>
+                          {/* <ul className="submenu">
                             <li className="active" onClick={(e)=> subActive(e)}><Link to="/">Home One</Link></li>
                             <li><Link to="/home-two" onClick={(e)=> subActive(e)}>Home Two</Link></li>
-                          </ul>
+                          </ul> */}
                         </li>
                         <li><Link to="/doglist" onClick={(e)=> handleActive(e)}>Dog List</Link></li>
-                        <li className="menu-item-has-children"><Link to="/shop" onClick={(e)=> handleActive(e)}>Shop</Link>
-                          <ul className="submenu">
+                        <li className="menu-item-has-children"><Link to="/shop" onClick={(e)=> handleActive(e)}>Дэлгүүр</Link>
+                          {/* <ul className="submenu">
                             <li><Link to="/shop" onClick={(e)=> subActive(e)}>Our Shop</Link></li>
                             <li><Link to="/shop-details" onClick={(e)=> subActive(e)}>Shop Details</Link></li>
-                          </ul>
+                          </ul> */}
                         </li>
-                        <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Adoption</Link></li>
-                        <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Breeder</Link>
+                        <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт</Link></li>
+                        <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Үйлдвэр</Link>
                           <ul className="submenu">
                             <li><Link to="/breeder" onClick={(e)=> subActive(e)}>Our Breeder</Link></li>
                             <li><Link to="/breeder-details" onClick={(e)=> subActive(e)}>Breeder Details</Link></li>
                           </ul>
                         </li>
-                        <li className="menu-item-has-children"><Link to="/blogs" onClick={(e)=> handleActive(e)}>Blog</Link>
+                        <li className="menu-item-has-children"><Link to="/blogs" onClick={(e)=> handleActive(e)}>Блог</Link>
                           <ul className="submenu">
                             <li><Link to="/blogs"  onClick={(e)=> subActive(e)}>Our Blog</Link></li>
                             <li><Link to="/blog-details" onClick={(e)=> subActive(e)}>Blog Details</Link></li>
                           </ul>
                         </li>
-                        <li><Link to="/contacts" onClick={(e)=> handleActive(e)}>contacts</Link></li>
+                        <li><Link to="/contacts" onClick={(e)=> handleActive(e)}>Холбоо барих</Link></li>
                       </ul>
                     </div>
                     <div className="header-action d-none d-md-block">

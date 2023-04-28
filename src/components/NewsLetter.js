@@ -7,13 +7,13 @@ function Newsletter(){
             <div className="col-12">
               <div className="newsletter-wrap">
                 <div className="newsletter-content">
-                  <h2 className="title">Newsletter For</h2>
-                  <p><span>*</span> Do Not Show Your Email.</p>
+                  <h2 className="title">Мэдээлэл илгээх</h2>
+                  <p><span>*</span> Имэйлээ бүү харуул..</p>
                 </div>
                 <div className="newsletter-form">
                   <form >
-                    <input type="email" placeholder="Enter Your Email..." />
-                    <button type="submit" className="btn">Subscribe</button>
+                    <input type="email" placeholder="Емайл ээ оруулна уу..." />
+                    <button type="submit" className="btn">Илгээх</button>
                   </form>
                 </div>
                 <div className="newsletter-shape"><img src="img/images/newsletter_shape01.png" alt="" /></div>

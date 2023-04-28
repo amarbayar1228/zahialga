@@ -73,10 +73,11 @@ function AdoptionPuppies() {
             <div className="col-xl-7 col-lg-9">
               <div className="section-title text-center mb-65">
                 <div className="section-icon"><img src="img/icon/pawprint.png" alt="" /></div>
-                <h5 className="sub-title">Meet the animals</h5>
-                <h2 className="title">Puppies Waiting for Adoption</h2>
-                <p>The best overall dog DNA test is Embark Breed &amp; Health Kit (view at Chewy), which provides
-                  you with a breed brwn and information most dogs</p>
+                <h5 className="sub-title">Амьтадтай танилц</h5>
+                <h2 className="title">Үрчлүүлэх гөлөгнүүд</h2>
+                <p>
+                  Нохойн ДНХ-ийн хамгийн сайн шинжилгээ бол Embark Breed  &amp; Health Kit (Chewy дээрээс үзэх) бөгөөд энэ нь танд хүрэн бор үүлдэр, ихэнх нохойн тухай мэдээллийг өгдөг.
+                  </p>
               </div>
             </div>
           </div>
@@ -87,13 +88,13 @@ function AdoptionPuppies() {
               <div className="adoption-item">
                 <div className="adopt-thumb">
                   <Link to="/breeder-details"><img src="img/images/adop_img01.png" alt="" /></Link>
-                  <span className="status">Free</span>
+                  <span className="status">Үнэгүй</span>
                 </div>
                 <div className="adopt-content">
-                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Birth : 2021</div>
-                  <h3 className="title"><Link to="/breeder-details">Golden Retriever</Link></h3>
-                  <p>The Golden Retriever is a medium-large gun dog that was bred.</p>
-                  <Link to="/breeder-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
+                  <h3 className="title"><Link to="/breeder-details">Голден ретривер</Link></h3>
+                  <p>Голден ретривер бол дунд оврын буутай нохой юм.</p>
+                  <Link to="/breeder-details" className="read-more">Илүүг үзэх <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
             </div>
@@ -104,10 +105,10 @@ function AdoptionPuppies() {
                   <span className="status">Free</span>
                 </div>
                 <div className="adopt-content">
-                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Birth : 2021</div>
-                  <h3 className="title"><Link to="/breeder-details">German Sharped</Link></h3>
-                  <p>The German Shepherd is a breed of medium to large-sized.</p>
-                  <Link to="/breeder-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
+                  <h3 className="title"><Link to="/breeder-details">Герман sharped</Link></h3>
+                  <p>Герман sharped бол дунд болон том хэмжээтэй үүлдэр юм.</p>
+                  <Link to="/breeder-details" className="read-more">Илүүг үзэх  <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
             </div>
@@ -118,10 +119,10 @@ function AdoptionPuppies() {
                   <span className="status">Free</span>
                 </div>
                 <div className="adopt-content">
-                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Birth : 2021</div>
-                  <h3 className="title"><Link to="/breeder-details">Siberian Husky</Link></h3>
-                  <p>The Siberian Husky is a medium-sized working sled dog breed.</p>
-                  <Link to="/breeder-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
+                  <h3 className="title"><Link to="/breeder-details">Сибирийн хаски</Link></h3>
+                  <p>Сибирийн хаски бол дунд оврын ажилчин чарганы үүлдэр юм.</p>
+                  <Link to="/breeder-details" className="read-more">Илүүг үзэх  <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
             </div>
@@ -132,10 +133,10 @@ function AdoptionPuppies() {
                   <span className="status">Free</span>
                 </div>
                 <div className="adopt-content">
-                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Birth : 2021</div>
+                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
                   <h3 className="title"><Link to="/breeder-details">French Bulldog</Link></h3>
-                  <p>French Bulldog is a breed of domestic dog, bred to be companion.</p>
-                  <Link to="/breeder-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <p>Франц бульдог бол гэрийн тэжээвэр нохойн үүлдэр бөгөөд хамтрагч байхаар тэжээгддэг.</p>
+                  <Link to="/breeder-details" className="read-more">Илүүг үзэх <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
             </div>
@@ -146,10 +147,10 @@ function AdoptionPuppies() {
                   <span className="status">Free</span>
                 </div>
                 <div className="adopt-content">
-                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Birth : 2021</div>
+                  <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
                   <h3 className="title"><Link to="/breeder-details">Siberian Husky</Link></h3>
-                  <p>French Bulldog is a breed of domestic dog, bred to be companion.</p>
-                  <Link to="/breeder-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <p>Франц бульдог бол гэрийн тэжээвэр нохойн үүлдэр бөгөөд хамтрагч байхаар тэжээгддэг.</p>
+                  <Link to="/breeder-details" className="read-more">Илүүг үзэх <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
             </div>

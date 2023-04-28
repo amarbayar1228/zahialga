@@ -76,9 +76,9 @@ function HomeTwoSlider() {
                       <h2 className="title" data-animation="fadeInUpBig" data-delay=".2s" data-duration="1.2s">Best Friend <span>with</span> Happy Time</h2>
                     </div>
                     <div className="slider-desc">
-                      <p className="desc" data-animation="fadeInUpBig" data-delay=".4s" data-duration="1.2s">Human Shampoo on Dogs After six days of delirat, the jury found Hernandez guilty of first-degree murder</p>
+                      <p className="desc" data-animation="fadeInUpBig" data-delay=".4s" data-duration="1.2s">Нохойд зориулсан хүний шампунь Зургаан өдрийн турш дэмийрч байсны эцэст тангарагтны шүүх Эрнандесийг нэгдүгээр зэргийн аллагад буруутай гэж үзжээ.</p>
                     </div>
-                    <Link to="/doglist" className="btn" data-animation="fadeInUpBig" data-delay=".6s" data-duration="1.2s">View More <img src="img/icon/w_pawprint.png" alt="" /></Link>
+                    <Link to="/doglist" className="btn" data-animation="fadeInUpBig" data-delay=".6s" data-duration="1.2s">Илүүг үзэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
                   </div>
                 </div>
               </div>
@@ -95,9 +95,9 @@ function HomeTwoSlider() {
                       <h2 className="title" data-animation="fadeInUpBig" data-delay=".2s" data-duration="1.2s">Best Friend <span>with</span> Happy Time</h2>
                     </div>
                     <div className="slider-desc">
-                      <p className="desc" data-animation="fadeInUpBig" data-delay=".4s" data-duration="1.2s">Human Shampoo on Dogs After six days of delirat, the jury found Hernandez guilty of first-degree murder</p>
+                      <p className="desc" data-animation="fadeInUpBig" data-delay=".4s" data-duration="1.2s">Нохойд зориулсан хүний шампунь Зургаан өдрийн турш дэмийрч байсны эцэст тангарагтны шүүх Эрнандесийг нэгдүгээр зэргийн аллагад буруутай гэж үзжээ.</p>
                     </div>
-                    <Link to="/doglist" className="btn" data-animation="fadeInUpBig" data-delay=".6s" data-duration="1.2s">View More <img src="img/icon/w_pawprint.png" alt="" /></Link>
+                    <Link to="/doglist" className="btn" data-animation="fadeInUpBig" data-delay=".6s" data-duration="1.2s">Илүүг үзэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
                   </div>
                 </div>
               </div>
