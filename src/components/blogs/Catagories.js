@@ -3,7 +3,7 @@ import React from 'react';
 function Catagories() {
   return (
 	  <div className="widget">
-                  <h4 className="sidebar-title">Categories</h4>
+                  <h4 className="sidebar-title">Категори</h4>
                   <div className="sidebar-cat-list">
                     <ul>
                       <li><a href="/#">Siberian Husky <i className="fas fa-angle-double-right" /></a></li>

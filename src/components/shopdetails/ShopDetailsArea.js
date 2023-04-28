@@ -148,17 +148,17 @@ function ShopDetailsArea(){
                     <h2 className="price">$52.00</h2>
                     <h5 className="stock-status">- IN Stock</h5>
                   </div>
-                  <p>The domestic dog is a doiated dendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest living relative.</p>
+                  <p>Гэрийн нохой бол чонын идэштэн юм. Эртний, устаж үгүй болсон чононоос гаралтай нохой, орчин үеийн саарал чоно бол нохойн хамгийн ойрын хамаатан юм.</p>
                   <div className="shop-details-dimension">
-                    <span>Dimension :</span>
+                    <span>Хэмжээ :</span>
                     <ul>
-                      <li className="active"><a href="/#" onClick={(e)=> handleActive(e)}>Large</a></li>
-                      <li><a href="/#" onClick={(e)=> handleActive(e)}>Medium</a></li>
-                      <li><a href="/#" onClick={(e)=> handleActive(e)}>Small</a></li>
+                      <li className="active"><a href="/#" onClick={(e)=> handleActive(e)}>Том</a></li>
+                      <li><a href="/#" onClick={(e)=> handleActive(e)}>Дунд</a></li>
+                      <li><a href="/#" onClick={(e)=> handleActive(e)}>Жижиг</a></li>
                     </ul>
                   </div>
                   <div className="shop-details-color">
-                    <span>Color :</span>
+                    <span>Өнгө :</span>
                     <ul>
                       <li className="active" onClick={(e)=> colorActive(e)}/>
                       <li className="black" onClick={(e)=> colorActive(e)}/>
@@ -167,19 +167,19 @@ function ShopDetailsArea(){
                     </ul>
                   </div>
                   <div className="shop-details-quantity">
-                    <span>Quantity :</span>
+                    <span>Тоо ширхэг :</span>
                     <div className="cart-plus-minus">
                       <input type="text" value={val} readOnly/>
                       <div className="dec qtybutton" onClick={()=>decrease()}>-</div>
                         <div className="inc qtybutton" onClick={()=>increase()}>+</div>
                     </div>
-                    <Link to="/shop-details" className="wishlist-btn"><i className="fas fa-heart" /> Add to Wishlist</Link>
-                    <Link to="/shop-details" className="cart-btn">Add to Cart +</Link>
+                    <Link to="/shop-details" className="wishlist-btn"><i className="fas fa-heart" /> Хүслийн жагсаалтад нэмэх</Link>
+                    <Link to="/shop-details" className="cart-btn">Сагсанд нэмэх +</Link>
                   </div>
                   <div className="shop-details-bottom">
                     <ul>
                       <li className="sd-category">
-                        <span className="title">Categories :</span>
+                        <span className="title">Категори :</span>
                         <Link to="/shop">HLinknd,</Link>
                         <Link to="/shop">SLinknitizer,</Link>
                         <Link to="/shop">Covid - 19</Link>
@@ -189,10 +189,10 @@ function ShopDetailsArea(){
                         <Link to="/shop">H#21546</Link>
                       </li>
                       <li className="sd-share">
-                        <span className="title">Share Now :</span>
-                        <a href="/#"><i className="fab fa-facebook-f" /></a>
-                        <a href="/#"><i className="fab fa-twitter" /></a>
-                        <a href="/#"><i className="fab fa-linkedin-in" /></a>
+                        <span className="title">Бусадаа хуваалцах :</span>
+                        <a href="https://www.facebook.com/Ab1228/"><i className="fab fa-facebook-f" /></a>
+                        <a href="https://www.facebook.com/Ab1228/"><i className="fab fa-twitter" /></a>
+                        <a href="https://www.facebook.com/Ab1228/"><i className="fab fa-linkedin-in" /></a>
                       </li>
                     </ul>
                   </div>
@@ -205,20 +205,20 @@ function ShopDetailsArea(){
               <div className="product-desc-wrap">
                 <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
                   <li className="nav-item">
-                    <a className="nav-link active" id="details-tab" data-toggle="tab" href="/#details" role="tab" aria-controls="details" aria-selected="true">Details More</a>
+                    <a className="nav-link active" id="details-tab" data-toggle="tab" href="/#details" role="tab" aria-controls="details" aria-selected="true">Илүү дэлгэрэнгүй</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" id="val-tab" data-toggle="tab" href="/#val" role="tab" aria-controls="val" aria-selected="false">Information</a>
+                    <a className="nav-link" id="val-tab" data-toggle="tab" href="/#val" role="tab" aria-controls="val" aria-selected="false">Мэдээлэл</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" id="review-tab" data-toggle="tab" href="/#review" role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
+                    <a className="nav-link" id="review-tab" data-toggle="tab" href="/#review" role="tab" aria-controls="review" aria-selected="false">Шүүмж (0)</a>
                   </li>
                 </ul>
                 <div className="tab-content" id="myTabContentTwo">
                   <div className="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                     <div className="product-desc-content">
-                      <p>The domestic dog is a doiated dendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest living relative. The dog was the first species to be domesticated, by hunter–gatherers. These will include the core vaccines, which are administered in a series of three: at 6-, 12-, and 16 weeks old. doiated dendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest</p>
-                      <p>These will include the core vaccines, which are administered in a series of three: at 6-, 12-, and 16 weeks old. doiated dendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest include the core vaccines, which are administered.</p>
+                      <p>Гэрийн нохой бол чонын идэштэн юм. Эртний, устаж үгүй болсон чононоос гаралтай нохой, орчин үеийн саарал чоно бол нохойн хамгийн ойрын хамаатан юм. Нохой бол анчин цуглуулагчдын гаршуулсан анхны төрөл юм. Эдгээрт 6, 12, 16 долоо хоногтой гурван үе шаттайгаар хийгдэх үндсэн вакцинууд багтана. чонын новш. Эртний устаж үгүй болсон чононоос гаралтай нохой бөгөөд орчин үеийн саарал чоно нь нохойд хамгийн ойр байдаг.</p>
+                      <p>Эдгээрт 6, 12, 16 долоо хоногтой гурван үе шаттайгаар хийгдэх үндсэн вакцинууд багтана. чонын новш. Эртний, устаж үгүй болсон чононоос гаралтай нохой, орчин үеийн саарал чоно нь нохойнд хамгийн ойр байдаг үндсэн вакцинууд байдаг.</p>
                     </div>
                   </div>
                   <div className="tab-pane fade" id="val" role="tabpanel" aria-labelledby="val-tab">
@@ -248,13 +248,13 @@ function ShopDetailsArea(){
                   <div className="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
                     <div className="product-desc-review">
                       <div className="review-title mb-20">
-                        <h4 className="title">Customer Reviews (0)</h4>
+                        <h4 className="title">Хэрэглэгчийн шүүмж (0)</h4>
                       </div>
                       <div className="left-rc">
-                        <p>No reviews yet</p>
+                        <p>Одоогоор шүүмж алга</p>
                       </div>
                       <div className="right-rc">
-                        <a href="/#">Write a review</a>
+                        <a href="/#">Сэтгэгдэл бичих</a>
                       </div>
                     </div>
                   </div>
@@ -263,7 +263,7 @@ function ShopDetailsArea(){
             </div>
           </div>
           <div className="related-products-wrap">
-            <h2 className="title">Related Products</h2>
+            <h2 className="title">Холбоотой бүтээгдэхүүн</h2>
             <Slider className="row related-product-active"{...settings}>
               <div className="col-lg">
                 <div className="shop-item mb-55">
@@ -274,8 +274,8 @@ function ShopDetailsArea(){
                     <span>Dog toy’s</span>
                     <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
                     <div className="shop-content-bottom">
-                      <span className="price">$28.00</span>
-                      <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                      <span className="price">28.000₮</span>
+                      <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                     </div>
                   </div>
                 </div>
@@ -290,7 +290,7 @@ function ShopDetailsArea(){
                     <h4 className="title"><Link to="/shop-details">Squeaky Dog</Link></h4>
                     <div className="shop-content-bottom">
                       <span className="price">$19.00</span>
-                      <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                      <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                     </div>
                   </div>
                 </div>
@@ -304,8 +304,8 @@ function ShopDetailsArea(){
                     <span>Dog toy’s</span>
                     <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
                     <div className="shop-content-bottom">
-                      <span className="price">$29.00</span>
-                      <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                      <span className="price">29.000₮</span>
+                      <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                     </div>
                   </div>
                 </div>
@@ -319,8 +319,8 @@ function ShopDetailsArea(){
                     <span>Dog toy’s</span>
                     <h4 className="title"><Link to="/shop-details">Yoda Carriage</Link></h4>
                     <div className="shop-content-bottom">
-                      <span className="price">$49.00</span>
-                      <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                      <span className="price">49.000₮</span>
+                      <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                     </div>
                   </div>
                 </div>
@@ -334,8 +334,8 @@ function ShopDetailsArea(){
                     <span>Dog toy’s</span>
                     <h4 className="title"><Link to="/shop-details">Pet Carriage</Link></h4>
                     <div className="shop-content-bottom">
-                      <span className="price">$09.00</span>
-                      <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                      <span className="price">9000₮</span>
+                      <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                     </div>
                   </div>
                 </div>

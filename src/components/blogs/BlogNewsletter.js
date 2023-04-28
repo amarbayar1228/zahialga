@@ -7,12 +7,12 @@ function BlogNewsletter() {
                     <img src="img/icon/sn_icon.png" alt="" />
                   </div>
                   <div className="sn-title">
-                    <h4 className="title">Subscribe Newsletter</h4>
-                    <p>Sign-up For Latest News</p>
+                    <h4 className="title">Мэдээлэл Бүртгүүлэх</h4>
+                    <p>Бүртгүүлээд Мэдээлэл оруулах</p>
                   </div>
                   <form className="sn-form">
-                    <input type="text" placeholder="Enter Your Email" />
-                    <button className="btn">subscribe</button>
+                    <input type="text" placeholder="Емайл оруулна уу" />
+                    <button className="btn">Бүртгүүлэх</button>
                   </form>
                 </div>
   )

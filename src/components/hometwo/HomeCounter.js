@@ -18,13 +18,13 @@ function HomeCounter() {
         <div className="col-lg-3 col-md-4 col-sm-6">
           <div className="counter-item">
             <h2 className="count"><span className="odometer">39</span>K</h2>
-            <p>Dog Breeding</p>
+            <p>Нохой үржүүлэх</p>
           </div>
         </div>
         <div className="col-lg-3 col-md-4 col-sm-6">
           <div className="counter-item">
             <h2 className="count"><span className="odometer">45</span>+</h2>
-            <p>Years Of History</p>
+            <p>Түүхийн он жилүүд</p>
           </div>
         </div>
       </div>

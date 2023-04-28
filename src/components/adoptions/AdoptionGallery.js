@@ -71,14 +71,13 @@ function AdoptionGallery() {
             </div>
             <div className="col-lg-6">
               <div className="adoption-content">
-                <h5 className="sub-title">Meet Adoption</h5>
+                <h5 className="sub-title">Adoption-той танилц</h5>
                 <h2 className="title">Working For <span>Adoption</span> <br /> Happy Time</h2>
-                <p>The best overall dog DNA test is Embark Breed &amp; Health Kit view at Chewy which provides domestic dog is a sticated
-                  descendant of the wolf. The dog derived from an ancient.</p>
+                <p>Нохойн ДНХ-ийн хамгийн сайн шинжилгээ бол Chewy-д байрлах Embark Breed and Health Kit-ийн шинжилгээ бөгөөд гэрийн тэжээвэр нохойг чонын үр удам болохыг харуулж байна. Нохой нь эртний үеэс гаралтай.</p>
                 <div className="adoption-list">
                   <ul>
                     <li><i className="flaticon-tick" /> Embark Breed &amp; Health</li>
-                    <li><i className="flaticon-tick" /> The domestic dog is a domesticated</li>
+                    <li><i className="flaticon-tick" /> Гэрийн нохой бол гаршуулсан нохой юм</li>
                   </ul>
                 </div>
               </div>

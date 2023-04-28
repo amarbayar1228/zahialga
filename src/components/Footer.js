@@ -14,53 +14,53 @@ function Footer() {
                 <Link to="/"><img src="img/logo/logo.png" alt="" /></Link>
               </div>
               <div className="footer-text">
-                <p>The best overall dog DNA test Embark Breed &amp; Health Kit (view at Chewy) which provides overall dog you.</p>
+                <p>Хамгийн сайн нохойны ДНХ-ийн шинжилгээ өгөх Embark Breed & Health Kit (Chewy-ээс үзэх) нь танд нохойн ерөнхий мэдээллийг өгдөг.</p>
               </div>
               <div className="footer-contact">
                 <div className="icon"><i className="fas fa-headphones" /></div>
                 <div className="content">
-                  <h4 className="title"><a href="tel:0987654321">747-800-9880</a></h4>
-                  <span>Call Now</span>
+                  <h4 className="title"><a href="tel:0987654321">+97694262047</a></h4>
+                  <span>Залга яг одоо</span>
                 </div>
               </div>
               <div className="footer-social">
                 <ul>
-                  <li><a href="/#"><i className="fab fa-facebook-f" /></a></li>
-                  <li><a href="/#"><i className="fab fa-twitter" /></a></li>
-                  <li><a href="/#"><i className="fab fa-youtube" /></a></li>
-                  <li><a href="/#"><i className="fab fa-linkedin-in" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><i className="fab fa-facebook-f" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><i className="fab fa-twitter" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><i className="fab fa-youtube" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><i className="fab fa-linkedin-in" /></a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="col-2">
             <div className="footer-widget">
-              <h4 className="fw-title">Our Policies</h4>
+              <h4 className="fw-title">Манай бодлого</h4>
               <div className="fw-link">
                 <ul>
-                  <li><Link to="/contacts">Privacy Policy</Link></li>
-                  <li><Link to="/contacts">Terms and Conditions</Link></li>
-                  <li><Link to="/contacts">Editorial Policy</Link></li>
-                  <li><Link to="/contacts">Return Policy</Link></li>
-                  <li><Link to="/contacts">IP Policy</Link></li>
-                  <li><Link to="/contacts">Grievance Redressal Policy</Link></li>
-                  <li><Link to="/contacts">Our Conditions</Link></li>
+                  <li><Link to="/contacts">Нууцлалын бодлого</Link></li>
+                  <li><Link to="/contacts">Үйлчилгээний нөхцөл</Link></li>
+                  <li><Link to="/contacts">Редакцийн бодлого</Link></li>
+                  <li><Link to="/contacts">Буцаах бодлого</Link></li>
+                  {/* <li><Link to="/contacts">IP Policy</Link></li>
+                  <li><Link to="/contacts">Grievance Redressal Policy</Link></li> */}
+                  <li><Link to="/contacts">Бидний нөхцөл</Link></li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="col-2">
             <div className="footer-widget">
-              <h4 className="fw-title">Our Services</h4>
+              <h4 className="fw-title">Бидний үйлчилгээ</h4>
               <div className="fw-link">
                 <ul>
-                  <li><Link to="/breeder">Our Breeder</Link></li>
-                  <li><Link to="/adoption">Our Adoption</Link></li>
-                  <li><Link to="/contacts">Editorial Policy</Link></li>
-                  <li><Link to="/contacts">Return Policy</Link></li>
+                  <li><Link to="/breeder">Манай үржүүлэгч</Link></li>
+                  <li><Link to="/adoption">Бидний үрчлэлт</Link></li>
+                  <li><Link to="/contacts">Редакцийн бодлого</Link></li>
+                  {/* <li><Link to="/contacts">Return Policy</Link></li>
                   <li><Link to="/contacts">Grievance Policy</Link></li>
-                  <li><Link to="/contacts">Redressal Policy</Link></li>
-                  <li><Link to="/contacts">Contact Us</Link></li>
+                  <li><Link to="/contacts">Redressal Policy</Link></li> */}
+                  <li><Link to="/contacts">Бидэнтэй холбоо барих</Link></li>
                 </ul>
               </div>
             </div>
@@ -70,12 +70,12 @@ function Footer() {
               <h4 className="fw-title">Instagram</h4>
               <div className="fw-insta">
                 <ul>
-                  <li><a href="/#"><img src="img/images/insta_img01.png" alt="" /></a></li>
-                  <li><a href="/#"><img src="img/images/insta_img02.png" alt="" /></a></li>
-                  <li><a href="/#"><img src="img/images/insta_img03.png" alt="" /></a></li>
-                  <li><a href="/#"><img src="img/images/insta_img04.png" alt="" /></a></li>
-                  <li><a href="/#"><img src="img/images/insta_img05.png" alt="" /></a></li>
-                  <li><a href="/#"><img src="img/images/insta_img06.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img01.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img02.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img03.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img04.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img05.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img06.png" alt="" /></a></li>
                 </ul>
               </div>
             </div>
@@ -90,7 +90,7 @@ function Footer() {
         <div className="row">
           <div className="col-md-8">
             <div className="copyright-text">
-              <p>Copyright © 2022 kutto. All Rights Reserved.</p>
+              <p>Зохиогчийн эрх © 2023 Amraa. Бүх эрх хуулиар хамгаалагдсан.</p>
             </div>
           </div>
           <div className="col-md-4 d-none d-md-block">

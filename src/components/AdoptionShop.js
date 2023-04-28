@@ -21,15 +21,15 @@ function AdoptionShop() {
         <div className="col-lg-4 col-md-6">
           <div className="adoption-shop-item">
             <div className="adoption-shop-thumb">
-              <img src="img/product/adoption_shop_thumb01.jpg" alt="" />
+              <img src="img/product/moly.jpg" alt=""  />
               <Link to="/shop-details" className="btn">Үрчлэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
             </div>
             <div className="adoption-shop-content">
-              <h4 className="title"><Link to="/shop-details">Mister Tartosh</Link></h4>
+              <h4 className="title"><Link to="/shop-details">Bolor - Bulldog </Link></h4>
               <div className="adoption-meta">
                 <ul>
-                  <li><i className="fas fa-cog" /><a href="/#">Siberian Husky</a></li>
-                  <li><i className="far fa-calendar-alt" /> Төрсөн он : 2021</li>
+                  <li><i className="fas fa-cog" /><a href="/#">Jerry</a></li>
+                  <li><i className="far fa-calendar-alt" /> Төрсөн он : 2019</li>
                 </ul>
               </div>
               <div className="adoption-rating">
@@ -41,7 +41,7 @@ function AdoptionShop() {
                     <i className="fas fa-star" />
                     <i className="fas fa-star" />
                   </li>
-                  <li className="price">Нийт дүн : <span>Үнэгүй</span></li>
+                  <li className="price">Нийт дүн : <span>10.000.000₮</span></li>
                 </ul>
               </div>
             </div>
@@ -50,14 +50,14 @@ function AdoptionShop() {
         <div className="col-lg-4 col-md-6">
           <div className="adoption-shop-item">
             <div className="adoption-shop-thumb">
-              <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
+              <img src="img/product/molyjerry.png" alt="" />
               <Link to="/shop-details" className="btn">Үрчлэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
             </div>
             <div className="adoption-shop-content">
-              <h4 className="title"><Link to="/shop-details">Charlie</Link></h4>
+              <h4 className="title"><Link to="/shop-details">Базаад зарна</Link></h4>
               <div className="adoption-meta">
                 <ul>
-                  <li><i className="fas fa-cog" /><a href="/#">Golden Retriever</a></li>
+                  <li><i className="fas fa-cog" /><a href="/#">Bambar and Jerry</a></li>
                   <li><i className="far fa-calendar-alt" /> Төрсөн он : 2020</li>
                 </ul>
               </div>
@@ -70,7 +70,7 @@ function AdoptionShop() {
                     <i className="fas fa-star" />
                     <i className="fas fa-star" />
                   </li>
-                  <li className="price">Нийт дүн : <span>$30</span></li>
+                  <li className="price">Нийт дүн : <span>300.000₮</span></li>
                 </ul>
               </div>
             </div>

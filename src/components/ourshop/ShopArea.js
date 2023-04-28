@@ -17,24 +17,24 @@ function ShopArea() {
                   </div>
                 </div>
                 <div className="widget">
-                  <h4 className="sidebar-title">Category</h4>
+                  <h4 className="sidebar-title">Категори</h4>
                   <div className="shop-cat-list">
                     <ul>
-                      <li><Link to="/shop">Squeaky <span>+</span></Link></li>
-                      <li><Link to="/shop">Dog Food <span>+</span></Link></li>
-                      <li><Link to="/shop">Dog-Kit <span>+</span></Link></li>
-                      <li><Link to="/shop">Dog Home <span>+</span></Link></li>
-                      <li><Link to="/shop">Safety-Suits <span>+</span></Link></li>
-                      <li><Link to="/shop">Pet Protect <span>+</span></Link></li>
+                      <li><Link to="/shop">Чижигнэх <span>+</span></Link></li>
+                      <li><Link to="/shop">Нохойн хоол <span>+</span></Link></li>
+                      <li><Link to="/shop">Нохойн хэрэгсэл <span>+</span></Link></li>
+                      <li><Link to="/shop">Нохойн гэр <span>+</span></Link></li>
+                      <li><Link to="/shop">Аюулгүй хувцас <span>+</span></Link></li>
+                      <li><Link to="/shop">Тэжээвэр амьтдыг хамгаалах <span>+</span></Link></li>
                     </ul>
                   </div>
                 </div>
                 <div className="widget">
-                  <h4 className="sidebar-title">Top Brand</h4>
+                  <h4 className="sidebar-title">Шилдэг Брэнд</h4>
                   <div className="shop-brand-list">
                     <ul>
                       <li><Link to="/shop">Geco</Link></li>
-                      <li><Link to="/shop">Carnation</Link></li>
+                      <li><Link to="/shop">Лиц цэцэг</Link></li>
                       <li><Link to="/shop">Suppke</Link></li>
                       <li><Link to="/shop">WeBeyond</Link></li>
                       <li><Link to="/shop">Edstudy</Link></li>
@@ -42,13 +42,13 @@ function ShopArea() {
                   </div>
                 </div>
                 <div className="widget">
-                  <h4 className="sidebar-title">Filter by Price</h4>
+                  <h4 className="sidebar-title">Үнээр шүүх</h4>
                   <div className="price_filter">
                     <div id="slider-range" />
                     <div className="price_slider_amount">
-                      <span>Price :</span>
-                      <input type="text" id="amount" name="price" placeholder="Add Your Price" />
-                      <input type="submit" className="btn" defaultValue="Filter" />
+                      <span>Үнэ :</span>
+                      <input type="text" id="amount" name="price" placeholder="Үнэ оруулах" />
+                      <input type="submit" className="btn" defaultValue="Хайх" placeholder="Хайх"/>
                     </div>
                   </div>
                 </div>
@@ -59,7 +59,7 @@ function ShopArea() {
             </div>
             <div className="col-lg-9">
               <div className="shop-wrap">
-                <h4 className="title">Shop</h4>
+                <h4 className="title">Дэлгүүр</h4>
                 <div className="shop-page-meta mb-30">
                   <div className="shop-grid-menu">
                     <ul>
@@ -68,11 +68,11 @@ function ShopArea() {
                     </ul>
                   </div>
                   <div className="shop-showing-result">
-                    <p>Total Items 1-12 of 13</p>
+                    <p>Нийт 1-12 of 13</p>
                   </div>
                   <div className="shop-show-list">
                     <form>
-                      <label htmlFor="show">Show</label>
+                      <label htmlFor="show">Харах</label>
                       <select id="show" className="selected">
                         <option value>08</option>
                         <option value>12</option>
@@ -84,12 +84,12 @@ function ShopArea() {
                   </div>
                   <div className="shop-short-by">
                     <form>
-                      <label htmlFor="shortBy">Sort By</label>
+                      <label htmlFor="shortBy">Эрэмбэлэх</label>
                       <select id="shortBy" className="selected">
-                        <option value>Sort by latest</option>
-                        <option value>Low to high</option>
-                        <option value>High to low</option>
-                        <option value>Popularity</option>
+                        <option value>Хамгийн сүүлд эрэмбэлэх</option>
+                        <option value>Багаас их</option>
+                        <option value>Ихээс бага</option>
+                        <option value>Алдартай</option>
                       </select>
                     </form>
                   </div>
@@ -104,8 +104,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$28.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">28.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -119,8 +119,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Squeaky Dog</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$19.00</span>
-                          <span className="add-cart"><Link to="shop-details">ADD +</Link></span>
+                          <span className="price">19.000₮</span>
+                          <span className="add-cart"><Link to="shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -134,8 +134,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$29.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">29.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -149,8 +149,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Yoda Carriage</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$49.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">49.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -164,8 +164,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Pet Carriage</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$09.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">9000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -179,8 +179,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Squeaky Dog</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$16.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">16.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -194,8 +194,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Carriage Dog</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$18.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">18.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -209,8 +209,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Yoda Carriage</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$12.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">12.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -224,8 +224,8 @@ function ShopArea() {
                         <span>Dog toy’s</span>
                         <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">$32.00</span>
-                          <span className="add-cart"><Link to="/shop-details">ADD +</Link></span>
+                          <span className="price">32.000₮</span>
+                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
                         </div>
                       </div>
                     </div>
@@ -239,11 +239,11 @@ function ShopArea() {
                     </ul>
                   </div>
                   <div className="shop-showing-result">
-                    <p>Total Items 1-12 of 13</p>
+                    <p>Ний зүйлс 1-12 of 13</p>
                   </div>
                   <div className="shop-show-list">
                     <form>
-                      <label htmlFor="bottomShow">Show</label>
+                      <label htmlFor="bottomShow">Харах</label>
                       <select id="bottomShow" className="selected">
                         <option value>08</option>
                         <option value>12</option>

@@ -24,13 +24,13 @@ function BlogContent() {
                         <a href="/#">Siberian Husky , </a>
                         <a href="/#">Breed</a>
                       </li>
-                      <li><i className="far fa-user" /><a href="/#">Admin</a></li>
-                      <li><i className="far fa-bell" /> Mar 10, 2021</li>
+                      <li><i className="far fa-user" /><a href="/#">Админ</a></li>
+                      <li><i className="far fa-bell" />May 10, 202"</li>
                     </ul>
                   </div>
-                  <h2 className="title"><Link to="/blog-details">Online pet everything your pet needs</Link></h2>
-                  <p>The domestic dog is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest living relative. The dog was the first species to be domesticated, by hunter–gatherers.</p>
-                  <Link to="/blog-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <h2 className="title"><Link to="/blog-details">Таны тэжээвэр амьтанд хэрэгтэй бүх зүйлийг онлайн тэжээвэр амьтдад</Link></h2>
+                  <p>Гэрийн нохой бол чонын гаршуулсан удам юм. Эртний, устаж үгүй ​​болсон чононоос гаралтай нохой, орчин үеийн саарал чоно бол нохойн хамгийн ойрын хамаатан юм. Нохой бол анчин цуглуулагчдын гаршуулсан анхны төрөл юм.</p>
+                  <Link to="/blog-details" className="read-more">Илүүг үзэх <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
               <div className="standard-blog-item">
@@ -44,13 +44,13 @@ function BlogContent() {
                         <a href="/#">Siberian Husky , </a>
                         <a href="/#">Breed</a>
                       </li>
-                      <li><i className="far fa-user" /><a href="/#">Admin</a></li>
+                      <li><i className="far fa-user" /><a href="/#">Админ</a></li>
                       <li><i className="far fa-bell" /> Mar 10, 2021</li>
                     </ul>
                   </div>
-                  <h2 className="title"><Link to="/blog-details">Pet needs special food like human foods</Link></h2>
-                  <p>The domestic dog is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest living relative. The dog was the first species to be domesticated, by hunter–gatherers.</p>
-                  <Link to="/blog-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <h2 className="title"><Link to="/blog-details">Гэрийн тэжээвэр амьтанд хүний ​​хоол шиг тусгай хоол хэрэгтэй</Link></h2>
+                  <p>Гэрийн нохой бол чонын гаршуулсан удам юм. Эртний, устаж үгүй ​​болсон чононоос гаралтай нохой, орчин үеийн саарал чоно бол нохойн хамгийн ойрын хамаатан юм. Нохой бол анчин цуглуулагчдын гаршуулсан анхны төрөл юм.</p>
+                  <Link to="/blog-details" className="read-more">Илүүг үзэх <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
               <div className="standard-blog-item">
@@ -64,13 +64,13 @@ function BlogContent() {
                         <a href="/#">Siberian Husky , </a>
                         <a href="/#">Breed</a>
                       </li>
-                      <li><i className="far fa-user" /><a href="/#">Admin</a></li>
+                      <li><i className="far fa-user" /><a href="/#">Админ</a></li>
                       <li><i className="far fa-bell" /> Mar 10, 2021</li>
                     </ul>
                   </div>
-                  <h2 className="title"><Link to="/blog-details">Special grades for carry-home food</Link></h2>
-                  <p>The domestic dog is a domesticated descendant of the wolf. The dog derived from an ancient, extinct wolf, and the modern grey wolf is the dog's nearest living relative. The dog was the first species to be domesticated, by hunter–gatherers.</p>
-                  <Link to="/blog-details" className="read-more">Read More <img src="img/icon/pawprint.png" alt="" /></Link>
+                  <h2 className="title"><Link to="/blog-details">Гэрийн хоолонд зориулсан тусгай зэрэглэл</Link></h2>
+                  <p>Гэрийн нохой бол чонын гаршуулсан удам юм. Эртний, устаж үгүй ​​болсон чононоос гаралтай нохой, орчин үеийн саарал чоно бол нохойн хамгийн ойрын хамаатан юм. Нохой бол анчин цуглуулагчдын гаршуулсан анхны төрөл юм.</p>
+                  <Link to="/blog-details" className="read-more">Илүүг үзэх <img src="img/icon/pawprint.png" alt="" /></Link>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ function BlogContent() {
                <SearchBar/>
                 <Catagories/>
                 <div className="widget">
-                  <h4 className="sidebar-title">Recent Post</h4>
+                  <h4 className="sidebar-title">Сүүлийн нийтлэл</h4>
                     <SideBarTitle/>
                 </div>
                 <BlogNewsletter/>

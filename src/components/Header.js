@@ -116,14 +116,14 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                         <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт</Link></li>
                         <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Үйлдвэр</Link>
                           <ul className="submenu">
-                            <li><Link to="/breeder" onClick={(e)=> subActive(e)}>Our Breeder</Link></li>
-                            <li><Link to="/breeder-details" onClick={(e)=> subActive(e)}>Breeder Details</Link></li>
+                            <li><Link to="/breeder" onClick={(e)=> subActive(e)}>Манай үржүүлэгч</Link></li>
+                            <li><Link to="/breeder-details" onClick={(e)=> subActive(e)}>Үржүүлэгч дэлгэрэгүй</Link></li>
                           </ul>
                         </li>
                         <li className="menu-item-has-children"><Link to="/blogs" onClick={(e)=> handleActive(e)}>Блог</Link>
                           <ul className="submenu">
-                            <li><Link to="/blogs"  onClick={(e)=> subActive(e)}>Our Blog</Link></li>
-                            <li><Link to="/blog-details" onClick={(e)=> subActive(e)}>Blog Details</Link></li>
+                            <li><Link to="/blogs"  onClick={(e)=> subActive(e)}>Бидний Блог</Link></li>
+                            <li><Link to="/blog-details" onClick={(e)=> subActive(e)}>Блог дэлгэрэгүй</Link></li>
                           </ul>
                         </li>
                         <li><Link to="/contacts" onClick={(e)=> handleActive(e)}>Холбоо барих</Link></li>
@@ -141,8 +141,8 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                               <div className="cart-content">
                                 <h4><a href="/#">The King Charles Spaniel</a></h4>
                                 <div className="cart-price">
-                                  <span className="new">$229.9</span>
-                                  <span><del>$229.9</del></span>
+                                  <span className="new">625.000₮</span>
+                                  <span><del>800.000₮</del></span>
                                 </div>
                               </div>
                               <div className="del-icon">
@@ -156,8 +156,8 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                               <div className="cart-content">
                                 <h4><a href="/#">The Labrador Retriever</a></h4>
                                 <div className="cart-price">
-                                  <span className="new">$229.9</span>
-                                  <span><del>$229.9</del></span>
+                                  <span className="new">$560.000₮</span>
+                                  <span><del>750.000₮</del></span>
                                 </div>
                               </div>
                               <div className="del-icon">
@@ -167,18 +167,18 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                             <li>
                               <div className="total-price">
                                 <span className="f-left">Total:</span>
-                                <span className="f-right">$239.9</span>
+                                <span className="f-right">1.185.00₮</span>
                               </div>
                             </li>
                             <li>
                               <div className="checkout-link">
-                                <a href="/#">Shopping Cart</a>
-                                <a className="black-color" href="/#">Checkout</a>
+                                <a href="/#">Сагс</a>
+                                <a className="black-color" href="/#">Тооцоо хийх</a>
                               </div>
                             </li>
                           </ul>
                         </li>
-                        <li className="header-btn"><Link to="/adoption" className="btn">Adopt Here <img src="img/icon/w_pawprint.png" alt="" /></Link></li>
+                        <li className="header-btn"><Link to="/adoption" className="btn">Энд үрчлэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li>
                       </ul>
                     </div>
                   </nav>
@@ -219,10 +219,10 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
             <div className="container">
               <div className="row">
                 <div className="col-12">
-                  <h2 className="title">... Search Here ...</h2>
+                  <h2 className="title">... Энд хайх ...</h2>
                   <div className="search-form">
                     <form>
-                      <input type="text" name="search" placeholder="Type keywords here" />
+                      <input type="text" name="search" placeholder="Хайх зүйлээ энд бичнэ үү.." />
                       <button className="search-btn"><i className="fas fa-search" /></button>
                     </form>
                   </div>

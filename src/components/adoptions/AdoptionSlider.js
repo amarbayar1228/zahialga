@@ -56,14 +56,13 @@ function AdoptionSlider() {
           <div className="row align-items-center justify-content-center">
             <div className="col-xl-4 col-lg-9 col-md-12 col-sm-9">
               <div className="adoption-content">
-                <h5 className="sub-title">Meet Adoption</h5>
+                <h5 className="sub-title">Adoption-той танилц</h5>
                 <h2 className="title">Work For <span>Adoption</span> Happy Time</h2>
-                <p>The best overall dog DNA test is Embark Breed &amp; Health Kit view at Chewy which pres domesti
-                  dog is a sticated descendant.</p>
+                <p>Нохойн ДНХ-ийн хамгийн сайн шинжилгээ бол Chewy-д хийсэн Embark Breed and Health Kit-ийн шинжилгээ бөгөөд гэрийн тэжээвэр нохойг чонын үр удам болохыг харуулж байна. Нохой нь эртний үеэс гаралтай.</p>
                 <div className="adoption-list">
                   <ul>
                     <li><i className="flaticon-tick" /> Embark Breed &amp; Health</li>
-                    <li><i className="flaticon-tick" /> The domestic dog is a domesticated</li>
+                    <li><i className="flaticon-tick" /> Гэрийн нохой бол гаршуулсан нохой юм</li>
                   </ul>
                 </div>
               </div>
@@ -102,11 +101,10 @@ function AdoptionSlider() {
                   </div>
                   <div className="col-md-6">
                     <div className="breed-services-info" style={{backgroundImage:'url("img/bg/breed_services_bg.jpg")'}}>
-                      <h5 className="sub-title">Dog Adoption</h5>
-                      <h3 className="title">Available for Adoption</h3>
-                      <p>The best overall dog DNA test is Embark Breed &amp; Health Kit (view at Chewy), which
-                        provid dogs</p>
-                      <Link to="/doglist" className="btn">More Pets <img src="img/icon/w_pawprint.png" alt="" /></Link>
+                      <h5 className="sub-title">Нохой үрчлэх</h5>
+                      <h3 className="title">Үрчлүүлэх боломжтой</h3>
+                      <p>Хамгийн сайн нохойны ДНХ-ийн шинжилгээ бол нохойг хангадаг Embark Breed and Health Kit (Chewy-ээс үзэх) юм.</p>
+                      <Link to="/doglist" className="btn">Илүүг үзэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
                     </div>
                   </div>
                 </div>
