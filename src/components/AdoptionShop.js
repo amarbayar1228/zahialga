@@ -25,7 +25,7 @@ function AdoptionShop() {
               <Link to="/shop-details" className="btn">Үрчлэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
             </div>
             <div className="adoption-shop-content">
-              <h4 className="title"><Link to="/shop-details">Bolor - Bulldog </Link></h4>
+              <h4 className="title"><Link to="/shop-details">Bulldog </Link></h4>
               <div className="adoption-meta">
                 <ul>
                   <li><i className="fas fa-cog" /><a href="/#">Jerry</a></li>

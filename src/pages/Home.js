@@ -11,7 +11,7 @@ import Testimonial from '../components/Testimonial'
 import Newsletter from '../components/NewsLetter'
 import BlogsHome from '../components/BlogsHome'
 
-function Home() {
+function Home() { 
   return (
 		  <main>
 				<MainSlider/>

@@ -13,7 +13,9 @@ import ShopDetailsPage from './pages/ShopDetailsPage'
 import BreederPage from './pages/BreederPage'
 import BreederDetailsPage from './pages/BreederDetailsPage'
 import HometwoPage from './pages/HometwoPage'
-import ScrollToTopRoute from './ScrollToTopRoute' 
+import ScrollToTopRoute from './ScrollToTopRoute'  
+import SignIn from './pages/Sign-in/Sign-in';
+import SignUp from './pages/Sign-up';
 
 function App() {
   
@@ -24,10 +26,16 @@ function App() {
        <Header/>
        <Switch>
           <ScrollToTopRoute exact={true} path='/'>
-            <HometwoPage/>
+            <HometwoPage />
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/doglist'>
             <DogList/>
+          </ScrollToTopRoute>
+          <ScrollToTopRoute exact={true} path='/sign-in'>
+            <SignIn />
+          </ScrollToTopRoute>
+          <ScrollToTopRoute exact={true} path='/sign-up'>
+            <SignUp />
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/adoption'> 
             <AdoptionsPages/>

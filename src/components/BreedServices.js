@@ -66,9 +66,11 @@ function BreedServices() {
         <div className="col-xl-7 col-lg-9">
           <div className="section-title text-center mb-65">
             <div className="section-icon"><img src="img/icon/pawprint.png" alt="" /></div>
-            <h5 className="sub-title">Service to Breeds</h5>
-            <h2 className="title">Most Popular Dog Breed</h2>
-            <p>The best overall dog DNA test is Embark Breed &amp; Health Kit (view at Chewy), which provides you with a breed brwn and information Most dogs</p>
+            <h5 className="sub-title">Үүлдрийн үйлчилгээ</h5>
+            <h2 className="title">Хамгийн алдартай нохойн  </h2>
+            <p>
+            Нохойны хамгийн сайн ДНХ-ийн шинжилгээ бол нохойг хангадаг Embark Breed and Health Kit (Chewy-ээс үзэх) юм.
+            </p>
           </div>
         </div>
       </div>
@@ -111,10 +113,10 @@ function BreedServices() {
         </div>
         <div className="col-lg-4 col-md-6">
           <div className="breed-services-info" style={{backgroundImage:'url("img/bg/breed_services_bg.jpg")'}}>
-            <h5 className="sub-title">Dog Breeder</h5>
-            <h3 className="title">Available for Breed</h3>
-            <p>The best overall dog DNA test is Embark Breed &amp; Health Kit (view at Chewy), which provid dogs</p>
-            <Link to="/doglist" className="btn">More Pets <img src="img/icon/w_pawprint.png" alt="" /></Link>
+            <h5 className="sub-title">Нохой үржүүлэгч</h5>
+            <h3 className="title">Үүлдрийн</h3>
+            <p>Нохойны хамгийн сайн ДНХ-ийн шинжилгээ бол нохойг хангадаг Embark Breed and Health Kit (Chewy-ээс үзэх) юм.</p>
+            <Link to="/doglist" className="btn">Илүүг үзэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
           </div>
         </div>
       </div>

@@ -104,7 +104,7 @@ function BreederAdoption() {
                   <div className="col-md-6">
                     <div className="breed-services-info" style={{backgroundImage:'url("img/bg/breed_services_bg.jpg")'}}>
                       <h5 className="sub-title">Нохой үржүүлэгч</h5>
-                      <h3 className="title">Үүлдрийн хувьд ашиглах боломжтой</h3>
+                      <h3 className="title">Үүлдрийн</h3>
                       <p>Нохойны хамгийн сайн ДНХ-ийн шинжилгээ бол нохойг хангадаг Embark Breed and Health Kit (Chewy-ээс үзэх) юм.</p>
                       <Link to="/doglist" className="btn">Илүү үзэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
                     </div>

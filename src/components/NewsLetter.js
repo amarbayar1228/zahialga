@@ -1,7 +1,7 @@
 import React from "react";
 function Newsletter(){
     return(
-        <div className="newsletter-area pb-110">
+        <div className="newsletter-area pb-110 mt-50">
         <div className="container">
           <div className="row">
             <div className="col-12">

@@ -1,8 +1,12 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import $ from 'jquery';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 function Header(){
+
+  const history = useHistory();
   const handleActive = (e)=>{
     document.querySelectorAll('.main-menu ul li').forEach( el => {
       el.classList.remove('active');
@@ -59,8 +63,33 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
         $(".search-close").on('click',function () {
         $(".search-popup-wrap").slideUp(500);
         });
+        console.log("Header");
   },[])
-
+	const refreshToken = async () =>{
+        const expireDate = new Date(localStorage.getItem("expireDate"));
+        if(expireDate > new Date()){
+            const expIn = expireDate.getTime() - new Date().getTime(); 
+            await setTimeout(()=>{ 
+              history.push("/");
+            },expIn)
+        } else {
+            const body = {
+                grant_type: "refresh_token",
+                refresh_token: localStorage.getItem("refreshToken")
+            }
+            axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyAA_wX14i2xQr-owSd7-iAxcp4J3qRdgMI", body).then((res)=>{ 
+                const expIn =  res.data.expires_in; 
+                const expireDate = new Date(new Date().getTime() + parseInt(expIn) * 1000); 
+                localStorage.setItem("idToken",  res.data.id_token)
+                localStorage.setItem("localId",  res.data.user_id) 
+                localStorage.setItem("expireDate", expireDate)
+                localStorage.setItem("refreshToken",  res.data.refresh_token) 
+                // router.push("/");
+            }).catch((err)=>{
+                console.log("err", err)
+            })
+        }
+    }
 
 
     return(
@@ -178,7 +207,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                             </li>
                           </ul>
                         </li>
-                        <li className="header-btn"><Link to="/adoption" className="btn">Энд үрчлэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li>
+                        <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li>
                       </ul>
                     </div>
                   </nav>
