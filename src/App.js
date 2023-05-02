@@ -19,67 +19,74 @@ import SignUp from './pages/Sign-up';
 import Dashboard from './pages/Dashboard';
 import AddItem from './pages/add-item';
 import DogAdd from './pages/Dog-add';
-
+import {ConfigProvider } from "antd";
 function App() { 
   return (
-  <div className='app'> 
-   <Router>
-       <Header/>
-       <Switch>
-          <ScrollToTopRoute exact={true} path='/'>
-            <HometwoPage />
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/doglist'>
-            <DogList/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/sign-in'>
-            <SignIn />
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/dog-add'>
-            <DogAdd />
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/dashboard'>
-            <Dashboard />
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/add-item'>
-            <AddItem />
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/sign-up'>
-            <SignUp />
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/adoption'> 
-            <AdoptionsPages/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/contacts'>
-            <ContactPage/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/blogs'>
-          <BlogPage/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/blog-details'>
-            <BlogDetailsPage/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/shop'>
-           <ShopPages/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/shop-details'>
-            <ShopDetailsPage/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/breeder'>
-            <BreederPage/>
-          </ScrollToTopRoute>
-          <ScrollToTopRoute exact={true} path='/breeder-details'>
-            <BreederDetailsPage/>
-          </ScrollToTopRoute>
+    <ConfigProvider theme={{
+      token: {
+          colorPrimary: "#f04336"
+      }
+    }}>
+      
+    <div className='app'> 
+    <Router>
+        <Header/>
+        <Switch>
+            <ScrollToTopRoute exact={true} path='/'>
+              <HometwoPage />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/doglist'>
+              <DogList/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/sign-in'>
+              <SignIn />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/dog-add'>
+              <DogAdd />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/dashboard'>
+              <Dashboard />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/add-item'>
+              <AddItem />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/sign-up'>
+              <SignUp />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/adoption'> 
+              <AdoptionsPages/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/contacts'>
+              <ContactPage/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/blogs'>
+            <BlogPage/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/blog-details'>
+              <BlogDetailsPage/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/shop'>
+            <ShopPages/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/shop-details'>
+              <ShopDetailsPage/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/breeder'>
+              <BreederPage/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/breeder-details'>
+              <BreederDetailsPage/>
+            </ScrollToTopRoute>
 
-          <ScrollToTopRoute exact={true} path='/home-two'>
-            <HometwoPage/>
-          </ScrollToTopRoute>
-       </Switch>
-       <Footer/>
-   </Router>
- 
-  </div>
+            <ScrollToTopRoute exact={true} path='/home-two'>
+              <HometwoPage/>
+            </ScrollToTopRoute>
+        </Switch>
+        <Footer/>
+    </Router>
+  
+    </div>
+  </ConfigProvider>
   );
 }
 
