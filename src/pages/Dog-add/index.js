@@ -6,22 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from '@ant-design/icons';
 import AddDogModal from "./addDogModal";
 import axios from "./../../axios-orders";
-const { Paragraph } = Typography;
-const data2 = [{
-    key: 1,
-    title: "tttt",
-    age: "e.age",
-    size: "e.size",
-    gender: "e.gender",
-    description: "e.description",
-    pedId: "e.pedId",
-    price: "e.price",
-    birth: "e.birth",
-    color: "e.color",
-    country: "country",
-    action: "",
-    allData: ""
-}]
+ 
 const DogAdd = () =>{
     const [loading, setLoading] = useState(true);
     const [searchText, setSearchText] = useState('');
@@ -34,8 +19,6 @@ const DogAdd = () =>{
       if(localId){
         getDogList();
       } 
-     
-
     },[])
       const data = dogList.map((e, i)=>( 
         {
@@ -58,12 +41,10 @@ const DogAdd = () =>{
       ))
       const getDogList = () =>{ 
         setLoadingTable(true);
-        const localId = localStorage.getItem("localId"); 
         const token = localStorage.getItem("idToken"); 
-  
+
         axios.get(`dogList.json?&auth=${token}`).then((res)=>{ 
-            const data = Object.entries(res.data).reverse(); 
-            console.log("data: ", data);
+            const data = Object.entries(res.data).reverse();  
             setDogList(data)  
         }).catch((err)=>{
             console.log("err: ", err)
@@ -166,8 +147,8 @@ const DogAdd = () =>{
           title: 'Зураг',
           dataIndex: 'img',
           key: 'img',
-          width: '130px',
-          render: (img) =><div><Image src={img} width={100}/></div>,
+          width: '80px',
+          render: (img) =><div><Image src={img} width={50}/></div>,
           ellipsis: true, 
         },
         {
@@ -190,7 +171,7 @@ const DogAdd = () =>{
           title: 'Төрөл',
           dataIndex: 'type',
           key: 'type',
-          width: '80px',
+          width: '120px',
           ellipsis: true,
           ...getColumnSearchProps('type'), 
         },
@@ -242,12 +223,12 @@ const DogAdd = () =>{
         //                 </div>
         },
         {
-          title: 'Action',
+          title: 'Үйлдэл',
           dataIndex: 'allData',
           key: 'allData',
-          width: '70px',
+          width: '100px',
           render: (action)=> <div style={{display: "flex", gap: "10px"}}>  
-            {console.log("all ", action)}
+            {/* {console.log("all ", action)} */}
                   {/* <RegEdit data={rec[0]} getRegistrationList={getRegistrationList} info={rec[1].values}/>
                   <RegDelete  data={rec[0]} getRegistrationList={getRegistrationList}/>   */}
             </div> 
@@ -262,8 +243,8 @@ const DogAdd = () =>{
                    <Sidebar />
                 </div>
                 <div className="col-lg-9"> 
-                    <AddDogModal />
-                    <Table columns={columns} bordered dataSource={data}  scroll={{y: 300, x: 1200}} loading={loadingTable} pagination={{ total: 0, showTotal: (total) => `Total: ${total} items` }} />
+                    <AddDogModal getDogList={getDogList}/>
+                    <Table columns={columns} bordered dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} pagination={{ total: 0, showTotal: (total) => `Total: ${total} items` }} />
                 </div>
             </div>
         </div> 

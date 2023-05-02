@@ -1,7 +1,22 @@
-import React from "react";
+import axios from "../axios-orders";
+import React, { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 
 function AdoptionShop() {
+  const [data, setData] = useState([]);
+  useEffect(()=>{
+    getDogList();
+  },[]);
+  const getDogList = () =>{
+    axios.get(`dogList.json`).then((res)=>{ 
+      const data = Object.entries(res.data).reverse();   
+      setData(data)  
+    }).catch((err)=>{
+        console.log("err: ", err)
+    }).finally(()=>{
+      // setLoadingTable(false)
+    })
+  }
   return (
     <section className="adoption-shop-area">
     <div className="container">
@@ -18,6 +33,37 @@ function AdoptionShop() {
         </div>
       </div>
       <div className="row justify-content-center">
+        {data.map((e, i)=>(
+          <div className="col-lg-4 col-md-6" key={i}>
+           <div className="adoption-shop-item">
+             <div className="adoption-shop-thumb">
+                <img src={e[1].values.img ? e[1].values.img[0] : ""} alt="" />
+               <Link to="/shop-details" className="btn">Үрчлэх <img src="img/icon/w_pawprint.png" alt="" /></Link>
+             </div>
+             <div className="adoption-shop-content">
+               <h4 className="title"><Link to="/shop-details">{e[1].values.title} </Link></h4>
+               <div className="adoption-meta">
+                 <ul>
+                   <li><i className="fas fa-cog" /><a href="/#">{e[1].values.type}</a></li>
+                   <li><i className="far fa-calendar-alt" /> Төрсөн он : {e[1].values.birth}</li>
+                 </ul>
+               </div>
+               <div className="adoption-rating">
+                 <ul>
+                   <li className="rating">
+                     <i className="fas fa-star" />
+                     <i className="fas fa-star" />
+                     <i className="fas fa-star" />
+                     <i className="fas fa-star" />
+                     <i className="fas fa-star" />
+                   </li>
+                   <li className="price">Нийт дүн : <span>{e[1].values.price}₮</span></li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+         </div>
+        ))}
         <div className="col-lg-4 col-md-6">
           <div className="adoption-shop-item">
             <div className="adoption-shop-thumb">

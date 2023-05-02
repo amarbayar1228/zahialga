@@ -11,7 +11,7 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
  
-const AddDogModal = () =>{
+const AddDogModal = (props) =>{
     const [isModalOpen, setIsModalOpen] = useState(false); 
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
@@ -22,6 +22,8 @@ const AddDogModal = () =>{
         name: 'image.png',
         status: 'done',
         url: 'https://wi.wallpapertip.com/wsimgs/153-1538938_mickey-mouse-mickey-mouse-wallpaper-ipad.jpg',
+
+        thumburl: ""
       }, 
     ]);
     const handleCancelImg = () => setPreviewOpen(false);
@@ -56,6 +58,7 @@ const AddDogModal = () =>{
       setIsModalOpen(false);
     };
     const onFinish = (values) => {   
+      console.log("object", fileList);
     if(fileList.length === 0){
         message.error("Зураг заавал оруулна уу!")
     }else{ 
@@ -84,11 +87,12 @@ const AddDogModal = () =>{
         console.log("body: ", body);
         axios.post(`dogList.json?&auth=${token}`, body).then((res)=>{
             if(res.data.name)
-            message.success("Success") 
+            message.success("Амжилттай") 
+            props.getDogList()
             setIsModalOpen(false);
             //   props.getRegistrationList()
         }).catch((err)=>{ 
-            message.error("error")
+            message.error("Амжилтгүй")
             setIsModalOpen(false);
         }) 
     }

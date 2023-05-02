@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import $ from 'jquery';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { message } from 'antd';
 
 function Header(){
   const [checkId, setCheckId] = useState(false);
@@ -69,8 +70,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
 
         $(".search-close").on('click',function () {
         $(".search-popup-wrap").slideUp(500);
-        });
-        console.log("Header");
+        }); 
   },[])
 
   const localStoreFunc = () =>{ 
@@ -98,6 +98,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 history.push("/");
             }).catch((err)=>{
                 console.log("err", err)
+                message.error("Token хугацаа дууссан тул refresh хийнэ үү!!")
             })
         }
     }
