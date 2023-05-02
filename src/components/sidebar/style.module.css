@@ -1,0 +1,13 @@
+.Links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 13px;
+    border-bottom: 1px dashed #c7c7c7;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #5d5a77;
+}
+.Links:hover{
+    color: #ff4b36;
+}

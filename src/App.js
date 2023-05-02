@@ -15,13 +15,14 @@ import BreederDetailsPage from './pages/BreederDetailsPage'
 import HometwoPage from './pages/HometwoPage'
 import ScrollToTopRoute from './ScrollToTopRoute'  
 import SignIn from './pages/Sign-in/Sign-in';
-import SignUp from './pages/Sign-up';
+import SignUp from './pages/Sign-up'; 
+import Dashboard from './pages/Dashboard';
+import AddItem from './pages/add-item';
+import DogAdd from './pages/Dog-add';
 
-function App() {
-  
+function App() { 
   return (
-  <div className='app'>
-   
+  <div className='app'> 
    <Router>
        <Header/>
        <Switch>
@@ -33,6 +34,15 @@ function App() {
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/sign-in'>
             <SignIn />
+          </ScrollToTopRoute>
+          <ScrollToTopRoute exact={true} path='/dog-add'>
+            <DogAdd />
+          </ScrollToTopRoute>
+          <ScrollToTopRoute exact={true} path='/dashboard'>
+            <Dashboard />
+          </ScrollToTopRoute>
+          <ScrollToTopRoute exact={true} path='/add-item'>
+            <AddItem />
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/sign-up'>
             <SignUp />
@@ -47,23 +57,23 @@ function App() {
           <BlogPage/>
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/blog-details'>
-          <BlogDetailsPage/>
+            <BlogDetailsPage/>
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/shop'>
            <ShopPages/>
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/shop-details'>
-          <ShopDetailsPage/>
+            <ShopDetailsPage/>
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/breeder'>
-          <BreederPage/>
+            <BreederPage/>
           </ScrollToTopRoute>
           <ScrollToTopRoute exact={true} path='/breeder-details'>
-          <BreederDetailsPage/>
+            <BreederDetailsPage/>
           </ScrollToTopRoute>
 
           <ScrollToTopRoute exact={true} path='/home-two'>
-          <HometwoPage/>
+            <HometwoPage/>
           </ScrollToTopRoute>
        </Switch>
        <Footer/>

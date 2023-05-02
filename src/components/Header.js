@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 import $ from 'jquery';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 function Header(){
-
+  const [checkId, setCheckId] = useState(false);
   const history = useHistory();
   const handleActive = (e)=>{
     document.querySelectorAll('.main-menu ul li').forEach( el => {
@@ -20,8 +20,15 @@ function Header(){
     e.target.parentNode.parentNode.parentNode.classList += ' active';
   }
   useEffect(()=>{
-
-
+    const localId = localStorage.getItem("localId");
+    if(localId){
+      refreshToken();
+      localStoreFunc();
+    }else{
+      setCheckId(false)
+    }
+    
+    
     //SubMenu Dropdown Toggle
 if ($('.menu-area li.menu-item-has-children ul').length) {
 	$('.menu-area .navigation li.menu-item-has-children').append('<div class="dropdown-btn"><span class="fas fa-angle-down"></span></div>');
@@ -65,6 +72,10 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
         });
         console.log("Header");
   },[])
+
+  const localStoreFunc = () =>{ 
+    setCheckId(true) 
+  }
 	const refreshToken = async () =>{
         const expireDate = new Date(localStorage.getItem("expireDate"));
         if(expireDate > new Date()){
@@ -84,7 +95,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 localStorage.setItem("localId",  res.data.user_id) 
                 localStorage.setItem("expireDate", expireDate)
                 localStorage.setItem("refreshToken",  res.data.refresh_token) 
-                // router.push("/");
+                history.push("/");
             }).catch((err)=>{
                 console.log("err", err)
             })
@@ -189,8 +200,11 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                                   <span><del>750.000₮</del></span>
                                 </div>
                               </div>
+
+
+
                               <div className="del-icon">
-                                <a href="/#"><i className="far fa-trash-alt" /></a>
+                                <a href="/#" ><i className="far fa-trash-alt" /></a>
                               </div>
                             </li>
                             <li>
@@ -207,7 +221,9 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                             </li>
                           </ul>
                         </li>
-                        <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li>
+                        {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li> : 
+                          <li className="header-btn"><Link to="/dashboard" className="btn">Самбар<img src="img/icon/w_pawprint.png" alt="" /></Link></li> 
+                        }
                       </ul>
                     </div>
                   </nav>
