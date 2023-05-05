@@ -238,7 +238,7 @@ const DogAdd = () =>{
       ];
     return<div>
        <SidebarBreadCumb title="Нохой нэмэх"/>
-       <section className="blog-details-area" style={{marginLeft: "0px"}}>
+       <section style={{marginLeft: "0px", padding: "50px 0"}}>
         <div className="container">
             <div className="row justify-content-center"> 
                 <div className="col-lg-3 col-md-8 ">

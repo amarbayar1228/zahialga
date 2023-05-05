@@ -22,7 +22,7 @@ function Header(){
   }
   useEffect(()=>{
     const localId = localStorage.getItem("localId");
-    if(localId){
+    if(localId){ 
       refreshToken();
       localStoreFunc();
     }else{
@@ -81,7 +81,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
         if(expireDate > new Date()){
             const expIn = expireDate.getTime() - new Date().getTime(); 
             await setTimeout(()=>{ 
-              history.push("/");
+              document.location.replace("/");
             },expIn)
         } else {
             const body = {
@@ -95,7 +95,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 localStorage.setItem("localId",  res.data.user_id) 
                 localStorage.setItem("expireDate", expireDate)
                 localStorage.setItem("refreshToken",  res.data.refresh_token) 
-                history.push("/");
+                document.location.replace("/");
             }).catch((err)=>{
                 console.log("err", err)
                 message.error("Token хугацаа дууссан тул refresh хийнэ үү!!")
@@ -138,7 +138,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 <div className="mobile-nav-toggler"><i className="fas fa-bars" /></div>
                 <div className="menu-wrap">
                   <nav className="menu-nav show">
-                    <div className="logo"><Link to="/"><img src="img/logo/logo.png" alt="" /></Link></div>
+                    <div className="logo"><Link to="/"><img src="img/logo/logo.png" alt="" /></Link></div> 
                     <div className="navbar-wrap main-menu d-none d-lg-flex">
                       <ul className="navigation">
                         <li className="active menu-item-has-children"><Link to="/">Үндсэн хуудас</Link>
@@ -236,7 +236,12 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                     <div className="nav-logo"><Link to="/"><img src="img/logo/logo.png" alt="" title='true' /></Link>
                     </div>
                     <div className="menu-outer">
-                  
+                        
+                    </div>
+                    <div style={{marginTop: "20px", display: "flex", justifyContent: "center"}}>
+                      {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li> : 
+                            <li className="header-btn"><Link to="/dashboard" className="btn">Самбар<img src="img/icon/w_pawprint.png" alt="" /></Link></li> 
+                      }
                     </div>
                     <div className="social-links">
                       <ul className="clearfix">

@@ -20,6 +20,7 @@ const Send = () =>{
             }
                 axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDH453cwnl9H3yp0QrYeXG_hnoM4zHn5eM", body).then((res)=>{
                      history.push("/sign-in")
+                     
                 }).catch((err)=>{
                     console.log("err: ", err)
                 })
@@ -54,8 +55,9 @@ return<section className="adoption-shop-area">
                         <input type="password" id="name" placeholder="Нууц үгээ давтаж оруулна уу..." onChange={(e)=> setForm({...getForm, password2: e.target.value})}/>
                     </div> 
                     <h5 class="sub-title" style={{color: "red"}}>{getMsj ? getMsj : ""}</h5>
-                    <button onClick={Send} className="btn">Бүртгүүлэх<img src="img/icon/w_pawprint.png" alt=""/></button>
+                   
                 </form>
+                <button onClick={Send} className="btn">Бүртгүүлэх<img src="img/icon/w_pawprint.png" alt=""/></button>
             </div> 
         </div>
     </div>

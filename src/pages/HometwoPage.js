@@ -13,6 +13,7 @@ function HometwoPage() {
 	useEffect(()=>{
 		// refreshToken();
 		console.log("app");
+    
 	},[]);
 		// const refreshToken = async () =>{
     //     const expireDate = new Date(localStorage.getItem("expireDate"));

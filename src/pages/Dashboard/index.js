@@ -131,7 +131,7 @@ return<div>
                         </div>
                     ))}
                     </> : ""}
-                    <Button onClick={getZurag}>Get</Button>
+                  <Button onClick={getZurag}>Get</Button>
                   <Button onClick={sendZurag}>Sent</Button>
                 </div>
             </div>

@@ -105,7 +105,7 @@ const AddDogModal = (props) =>{
     };
     
     return<div>
-       <Button type="primary" onClick={showModal} style={{marginBottom: "10px", marginLeft: "10px"}}>
+       <Button type="primary" onClick={showModal} size="large" style={{marginBottom: "10px", marginLeft: "10px", marginTop: "10px"}}>
             + Нохой нэмэх
       </Button> 
       <Modal title="Нохой нэмэх" open={isModalOpen} onCancel={handleCancel} footer={null}>

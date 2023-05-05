@@ -6,7 +6,10 @@ const SignIn = () =>{
 const history = useHistory();
 const [getForm, setForm] = useState({email: '', password: ''});
 const [getMsj, setMsj] = useState(false);
-const Send = () =>{   
+ 
+const Send = () =>{    
+
+
     if(getForm.email === '' || getForm.password === ''){
         setMsj("Емайл болон Нууц үгээ оруулна уу!");
     }else{
@@ -25,7 +28,7 @@ const Send = () =>{
                 localStorage.setItem("expireDate", expireDate)
                 localStorage.setItem("refreshToken",  res.data.refreshToken) 
                 refreshToken(expIn * 1000)
-                history.push("/"); 
+                document.location.replace("/");
             }else{ 
                 // message.error(res.data.errors[0].message)
             }
@@ -45,7 +48,8 @@ const refreshToken = async(expIn) =>{
         localStorage.removeItem("expiresIn");
         localStorage.removeItem("refreshToken");
         localStorage.removeItem("expireDate");
-        history.push("/");
+        document.location.replace("/");
+        // history.push("/");
     },expIn)
 }
  
@@ -72,9 +76,9 @@ return<section className="adoption-shop-area">
                                 <label htmlFor="name">Нууц үг <span>*</span></label>
                                 <input type="password" id="name" placeholder="Нууц үгээ оруулна уу..." onChange={(e)=> setForm({...getForm, password: e.target.value})}/>
                             </div>  
-                            <h5 class="sub-title" style={{color: "red"}}>{getMsj ? getMsj : ""}</h5>
-                            <button onClick={Send} className="btn">Нэвтрэх<img src="img/icon/w_pawprint.png" alt=""/></button>
+                            <h5 class="sub-title" style={{color: "red"}}>{getMsj ? getMsj : ""}</h5> 
                         </form>
+                        <button onClick={Send} className="btn">Нэвтрэх<img src="img/icon/w_pawprint.png" alt=""/></button>
                     </div> 
                 </div>
             </div>
