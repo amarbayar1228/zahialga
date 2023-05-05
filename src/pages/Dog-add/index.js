@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { SearchOutlined } from '@ant-design/icons';
 import AddDogModal from "./addDogModal";
 import axios from "./../../axios-orders";
+import EditDog from "./editDog";
+import DeleteDog from "./delete";
  
 const DogAdd = () =>{
     const [loading, setLoading] = useState(true);
@@ -43,7 +45,7 @@ const DogAdd = () =>{
         setLoadingTable(true);
         const token = localStorage.getItem("idToken"); 
 
-        axios.get(`dogList.json?&auth=${token}`).then((res)=>{ 
+        axios.get(`dogList.json`).then((res)=>{ 
             const data = Object.entries(res.data).reverse();  
             setDogList(data)  
         }).catch((err)=>{
@@ -227,10 +229,10 @@ const DogAdd = () =>{
           dataIndex: 'allData',
           key: 'allData',
           width: '100px',
-          render: (action)=> <div style={{display: "flex", gap: "10px"}}>  
-            {/* {console.log("all ", action)} */}
-                  {/* <RegEdit data={rec[0]} getRegistrationList={getRegistrationList} info={rec[1].values}/>
-                  <RegDelete  data={rec[0]} getRegistrationList={getRegistrationList}/>   */}
+          fixed: 'right',
+          render: (action)=> <div style={{display: "flex", gap: "10px"}}>   
+                  <EditDog data={action[0]} getDogList={getDogList} info={action[1].values}/>
+                  <DeleteDog  data={action[0]} getDogList={getDogList}/>   
             </div> 
         },
       ];

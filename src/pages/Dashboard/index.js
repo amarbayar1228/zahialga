@@ -18,32 +18,10 @@ const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
   const [blon, setBlon] = useState(false);
-  const [fileList, setFileList] = useState([
-    {
-      uid: '-1',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-    {
-      uid: '-2',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-    {
-      uid: '-3',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    },
-    {
-      uid: '-4',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }, 
-  ]);
+  const [fileList, setFileList] = useState([]);
+  const [state, setState] = useState({
+    loading: false,
+});
   const handleCancel = () => setPreviewOpen(false);
   const handlePreview = async (file) => {
     console.log("file", file);
@@ -54,27 +32,13 @@ const [previewOpen, setPreviewOpen] = useState(false);
     setPreviewOpen(true);
     setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
   };
-  const handleChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList)
-    console.log("file ", newFileList);
-  };
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        Upload
-      </div>
-    </div>
-  );
+   
 useEffect(()=>{
     // getZurag();
     console.log("object");
 },[])
 const getZurag = () =>{
+  console.log("state", state)
 
     axios.get(`zurag.json`).then((res)=>{ 
         const data = Object.entries(res.data).reverse();  
@@ -87,12 +51,13 @@ const getZurag = () =>{
     }) 
 }
 const sendZurag = () =>{
+  console.log("state", state)
     const zurag = [];
-    fileList.forEach(element => {
-        zurag.push(element.thumbUrl);
-    });
+    // fileList.forEach(element => {
+    //     zurag.push(element.thumbUrl);
+    // }); 
     const body = {
-        img: zurag,
+        img: state.imageUrl,
     }
     axios.post(`zurag.json`, body).then((res)=>{ 
         console.log("send zurag: ", res);  
@@ -100,6 +65,52 @@ const sendZurag = () =>{
         console.log("err: ", err)
     }) 
 }
+
+const onPreview = async (file) => {
+let src = file.url;
+
+if (!src) {
+    src = await new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file.originFileObj);
+
+    reader.onload = () => resolve(reader.result);
+    });
+}
+
+const image = new Image();
+image.src = src;
+const imgWindow = window.open(src);
+imgWindow?.document.write(image.outerHTML);
+}; 
+
+const beforeUploadFunc = (even, b) =>{
+  console.log("eeveve",even, b)
+}
+function getBase64(img, callback) {
+  console.log("img",img);
+  const reader = new FileReader();
+  reader.addEventListener('load', () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+const handleChange = info => {
+  console.log("info",info)
+  setFileList(info.fileList)
+  if (info.file.status === 'done') {
+      setState({loading: true});
+      return;
+  }
+  if (info.file.status === 'uploading') { 
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, imageUrl =>
+          setState({
+              imageUrl,
+              loading: false,
+          }),
+          
+      );
+  }
+};
 return<div> 
 
     <SidebarBreadCumb title="Хяналтын самбар"/>
@@ -110,44 +121,18 @@ return<div>
                    <Sidebar />
                 </div>
                 <div className="col-lg-9">
-
-                <div>
-            {blon ?
+                  <Upload onPreview={onPreview} beforeUpload={beforeUploadFunc} listType="picture-card" fileList={fileList} onChange={handleChange} >{fileList.length < 1 && "+ Image"}</Upload>
+                  {blon ?
                     <>
                     {getDogList.map((e)=>(
                         <div>
-                             <Image src={e[1].img[0]}/>
+                             <Image src={e[1].img}/>
                             <img  src={e[1].img[1]}/>
                         </div>
                     ))}
                     </> : ""}
-               
-                    
-                </div>
-
-                <Upload
-                    // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                    listType="picture-card"
-                    fileList={fileList}
-                    onPreview={handlePreview}
-                    onChange={handleChange}
-                >
-                    {fileList.length >= 8 ? null : uploadButton}
-                </Upload>
-                <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                    <img
-                    alt="example"
-                    style={{
-                        width: '100%',
-                    }}
-                    src={previewImage}
-                    />
-                </Modal>
-
-                <Button onClick={sendZurag}>
-                    Send
-                </Button>
-                <Button  onClick={getZurag}>Get</Button>
+                    <Button onClick={getZurag}>Get</Button>
+                  <Button onClick={sendZurag}>Sent</Button>
                 </div>
             </div>
         </div> 

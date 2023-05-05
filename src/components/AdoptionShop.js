@@ -57,7 +57,7 @@ function AdoptionShop() {
                      <i className="fas fa-star" />
                      <i className="fas fa-star" />
                    </li>
-                   <li className="price">Нийт дүн : <span>{e[1].values.price}₮</span></li>
+                   <li className="price">Нийт дүн : <span>{e[1].values.price.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₮</span></li>
                  </ul>
                </div>
              </div>
@@ -93,7 +93,7 @@ function AdoptionShop() {
             </div>
           </div>
         </div>
-        <div className="col-lg-4 col-md-6">
+        {/* <div className="col-lg-4 col-md-6">
           <div className="adoption-shop-item">
             <div className="adoption-shop-thumb">
               <img src="img/product/molyjerry.png" alt="" />
@@ -121,7 +121,7 @@ function AdoptionShop() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="col-lg-4 col-md-6">
           <div className="adoption-shop-item">
             <div className="adoption-shop-thumb">
