@@ -138,7 +138,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 <div className="mobile-nav-toggler"><i className="fas fa-bars" /></div>
                 <div className="menu-wrap">
                   <nav className="menu-nav show">
-                    <div className="logo"><Link to="/"><img src="img/logo/logo.png" alt="" /></Link></div> 
+                    <div className="logo"><Link to="/"><img src="img/logo/logo2.png" alt="" /></Link></div> 
                     <div className="navbar-wrap main-menu d-none d-lg-flex">
                       <ul className="navigation">
                         <li className="active menu-item-has-children"><Link to="/">Үндсэн хуудас</Link>
@@ -233,7 +233,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 <div className="mobile-menu">
                   <nav className="menu-box">
                     <div className="close-btn"><i className="fas fa-times" /></div>
-                    <div className="nav-logo"><Link to="/"><img src="img/logo/logo.png" alt="" title='true' /></Link>
+                    <div className="nav-logo"><Link to="/"><img src="img/logo/logo2.png" alt="" title='true' /></Link>
                     </div>
                     <div className="menu-outer">
                         
