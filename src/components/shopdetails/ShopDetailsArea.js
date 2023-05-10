@@ -5,9 +5,7 @@ import Slider from 'react-slick'
 
 
 
-function ShopDetailsArea(){
-
-
+function ShopDetailsArea(){ 
   // const [nav1, setnav1] = useState(null);
   // const [nav2,setNav2] = useState(null);
   const [val, setVal] = useState(1);

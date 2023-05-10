@@ -112,8 +112,8 @@ const handleChange = info => {
   }
 };
 return<div> 
-
-    <SidebarBreadCumb title="Хяналтын самбар"/>
+ 
+    <SidebarBreadCumb title="Хяналтын самбар" />
        <section className="blog-details-area" style={{marginLeft: "0px"}}>
         <div className="container">
             <div className="row justify-content-center"> 

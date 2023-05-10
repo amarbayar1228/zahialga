@@ -11,7 +11,7 @@ function Footer() {
           <div className="col-3">
             <div className="footer-widget">
               <div className="f-logo">
-                <Link to="/"><img src="img/logo/logo2.png" alt="" /></Link>
+                <Link to="/"><img src="img/logo/logo3.png" alt="" /></Link>
               </div>
               <div className="footer-text">
                 <p>Хамгийн сайн нохойны ДНХ-ийн шинжилгээ өгөх Embark Breed & Health Kit (Chewy-ээс үзэх) нь танд нохойн ерөнхий мэдээллийг өгдөг.</p>

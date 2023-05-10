@@ -20,6 +20,8 @@ import Dashboard from './pages/Dashboard';
 import AddItem from './pages/add-item';
 import DogAdd from './pages/Dog-add';
 import {ConfigProvider } from "antd";
+import Cart from './pages/Cart';
+import Checkout from './pages/Check-out';
 function App() { 
   return (
     <ConfigProvider theme={{
@@ -37,6 +39,12 @@ function App() {
             </ScrollToTopRoute>
             <ScrollToTopRoute exact={true} path='/doglist'>
               <DogList/>
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/checkout'>
+              <Checkout />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/cart'>
+              <Cart />
             </ScrollToTopRoute>
             <ScrollToTopRoute exact={true} path='/sign-in'>
               <SignIn />

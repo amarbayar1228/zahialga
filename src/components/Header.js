@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 import $ from 'jquery';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import axios from 'axios'; 
 import { message } from 'antd';
 
 function Header(){
-  const [checkId, setCheckId] = useState(false);
-  const history = useHistory();
+  const [checkId, setCheckId] = useState(false); 
   const handleActive = (e)=>{
     document.querySelectorAll('.main-menu ul li').forEach( el => {
       el.classList.remove('active');
@@ -138,7 +136,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 <div className="mobile-nav-toggler"><i className="fas fa-bars" /></div>
                 <div className="menu-wrap">
                   <nav className="menu-nav show">
-                    <div className="logo"><Link to="/"><img src="img/logo/logo2.png" alt="" /></Link></div> 
+                    <div className="logo"><Link to="/"><img src="img/logo/logo3.png" alt="" /></Link></div> 
                     <div className="navbar-wrap main-menu d-none d-lg-flex">
                       <ul className="navigation">
                         <li className="active menu-item-has-children"><Link to="/">Үндсэн хуудас</Link>
@@ -216,8 +214,8 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                             </li>
                             <li>
                               <div className="checkout-link">
-                                <a href="/#">Сагс</a>
-                                <a className="black-color" href="/#">Тооцоо хийх</a>
+                                <Link to="/cart">Сагс</Link>
+                                <Link to="/checkout" className="black-color">Тооцоо хийх</Link> 
                               </div>
                             </li>
                           </ul>
@@ -233,7 +231,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 <div className="mobile-menu">
                   <nav className="menu-box">
                     <div className="close-btn"><i className="fas fa-times" /></div>
-                    <div className="nav-logo"><Link to="/"><img src="img/logo/logo2.png" alt="" title='true' /></Link>
+                    <div className="nav-logo"><Link to="/"><img src="img/logo/logo3.png" alt="" title='true' /></Link>
                     </div>
                     <div className="menu-outer">
                         

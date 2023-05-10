@@ -13,7 +13,7 @@ function ShopDetailsBreadcumb() {
                 <nav aria-label="breadcrumb">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Үндсэн хуудас</Link></li>
-                    <li className="breadcrumb-item active" aria-current="page">Дэлгэрэнгүй мэдээлэл</li>
+                    <li className="breadcrumb-item active" aria-current="page">Дэлгэрэнгүй</li>
                   </ol>
                 </nav>
               </div>
