@@ -145,7 +145,7 @@ function AdoptionShop() {
                     <i className="fas fa-star" />
                     <i className="fas fa-star" />
                   </li>
-                  <li className="price">Нийт дүн : <span>$290.000₮</span></li>
+                  <li className="price">Нийт дүн : <span>290.000₮</span></li>
                 </ul>
               </div>
             </div>

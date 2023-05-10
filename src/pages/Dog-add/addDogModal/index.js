@@ -1,4 +1,4 @@
-import { Button, Form, Image, Input, InputNumber, Modal, Upload, message  } from "antd";  
+import { Button, Form, Input, InputNumber, Modal, Upload, message  } from "antd";  
 import { useState } from "react";
 import axios from "../../../axios-orders";
 import { PlusOutlined } from '@ant-design/icons';
@@ -15,8 +15,7 @@ const AddDogModal = (props) =>{
     const [isModalOpen, setIsModalOpen] = useState(false); 
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
-    const [previewTitle, setPreviewTitle] = useState('');
-    const [getImg, setImg] = useState();
+    const [previewTitle, setPreviewTitle] = useState(''); 
     const [fileList, setFileList] = useState([]);
 
     const [btnLoad, setBtnLoad] = useState(false);
@@ -40,18 +39,7 @@ const AddDogModal = (props) =>{
       reader.readAsDataURL(img); 
     }
       
-    const uploadButton = (
-      <div>
-        <PlusOutlined />
-        <div
-          style={{
-            marginTop: 8,
-          }}
-        >
-          Зураг
-        </div>
-      </div>
-    );
+    const uploadButton = (<div><PlusOutlined /><div style={{marginTop: 8}}>Зураг</div></div>);
     const showModal = () => {
       setIsModalOpen(true);
     }; 

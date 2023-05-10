@@ -102,7 +102,7 @@ function AdoptionPuppies() {
               <div className="adoption-item">
                 <div className="adopt-thumb">
                   <Link to="/breeder-details"><img src="img/images/adop_img02.png" alt="" /></Link>
-                  <span className="status">Free</span>
+                  <span className="status">Үнэгүй</span>
                 </div>
                 <div className="adopt-content">
                   <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
@@ -116,7 +116,7 @@ function AdoptionPuppies() {
               <div className="adoption-item">
                 <div className="adopt-thumb">
                   <Link to="/breeder-details"><img src="img/images/adop_img03.png" alt="" /></Link>
-                  <span className="status">Free</span>
+                  <span className="status">Үнэгүй</span>
                 </div>
                 <div className="adopt-content">
                   <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
@@ -130,7 +130,7 @@ function AdoptionPuppies() {
               <div className="adoption-item">
                 <div className="adopt-thumb">
                   <Link to="/breeder-details"><img src="img/images/adop_img04.png" alt="" /></Link>
-                  <span className="status">Free</span>
+                  <span className="status">Үнэгүй</span>
                 </div>
                 <div className="adopt-content">
                   <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
@@ -144,7 +144,7 @@ function AdoptionPuppies() {
               <div className="adoption-item">
                 <div className="adopt-thumb">
                   <Link to="/breeder-details"><img src="img/images/adop_img05.png" alt="" /></Link>
-                  <span className="status">Free</span>
+                  <span className="status">Үнэгүй</span>
                 </div>
                 <div className="adopt-content">
                   <div className="adopt-date"><i className="far fa-calendar-alt" /> Төрсөн он: 2021</div>
