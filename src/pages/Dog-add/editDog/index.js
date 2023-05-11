@@ -205,7 +205,7 @@ const EditDog = (props) =>{
               onPreview={handlePreview}
               onChange={handleChange} 
             >
-              {fileList.length >= 8 ? null : uploadButton}
+              {fileList.length >= 5 ? null : uploadButton}
           </Upload> 
           <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancelImg}>
               <img alt="example"style={{width: '100%',}}src={previewImage}/>

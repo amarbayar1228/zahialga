@@ -19,7 +19,7 @@ const EditItem = (props) =>{
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
-
+    const [loadingS, setLoading] = useState(false);
 
     const handleCancelImg = () => setPreviewOpen(false);
     const handlePreview = async (file) => { 
@@ -41,19 +41,10 @@ const EditItem = (props) =>{
     }
       
     const uploadButton = (
-      <div>
-        <PlusOutlined />
-        <div
-          style={{
-            marginTop: 8,
-          }}
-        >
-          Зураг
-        </div>
-      </div>
+      <div> <PlusOutlined /> <div style={{marginTop: 8}}>Зураг</div></div>
     );
     const showModal = () => { 
-      console.log("props: ", props.info);
+      console.log("props: ", props);
       if(props.info.img.length === 1){
         setFileList([
           {
@@ -127,6 +118,39 @@ const EditItem = (props) =>{
             thumbUrl:  props.info.img[3],
           }, 
         ]);
+      }else if(props.info.img.length === 5){
+        setFileList([
+          {
+              uid: '-1',
+              name: 'image.png',
+              status: 'done',
+              thumbUrl:  props.info.img[0],
+          }, 
+          {
+            uid: '-2',
+            name: 'image2.png',
+            status: 'done',
+            thumbUrl:  props.info.img[1],
+          }, 
+          {
+            uid: '-3',
+            name: 'image3.png',
+            status: 'done',
+            thumbUrl:  props.info.img[2],
+          }, 
+          {
+            uid: '-4',
+            name: 'image4.png',
+            status: 'done',
+            thumbUrl:  props.info.img[3],
+          }, 
+          {
+            uid: '-5',
+            name: 'image4.png',
+            status: 'done',
+            thumbUrl:  props.info.img[4],
+          }, 
+        ]);
       }
       
       setInfo(props.info)
@@ -136,6 +160,7 @@ const EditItem = (props) =>{
       setIsModalOpen(false);
     };
     const onFinish = (values) => {  
+      setLoading(true);
       const token = localStorage.getItem("idToken");
       const img = []; 
       fileList.forEach(element => {   
@@ -150,31 +175,28 @@ const EditItem = (props) =>{
       setTimeout(() => { 
         const body = { 
           localId: localStorage.getItem("localId"),
-          values: {
-            age: values.age,
-            birth: values.birth,
+          itemList: {
+            quantity: values.quantity,
             color: values.color,
-            country: values.country,
+            evaluation: values.evaluation,
             description: values.description,
-            gender: values.gender,
-            pedId: values.pedId,
+            id: values.id,
             price: values.price,
             size: values.size,
-            title: values.title,
-            type: values.type,
+            title: values.title, 
             img: img
           }
-      }
-      console.log("body: ", body);
-      axios.patch(`dogList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
-        if(res.data.name)
-          message.success("Success") 
+      } 
+      axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
+        if(res.data.name) 
+          message.success("Амжилттай") 
+          setLoading(false);
           props.getItemList();
           setIsModalOpen(false);
          
-      }).catch((err)=>{ 
-          console.log("err: ", err);
-          message.error("error")
+      }).catch((err)=>{  
+          setLoading(false);
+          message.error("Алдаа")
           setIsModalOpen(false);
       }) 
       }, 800); 
@@ -183,19 +205,17 @@ const EditItem = (props) =>{
     };
     return<div>
        <Button type="primary" onClick={showModal} size="small" icon={<EditOutlined style={{display: "block"}}/>}></Button>
-        <Modal title="Registation add" open={isModalOpen} onCancel={handleCancel} footer={null}>
+        <Modal title="Бараа засах" open={isModalOpen} onCancel={handleCancel} footer={null}>
         <Form  size="middle" initialValues={{ remember: true,
-                  title: getInfo.title,
-                  age: getInfo.age,
+                  title: getInfo.title, 
                   size: getInfo.size,
-                  gender: getInfo.gender,
+                  evaluation: getInfo.evaluation,
                   color: getInfo.color,
                   description: getInfo.description,
-                  pedId: getInfo.pedId,
+                  id: getInfo.id,
                   price: getInfo.price,
-                  birth: getInfo.birth,
-                  country: getInfo.country,
-                  type: getInfo.type,
+                  quantity: getInfo.quantity, 
+                  catName: getInfo.catName, 
                   img:  getInfo.img ? getInfo.img[0] : "",
                 }}  onFinish={onFinish} >
             <Upload
@@ -205,48 +225,38 @@ const EditItem = (props) =>{
               onPreview={handlePreview}
               onChange={handleChange} 
             >
-              {fileList.length >= 8 ? null : uploadButton}
+              {fileList.length >= 5 ? null : uploadButton}
           </Upload> 
           <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancelImg}>
               <img alt="example"style={{width: '100%',}}src={previewImage}/>
           </Modal> 
-            <Form.Item label="Ped Id" name="pedId" rules={[{ required: true, message: ' Ped Id гаа оруулна уу!'}]}>
-              <Input placeholder="Ped Id" />
+            <Form.Item label="Id" name="id" rules={[{ required: true, message: 'Id гаа оруулна уу!'}]}>
+              <Input placeholder="Id" />
             </Form.Item>
             <Form.Item label="Гарчиг" name="title" rules={[{ required: true, message: ' Гарчиг гаа оруулна уу!'}]}>
                 <Input placeholder="Гарчиг" />
-            </Form.Item>
-            <Form.Item label="Төрсөн он" name="birth" rules={[{ required: true, message: ' Төрсөн он оо оруулна уу!'}]}>
-                <Input placeholder="Төрсөн он" />
-            </Form.Item>
+            </Form.Item> 
             <Form.Item label="Үнэ" name="price" rules={[{ required: true, message: ' Үнэ ээ оруулна уу!'}]}>
                 <InputNumber  placeholder="Үнэ" formatter={(value) => `₮ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                               style={{width: "100%"}}/>
             </Form.Item>
-            <Form.Item label="Нас" name="age" rules={[ { required: true, message: ' Нас аа оруулна уу!'}]}>
+            <Form.Item label="Тоо ширхэг" name="quantity" rules={[ { required: true, message: ' Тоо ширхэг ээ оруулна уу!'}]}>
               <InputNumber  style={{width: "100%"}}/>
             </Form.Item>  
-            <Form.Item label="Хүйс" name="gender" rules={[ { required: true, message: ' Хүйс ээ оруулна уу!'}]}>
-              <Input placeholder="Хүйс" />
+            <Form.Item label="Үнэлгээ" name="evaluation" rules={[ { required: true, message: ' Үнэлгээ ээ оруулна уу!'}]}>
+              <Input placeholder="evaluation" />
             </Form.Item> 
             <Form.Item label="Хэмжээ" name="size" rules={[ { required: true, message: ' Хэмжээ гээ оруулна уу!'}]}>
               <Input placeholder="Хэмжээ" />
-            </Form.Item> 
-            <Form.Item label="Төрөл" name="type" rules={[ { required: true, message: ' Төрөл өө оруулна уу!'}]}>
-              <Input placeholder="Төрөл" />
-            </Form.Item> 
+            </Form.Item>  
             <Form.Item label="Өнгө" name="color" rules={[ { required: true, message: ' Өнгө өө оруулна уу!'}]}>
               <Input placeholder="Өнгө" />
-            </Form.Item> 
-            <Form.Item label="Хот" name="country" rules={[ { required: true, message: ' Хот оо оруулна уу!'}]}>
-              <Input placeholder="Хот" />
-            </Form.Item> 
+            </Form.Item>  
             <Form.Item label="Дэлгэрэнгуй" name="description" rules={[ { required: true, message: 'Дэлгэрэнгуй мэдээлэлээ оруулна уу!'}]}>
               <TextArea placeholder="Дэлгэрэнгуй" showCount/>
-            </Form.Item> 
-
+            </Form.Item>  
             <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}}> Хадгалах </Button> 
+                <Button type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}} disabled={loadingS} loading={loadingS} size="large"> Хадгалах </Button> 
             </Form.Item>
         </Form>
         </Modal>

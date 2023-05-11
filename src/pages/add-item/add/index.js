@@ -1,4 +1,4 @@
-import { Button, Form, Input, InputNumber, Modal, Upload, message  } from "antd";  
+import { Button, Form, Input, InputNumber, Modal, Select, Upload, message  } from "antd";  
 import { useState } from "react";
 import axios from "../../../axios-orders";
 import { PlusOutlined } from '@ant-design/icons';
@@ -19,7 +19,7 @@ const Add = (props) =>{
     const [fileList, setFileList] = useState([]);
 
     const [btnLoad, setBtnLoad] = useState(false);
-    const [catName, setCatname] = useState("amra");
+    const [catLabel, setCatLabel] = useState("");
     const handleCancelImg = () => setPreviewOpen(false);
     const handlePreview = async (file) => { 
       if (!file.url && !file.preview) {
@@ -46,19 +46,18 @@ const Add = (props) =>{
     const handleCancel = () => {
       setIsModalOpen(false);
     };
-    const onFinish = (values) => {    
+    const onFinish = (values) => {     
     if(fileList.length === 0){
         message.error("Зураг заавал оруулна уу!")
     }else{ 
-    //   setBtnLoad(true); 
+      setBtnLoad(true); 
       const token = localStorage.getItem("idToken");
       const img = []; 
       fileList.forEach(element => { 
          getBasee64(element.originFileObj, imageUrl =>
            img.push(imageUrl), 
         );
-      });
-        
+      }); 
         const body = {
             localId: localStorage.getItem("localId"),
             itemList:{
@@ -71,15 +70,17 @@ const Add = (props) =>{
                     id: values.id,
                     price: values.price,  
                     img: img,
-                    catName: "dogClothes"
+                    catName: values.catName,
+                    catLabel: catLabel,
             } 
-        }  
+        }   
         setTimeout(()=>{
           axios.post(`itemList.json?&auth=${token}`, body).then((res)=>{
             if(res.data.name)
+            setBtnLoad(false)
             message.success("Амжилттай")   
         }).catch((err)=>{  
-           
+          setBtnLoad(false)
         }).finally(()=>{
           setBtnLoad(false);
           props.getItemList();
@@ -88,12 +89,17 @@ const Add = (props) =>{
         },800) 
     } 
     };
-    
+    const onChangeSelect = (value, list) =>{ 
+      setCatLabel(list.label)
+    }
+    const onSearch = (value) => {
+      console.log('search:', value);
+    };
     return<div>
        <Button type="primary" onClick={showModal} size="large" style={{marginBottom: "10px", marginLeft: "10px", marginTop: "10px"}}>
             + Нэмэх
       </Button> 
-      <Modal title="Нохой нэмэх" open={isModalOpen} onCancel={handleCancel} footer={null}>
+      <Modal title="Бараа нэмэх" open={isModalOpen} onCancel={handleCancel} footer={null}>
       <Form size="middle"  initialValues={{ remember: true, }}  onFinish={onFinish} style={{marginTop: "20px"}}>
           <Upload
               action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
@@ -109,6 +115,38 @@ const Add = (props) =>{
           </Modal> 
           <Form.Item label="ID" name="id" rules={[{ required: true, message: 'Ped ID оруулна уу!'}]}>
               <Input placeholder="ID" allowClear/>
+          </Form.Item>
+          <Form.Item label="Категори"  name="catName" rules={[{ required: true, message: 'Категори оруулна уу!'}]}>
+            
+          <Select showSearch placeholder="Категори сонгох" optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
+            filterOption={(input, option) =>
+              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+            }
+            options={[
+              {
+                value: 'dogClothes',
+                label: 'Нохойн хувцас',
+              },
+              {
+                value: 'dogToy',
+                label: 'Нохойн тоглоом',
+              },
+              {
+                value: 'tickle',
+                label: 'чижигнэх',
+              },
+              {
+                value: 'safeClothes',
+                label: 'Аюулгүй хувцас',
+              },
+              {
+                value: 'protectionOfPets',
+                label: 'Тэжээвэр амьтдыг хамгаалах',
+              },
+              {
+                value: 'dogEquipment',
+                label: 'Нохойн хэрэгсэл',
+              }]}/>
           </Form.Item>
           <Form.Item label="Гарчиг" name="title" rules={[{ required: true, message: 'Гарчиг аа оруулна уу!'}]}>
               <Input placeholder="Гарчиг" allowClear/>
@@ -133,7 +171,7 @@ const Add = (props) =>{
               <TextArea placeholder="Дэлгэрэнгуй" showCount allowClear />
           </Form.Item> 
           <Form.Item>
-              <Button size="large" type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}} loading={btnLoad}> Хадгалах </Button> 
+              <Button size="large" type="primary" htmlType="submit" className="login-form-button" style={{width: "100%"}} loading={btnLoad} disabled={btnLoad}> Хадгалах </Button> 
           </Form.Item>
       </Form>
       </Modal>

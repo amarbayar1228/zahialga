@@ -1,4 +1,4 @@
-import { Button, Image, Input, Space, Table } from "antd";
+import { Button, Image, Input, Select, Space, Table } from "antd";
 import { SearchOutlined } from '@ant-design/icons';
 import Sidebar from "../../components/sidebar";
 import SidebarBreadCumb from "../../components/sidebar/sidebarBreadCumb";
@@ -6,7 +6,7 @@ import Add from "./add";
 import { useEffect, useRef, useState } from "react"; 
 import axios from "./../../axios-orders";
 import Highlighter from "react-highlight-words";
-import EditItem from "./editDog";
+import EditItem from "./edit";
 import DeleteItem from "./delete";
 const AddItem = () =>{
 const [loadingTable, setLoadingTable] = useState(false); 
@@ -199,11 +199,22 @@ const handleSearch = (selectedKeys, confirm, dataIndex) => {
       width: '100px',
       fixed: 'right',
       render: (action)=> <div style={{display: "flex", gap: "10px"}}>   
-              <EditItem data={action[0]} getItemList={getItemList} info={action[1].values}/>
+              <EditItem data={action[0]} getItemList={getItemList} info={action[1].itemList}/>
               <DeleteItem  data={action[0]} getItemList={getItemList}/>   
         </div> 
     },
   ];
+  
+  const onChangeSelect = (value, list) =>{ 
+    // setCatLabel(list.label)
+    console.log("value: ", value);
+    if(value){
+      
+    }
+  }
+  const onSearch = (value) => {
+    console.log('search:', value);
+  };
 return<div>
 <SidebarBreadCumb title="Бараа нэмэх"/>
     <section className="blog-details-area" style={{marginLeft: "0px"}}>
@@ -213,8 +224,45 @@ return<div>
                 <Sidebar />
             </div>
             <div className="col-lg-9"> 
-                {console.log("item: ", itemList)} 
+            <div className="d-flex   align-items-center"> 
+            <div style={{fontWeight: "600"}}> 
+              <>Категори: </>
+            <Select size="large" showSearch placeholder="Категори сонгох" optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
+            filterOption={(input, option) =>
+              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+            }
+            options={[
+              {
+                value: 'all',
+                label: 'Бүгд',
+              },
+              {
+                value: 'dogClothes',
+                label: 'Нохойн хувцас',
+              },
+              {
+                value: 'dogToy',
+                label: 'Нохойн тоглоом',
+              },
+              {
+                value: 'tickle',
+                label: 'чижигнэх',
+              },
+              {
+                value: 'safeClothes',
+                label: 'Аюулгүй хувцас',
+              },
+              {
+                value: 'protectionOfPets',
+                label: 'Тэжээвэр амьтдыг хамгаалах',
+              },
+              {
+                value: 'dogEquipment',
+                label: 'Нохойн хэрэгсэл',
+              }]}/>
+              </div>
                 <Add getItemList={getItemList}/>
+              </div>
                 <Table columns={columns} bordered dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} pagination={{ total: 0, showTotal: (total) => `Нийт: ${total} - Бараа` }} />
             </div>
         </div>
