@@ -1,5 +1,6 @@
-import { Button, Form, Input, InputNumber, Modal, Upload, message } from "antd"
+import { Button, Form, Input, InputNumber, Modal, Select, Upload, message } from "antd"
 import { PlusOutlined } from '@ant-design/icons';
+import dataJson from '../../../data/category.json';
 import axios from "../../../axios-orders";
 import { EditOutlined } from '@ant-design/icons';
 import { useState } from "react";
@@ -20,6 +21,7 @@ const EditItem = (props) =>{
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
     const [loadingS, setLoading] = useState(false);
+    const [cateList, setCateList] = useState();
 
     const handleCancelImg = () => setPreviewOpen(false);
     const handlePreview = async (file) => { 
@@ -153,13 +155,14 @@ const EditItem = (props) =>{
         ]);
       }
       
-      setInfo(props.info)
+      setInfo(props.info);
+      setCateList(props.info);
       setIsModalOpen(true);
     }; 
     const handleCancel = () => {
       setIsModalOpen(false);
     };
-    const onFinish = (values) => {  
+    const onFinish = (values) => {   
       setLoading(true);
       const token = localStorage.getItem("idToken");
       const img = []; 
@@ -172,10 +175,13 @@ const EditItem = (props) =>{
           img.push(element.thumbUrl)
         } 
       });
+
       setTimeout(() => { 
         const body = { 
           localId: localStorage.getItem("localId"),
           itemList: {
+            catLabel: cateList.catLabel ? cateList.catLabel: cateList.label,
+            catName: cateList.catLabel ? cateList.catName: cateList.value,
             quantity: values.quantity,
             color: values.color,
             evaluation: values.evaluation,
@@ -184,25 +190,38 @@ const EditItem = (props) =>{
             price: values.price,
             size: values.size,
             title: values.title, 
+            label: getInfo.catName,
+            cnt: 1,
             img: img
           }
-      } 
-      axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
-        if(res.data.name) 
-          message.success("Амжилттай") 
-          setLoading(false);
-          props.getItemList();
-          setIsModalOpen(false);
-         
-      }).catch((err)=>{  
-          setLoading(false);
-          message.error("Алдаа")
-          setIsModalOpen(false);
-      }) 
+          
+      }  
+        axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
+          if(res.data.name) 
+            message.success("Амжилттай") 
+            setLoading(false);
+            props.getItemList();
+            setIsModalOpen(false);
+          
+        }).catch((err)=>{  
+            setLoading(false);
+            message.error("Алдаа")
+            setIsModalOpen(false);
+        }) 
       }, 800); 
      
   
     };
+
+    
+  const onChangeSelect = (value, list) =>{ 
+    // setCatLabel(list.label)
+    console.log("value: ", list);
+    setCateList(list);
+  }
+  const onSearch = (value) => {
+    console.log('search:', value);
+  };
     return<div>
        <Button type="primary" onClick={showModal} size="small" icon={<EditOutlined style={{display: "block"}}/>}></Button>
         <Modal title="Бараа засах" open={isModalOpen} onCancel={handleCancel} footer={null}>
@@ -214,6 +233,7 @@ const EditItem = (props) =>{
                   description: getInfo.description,
                   id: getInfo.id,
                   price: getInfo.price,
+                  catLabel: getInfo.catLabel,
                   quantity: getInfo.quantity, 
                   catName: getInfo.catName, 
                   img:  getInfo.img ? getInfo.img[0] : "",
@@ -233,6 +253,14 @@ const EditItem = (props) =>{
             <Form.Item label="Id" name="id" rules={[{ required: true, message: 'Id гаа оруулна уу!'}]}>
               <Input placeholder="Id" />
             </Form.Item>
+            <Form.Item label="Категори" name="catLabel" rules={[{ required: true, message: 'Id гаа оруулна уу!'}]}>
+            <Select showSearch placeholder="Категори сонгох" style={{width: "100%"}} optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
+            filterOption={(input, option) =>
+              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+            }
+            options={dataJson.category.map((e)=>({value: e.value, label: e.label}))}/> 
+            </Form.Item>
+            
             <Form.Item label="Гарчиг" name="title" rules={[{ required: true, message: ' Гарчиг гаа оруулна уу!'}]}>
                 <Input placeholder="Гарчиг" />
             </Form.Item> 

@@ -60,8 +60,7 @@ function AdoptionShop() {
     e.target.classList += ' active';
   }
   const changeImg = (e) =>{ 
-    setImg(e);
-
+    setImg(e); 
   }
   return (
     <section className="adoption-shop-area">

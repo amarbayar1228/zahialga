@@ -2,10 +2,14 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 import $ from 'jquery';
 import axios from 'axios'; 
-import { message } from 'antd';
+import { Button, Empty, message } from 'antd';
 
 function Header(){
   const [checkId, setCheckId] = useState(false); 
+  const [localItems, setLocalItems] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [deleteLoad, setDelete] = useState(false); 
+ 
   const handleActive = (e)=>{
     document.querySelectorAll('.main-menu ul li').forEach( el => {
       el.classList.remove('active');
@@ -26,7 +30,7 @@ function Header(){
     }else{
       setCheckId(false)
     }
-    
+    getItemsLocalFunc();
     
     //SubMenu Dropdown Toggle
 if ($('.menu-area li.menu-item-has-children ul').length) {
@@ -70,7 +74,20 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
         $(".search-popup-wrap").slideUp(500);
         }); 
   },[])
-
+ 
+  const getItemsLocalFunc = () =>{
+    const localItems2 = JSON.parse(localStorage.getItem("items")); 
+    if(localItems2){
+      setLocalItems(localItems2[0]);
+        let total = 0;
+        localItems2[0].product.forEach(element => {
+          total += element.price * element.cnt; 
+      });
+      setTotalPrice(total);
+    }
+    
+   
+  }
   const localStoreFunc = () =>{ 
     setCheckId(true) 
   }
@@ -100,8 +117,66 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
             })
         }
     }
-
-
+  
+const deleteFunc = (params, index) =>{
+  setDelete(true);
+  var b = [];
+  localItems.product.splice(index, 1); 
+    b = JSON.parse(localStorage.getItem("items"));
+    b.forEach((element, i) => {
+      b[i].product = localItems.product;
+    }); 
+    setLocalItems(localItems); 
+    localStorage.setItem("items", JSON.stringify(b)); 
+    message.success("Амжилттай устлаа.");   
+    setTimeout(()=>{
+      setDelete(false);
+      window.location.reload();
+    },400);
+    
+}
+const menuFunc = () =>{
+  return <li className="header-shop-cart"><a ><i className="flaticon-shopping-bag" /><span>{localItems.length === 0 ? "0" : localItems.product.length}</span></a>
+  <ul className="minicart">
+    {localItems.length === 0 || localItems.product.length === 0 ? <Empty /> :
+    <> 
+    {localItems.product.map((e, i)=>(
+      <li className="d-flex align-items-start" key={i}>
+       <div className="cart-img">
+         <a href="/#"><img src={e.img ? e.img[0] : "img/product/cart_p01.jpg"} alt="" /></a>
+       </div>
+       <div className="cart-content">
+         <h4><span href="/#">{e.title}</span></h4>
+         <div style={{fontSize: "14px", color: "#676565"}}>Тоо ширхэг: {e.cnt}</div>
+         <div className="cart-price"> 
+           <span className="new">{e.price.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₮</span>
+           {/* <span><del>{e.cnt}</del></span> */}
+         </div>
+       </div>
+       <div className="del-icon">
+        <Button icon={<i className="far fa-trash-alt" />} loading={deleteLoad} onClick={()=>deleteFunc(e, i)} size='small' type='primary' style={{marginLeft: "-10px"}}></Button>
+         {/* <div onClick={()=>deleteFunc(e, i)}><i className="far fa-trash-alt" /></div> */}
+       </div>
+     </li>
+    ))}
+   
+    </>
+    }
+    <li>
+      <div className="total-price">
+        <span className="f-left">Total:</span>
+        <span className="f-right">{totalPrice.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₮</span>
+      </div>
+    </li>
+    <li>
+      <div className="checkout-link">
+        <Link to="/cart">Сагс</Link>
+        <Link to="/checkout" className="black-color">Тооцоо хийх</Link> 
+      </div>
+    </li>
+  </ul>
+</li>
+}
     return(
 <header>
         <div className="header-top-area">
@@ -168,58 +243,15 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                         <li><Link to="/contacts" onClick={(e)=> handleActive(e)}>Холбоо барих</Link></li>
                       </ul>
                     </div>
+                    <div className="header-action d-md-none d-block">
+                      <ul> 
+                      {menuFunc()}
+                      </ul>
+                    </div>
                     <div className="header-action d-none d-md-block">
                       <ul>
                         <li className="header-search"><a href="/#"><i className="flaticon-search" /></a></li>
-                        <li className="header-shop-cart"><a href="/#"><i className="flaticon-shopping-bag" /><span>2</span></a>
-                          <ul className="minicart">
-                            <li className="d-flex align-items-start">
-                              <div className="cart-img">
-                                <a href="/#"><img src="img/product/cart_p01.jpg" alt="" /></a>
-                              </div>
-                              <div className="cart-content">
-                                <h4><a href="/#">The King Charles Spaniel</a></h4>
-                                <div className="cart-price">
-                                  <span className="new">625.000₮</span>
-                                  <span><del>800.000₮</del></span>
-                                </div>
-                              </div>
-                              <div className="del-icon">
-                                <a href="/#"><i className="far fa-trash-alt" /></a>
-                              </div>
-                            </li>
-                            <li className="d-flex align-items-start">
-                              <div className="cart-img">
-                                <a href="/#"><img src="img/product/cart_p02.jpg" alt="" /></a>
-                              </div>
-                              <div className="cart-content">
-                                <h4><a href="/#">The Labrador Retriever</a></h4>
-                                <div className="cart-price">
-                                  <span className="new">$560.000₮</span>
-                                  <span><del>750.000₮</del></span>
-                                </div>
-                              </div>
-
-
-
-                              <div className="del-icon">
-                                <a href="/#" ><i className="far fa-trash-alt" /></a>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="total-price">
-                                <span className="f-left">Total:</span>
-                                <span className="f-right">1.185.00₮</span>
-                              </div>
-                            </li>
-                            <li>
-                              <div className="checkout-link">
-                                <Link to="/cart">Сагс</Link>
-                                <Link to="/checkout" className="black-color">Тооцоо хийх</Link> 
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
+                        {menuFunc()}
                         {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li> : 
                           <li className="header-btn"><Link to="/dashboard" className="btn">Самбар<img src="img/icon/w_pawprint.png" alt="" /></Link></li> 
                         }

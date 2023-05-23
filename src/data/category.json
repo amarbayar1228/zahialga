@@ -1,0 +1,30 @@
+{
+    "category":  [{
+          "value": "all",
+          "label": "Бүгд"
+        },
+        {
+          "value": "dogClothes",
+          "label": "Нохойн хувцас"
+        },
+        {
+          "value": "dogToy",
+          "label": "Нохойн тоглоом"
+        },
+        {
+          "value": "tickle",
+          "label": "чижигнэх"
+        },
+        {
+          "value": "safeClothes",
+          "label": "Аюулгүй хувцас"
+        },
+        {
+          "value": "protectionOfPets",
+          "label": "Тэжээвэр амьтдыг хамгаалах"
+        },
+        {
+          "value": "dogEquipment",
+          "label": "Нохойн хэрэгсэл"
+        }]
+}

@@ -1,7 +1,82 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom';
+import dataJson from "../../data/category.json";
+import axios from '../../axios-orders';
+import { Button, Spin, Empty, message } from "antd";
+import { useEffect, useRef, useState } from "react"; 
+import { 
+  LoadingOutlined, 
+} from '@ant-design/icons';
 function ShopArea() {
+  const [itemList, setItemList] = useState([]);
+  const [loadingTable, setLoadingTable] = useState(false);
+  const [btnLoad, setBtnLoad] = useState(false);
+  const [btnLoadIndex, setBtnLoadIndex] = useState(0);
+  useEffect(()=>{
+    getItemList();
+  },[]);
+  
+  const getItemList = () =>{ 
+    //Category sort:  firebaseio.com/itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
+    setLoadingTable(true); 
+    axios.get(`itemList.json`).then((res)=>{ 
+        const data = Object.entries(res.data).reverse();  
+        setItemList(data)  
+    }).catch((err)=>{
+        console.log("err: ", err)
+    }).finally(()=>{
+      setLoadingTable(false)
+    }) 
+  }
+  
+  const categoryFunc = (value) =>{
+     setLoadingTable(true)
+    if(value.value === "all"){
+      getItemList();
+    }else{ 
+      axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value.value}"`).then((res)=>{ 
+        const data = Object.entries(res.data).reverse();  
+        setItemList(data)  
+      }).catch((err)=>{
+          console.log("err: ", err)
+      }).finally(()=>{
+        setLoadingTable(false)
+      }) 
+    }
+  }
+  
+  const relatedProductFunc = (params, i ) =>{
+    setBtnLoadIndex(i);
+    setBtnLoad(true)
+    let getBasket = [];
+    const notArrived = true;
+    getBasket = JSON.parse(localStorage.getItem("items")) ?? [];  
+    if(getBasket.length < 1){ 
+      getBasket.push({product: [],});
+      localStorage.setItem("items", JSON.stringify(getBasket));
+    }
+
+    getBasket.forEach((e, i) => { 
+      e.product.forEach((el, indexs) => { 
+        if (params.id == el.id) { 
+          message.warning("Сагсанд байна");   
+          setBtnLoad(false)
+          notArrived = false;
+        }
+      });
+
+      if (notArrived) {
+        getBasket[i].product.push(params);
+        localStorage.setItem("items", JSON.stringify(getBasket)); 
+        message.success("Сагсанд нэмэгдлээ"); 
+        setTimeout(()=>{
+          setBtnLoad(false)
+          window.location.reload();
+        },400);
+      } 
+    }); 
+
+  }
   return (
 	  <div className="shop-area pt-110 pb-110">
         <div className="container">
@@ -20,12 +95,15 @@ function ShopArea() {
                   <h4 className="sidebar-title">Категори</h4>
                   <div className="shop-cat-list">
                     <ul>
-                      <li><Link to="/shop">Чижигнэх <span>+</span></Link></li>
+                      {dataJson.category.map((e, i )=>(
+                        <li key={i}><Link to="/shop" onClick={()=>categoryFunc(e)}>{e.label} <span>+</span></Link></li>
+                      ))}
+                    {/*                       
                       <li><Link to="/shop">Нохойн хоол <span>+</span></Link></li>
                       <li><Link to="/shop">Нохойн хэрэгсэл <span>+</span></Link></li>
                       <li><Link to="/shop">Нохойн гэр <span>+</span></Link></li>
                       <li><Link to="/shop">Аюулгүй хувцас <span>+</span></Link></li>
-                      <li><Link to="/shop">Тэжээвэр амьтдыг хамгаалах <span>+</span></Link></li>
+                      <li><Link to="/shop">Тэжээвэр амьтдыг хамгаалах <span>+</span></Link></li> */}
                     </ul>
                   </div>
                 </div>
@@ -81,7 +159,7 @@ function ShopArea() {
                         <option value>20</option>
                       </select>
                     </form>
-                  </div>
+                  </div> 
                   <div className="shop-short-by">
                     <form>
                       <label htmlFor="shortBy">Эрэмбэлэх</label>
@@ -95,141 +173,34 @@ function ShopArea() {
                   </div>
                 </div>
                 <div className="row justify-content-center">
-                  <div className="col-lg-4 col-sm-6">
+                  {loadingTable ? <Spin size="large" style={{marginTop: "50px", marginBottom: "600px"}}/> :
+                  <>  {itemList.length === 0 ? <Empty  description={
+                    <span>
+                      Бараа олдсонгүй
+                    </span>
+                  } style={{marginTop: "50px", marginBottom: "600px"}}/> : <> 
+                  {itemList.map((e,i)=>( 
+                    <div className="col-lg-4 col-sm-6" key={i}>
                     <div className="shop-item mb-55">
                       <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item01.jpg" alt="" /></Link>
+                        <Link to={"/shop-details?" + e[1].itemList.id} ><img src={e[1].itemList.img ? e[1].itemList.img[0]: "img/product/shop_item03.jpg"} alt="" /></Link>
                       </div>
                       <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
+                        <span> {e[1].itemList.title}</span>
+                        <h4 className="title"><Link to={"/shop-details?" + e[1].itemList.id}>{e[1].itemList.title}</Link></h4>
                         <div className="shop-content-bottom">
-                          <span className="price">28.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
+                          <span className="price"> {e[1].itemList.price.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₮</span>
+                          <span className="add-cart"><Link to="/shop" onClick={()=>relatedProductFunc(e[1].itemList, i)}>{btnLoad && i === btnLoadIndex ? <LoadingOutlined /> : "Нэмэх +"}</Link></span>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item02.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Squeaky Dog</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">19.000₮</span>
-                          <span className="add-cart"><Link to="shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item03.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">29.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item04.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Yoda Carriage</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">49.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item05.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Pet Carriage</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">9000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item06.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Squeaky Dog</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">16.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item07.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Carriage Dog</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">18.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item08.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Yoda Carriage</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">12.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-sm-6">
-                    <div className="shop-item mb-55">
-                      <div className="shop-thumb">
-                        <Link to="/shop-details"><img src="img/product/shop_item09.jpg" alt="" /></Link>
-                      </div>
-                      <div className="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 className="title"><Link to="/shop-details">Pet Knit Knacks</Link></h4>
-                        <div className="shop-content-bottom">
-                          <span className="price">32.000₮</span>
-                          <span className="add-cart"><Link to="/shop-details">Нэмэх +</Link></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
+                  </>
+                }
+                  </>
+                 
+                } 
                 </div>
                 <div className="shop-page-meta">
                   <div className="shop-grid-menu">

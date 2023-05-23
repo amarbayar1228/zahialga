@@ -1,7 +1,8 @@
 import { Button, Form, Input, InputNumber, Modal, Select, Upload, message  } from "antd";  
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../../axios-orders";
 import { PlusOutlined } from '@ant-design/icons';
+import dataJson from "../../../data/category.json"
 const { TextArea } = Input;
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -20,6 +21,8 @@ const Add = (props) =>{
 
     const [btnLoad, setBtnLoad] = useState(false);
     const [catLabel, setCatLabel] = useState("");
+    useEffect(()=>{ 
+    },[])
     const handleCancelImg = () => setPreviewOpen(false);
     const handlePreview = async (file) => { 
       if (!file.url && !file.preview) {
@@ -48,7 +51,7 @@ const Add = (props) =>{
     };
     const onFinish = (values) => {     
     if(fileList.length === 0){
-        message.error("Зураг заавал оруулна уу!")
+      message.error("Зураг заавал оруулна уу!")
     }else{ 
       setBtnLoad(true); 
       const token = localStorage.getItem("idToken");
@@ -72,8 +75,10 @@ const Add = (props) =>{
                     img: img,
                     catName: values.catName,
                     catLabel: catLabel,
+                    cnt: 1
             } 
         }   
+        console.log("body: ", body);
         setTimeout(()=>{
           axios.post(`itemList.json?&auth=${token}`, body).then((res)=>{
             if(res.data.name)
@@ -122,31 +127,7 @@ const Add = (props) =>{
             filterOption={(input, option) =>
               (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
             }
-            options={[
-              {
-                value: 'dogClothes',
-                label: 'Нохойн хувцас',
-              },
-              {
-                value: 'dogToy',
-                label: 'Нохойн тоглоом',
-              },
-              {
-                value: 'tickle',
-                label: 'чижигнэх',
-              },
-              {
-                value: 'safeClothes',
-                label: 'Аюулгүй хувцас',
-              },
-              {
-                value: 'protectionOfPets',
-                label: 'Тэжээвэр амьтдыг хамгаалах',
-              },
-              {
-                value: 'dogEquipment',
-                label: 'Нохойн хэрэгсэл',
-              }]}/>
+            options={dataJson.category.map((e)=>({value: e.value, label: e.label}))}/>
           </Form.Item>
           <Form.Item label="Гарчиг" name="title" rules={[{ required: true, message: 'Гарчиг аа оруулна уу!'}]}>
               <Input placeholder="Гарчиг" allowClear/>

@@ -1,5 +1,6 @@
-import { Button, Image, Input, Select, Space, Table } from "antd";
+import { Button, Col, Image, Input, Row, Select, Space, Table } from "antd";
 import { SearchOutlined } from '@ant-design/icons';
+import dataJson from "../.././data/category.json"
 import Sidebar from "../../components/sidebar";
 import SidebarBreadCumb from "../../components/sidebar/sidebarBreadCumb";
 import Add from "./add";
@@ -21,9 +22,11 @@ useEffect(()=>{
       getItemList();
     } 
   },[]);
+  
   const data = itemList.map((e, i)=>( 
     {
       key: i,
+      catLabel: e[1].itemList.catLabel, 
       title: e[1].itemList.title, 
       size: e[1].itemList.size,
       quantity: e[1].itemList.quantity,
@@ -37,6 +40,7 @@ useEffect(()=>{
       allData: e
     }
   ))
+
   const getItemList = () =>{ 
     //Category sort:  firebaseio.com/itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
     setLoadingTable(true); 
@@ -125,6 +129,14 @@ const handleSearch = (selectedKeys, confirm, dataIndex) => {
         ...getColumnSearchProps('id'), 
     },
     {
+      title: 'Категори',
+      dataIndex: 'catLabel',
+      key: 'catLabel',
+      width: '140px',
+      ellipsis: true,
+      ...getColumnSearchProps('catLabel'), 
+  },
+    {
       title: 'Гарчиг',
       dataIndex: 'title',
       key: 'title',
@@ -208,8 +220,18 @@ const handleSearch = (selectedKeys, confirm, dataIndex) => {
   const onChangeSelect = (value, list) =>{ 
     // setCatLabel(list.label)
     console.log("value: ", value);
-    if(value){
-      
+    // firebaseio.com/itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
+    if(value === "all"){
+      getItemList();
+    }else{ 
+      axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value}"`).then((res)=>{ 
+        const data = Object.entries(res.data).reverse();  
+        setItemList(data)  
+      }).catch((err)=>{
+          console.log("err: ", err)
+      }).finally(()=>{
+        setLoadingTable(false)
+      }) 
     }
   }
   const onSearch = (value) => {
@@ -224,45 +246,17 @@ return<div>
                 <Sidebar />
             </div>
             <div className="col-lg-9"> 
-            <div className="d-flex   align-items-center"> 
+            <div className="d-flex   align-items-center justify-content-between"> 
             <div style={{fontWeight: "600"}}> 
               <>Категори: </>
-            <Select size="large" showSearch placeholder="Категори сонгох" optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
+            <Select size="large" showSearch placeholder="Категори сонгох" style={{width: "220px"}} optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
             filterOption={(input, option) =>
               (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
             }
-            options={[
-              {
-                value: 'all',
-                label: 'Бүгд',
-              },
-              {
-                value: 'dogClothes',
-                label: 'Нохойн хувцас',
-              },
-              {
-                value: 'dogToy',
-                label: 'Нохойн тоглоом',
-              },
-              {
-                value: 'tickle',
-                label: 'чижигнэх',
-              },
-              {
-                value: 'safeClothes',
-                label: 'Аюулгүй хувцас',
-              },
-              {
-                value: 'protectionOfPets',
-                label: 'Тэжээвэр амьтдыг хамгаалах',
-              },
-              {
-                value: 'dogEquipment',
-                label: 'Нохойн хэрэгсэл',
-              }]}/>
-              </div>
+            options={dataJson.category.map((e)=>({value: e.value, label: e.label}))}/> 
+              </div> 
                 <Add getItemList={getItemList}/>
-              </div>
+              </div> 
                 <Table columns={columns} bordered dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} pagination={{ total: 0, showTotal: (total) => `Нийт: ${total} - Бараа` }} />
             </div>
         </div>
