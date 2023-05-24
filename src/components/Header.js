@@ -121,6 +121,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
 const deleteFunc = (params, index) =>{
   setDelete(true);
   var b = [];
+
   localItems.product.splice(index, 1); 
     b = JSON.parse(localStorage.getItem("items"));
     b.forEach((element, i) => {
@@ -138,7 +139,7 @@ const deleteFunc = (params, index) =>{
 const menuFunc = () =>{
   return <li className="header-shop-cart"><a ><i className="flaticon-shopping-bag" /><span>{localItems.length === 0 ? "0" : localItems.product.length}</span></a>
   <ul className="minicart">
-    {localItems.length === 0 || localItems.product.length === 0 ? <Empty /> :
+    {localItems.length === 0 || localItems.product.length === 0 ? <Empty description={<div>Сагс хоосон байна.</div>} /> :
     <> 
     {localItems.product.map((e, i)=>(
       <li className="d-flex align-items-start" key={i}>
@@ -171,7 +172,7 @@ const menuFunc = () =>{
     <li>
       <div className="checkout-link">
         <Link to="/cart">Сагс</Link>
-        <Link to="/checkout" className="black-color">Тооцоо хийх</Link> 
+        <Link to="/checkout" className="black-color">Захиалах</Link> 
       </div>
     </li>
   </ul>

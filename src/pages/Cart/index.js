@@ -1,18 +1,73 @@
-import { Button, Image, Space, Table } from "antd";
+import { Button, Image, Space, Table, message } from "antd";
 import SidebarBreadCumb from "../../components/sidebar/sidebarBreadCumb";
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
+import css from "./style.module.css"
 
 const Cart =  () =>{
     const [itemList, setItemList] = useState([]);
+    const [totalPriceD, setTotalPriceD]  =  useState(0);
     useEffect(()=>{
         getItems();
     },[])
     const getItems = () =>{
         const localItems = JSON.parse(localStorage.getItem("items"));
-        console.log("localItems: ", localItems);
         if(localItems){
-            setItemList(localItems[0].product);
+            setItemList(localItems[0].product); 
+            let totalPrice = 0;
+            localItems[0].product.forEach(element => { 
+              totalPrice += element.price * element.cnt
+            });
+            setTotalPriceD(totalPrice.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,"));
+            
         }
+        
+    }
+    const nemeh = (cnt, param2) =>{  
+      let getBasket = []; 
+      getBasket = JSON.parse(localStorage.getItem("items")) ?? [];   
+  
+      getBasket.forEach((e, i) => { 
+        e.product.forEach((el, indexs) => { 
+          if (param2.action.id == el.id) {  
+            getBasket[0].product[indexs].cnt = cnt + 1; 
+            localStorage.setItem("items", JSON.stringify(getBasket));   
+          }
+        }); 
+        getItems();
+      }); 
+
+    }
+
+    const hasah = (cnt, param2) =>{
+      let getBasket = []; 
+      if(cnt <= 1){ 
+      }else{
+          getBasket = JSON.parse(localStorage.getItem("items")) ?? [];   
+          getBasket.forEach((e, i) => { 
+            e.product.forEach((el, indexs) => { 
+              if (param2.action.id == el.id) {  
+                getBasket[0].product[indexs].cnt = cnt - 1; 
+                localStorage.setItem("items", JSON.stringify(getBasket));   
+              }
+            }); 
+            getItems();
+          }); 
+      }
+    }
+    const deleteFunc = (param1, param2, index) =>{ 
+      // let getBasket = []; 
+      var b = [];
+      const getBasket = JSON.parse(localStorage.getItem("items"));   
+
+        getBasket[0].product.splice(index, 1); 
+        b = JSON.parse(localStorage.getItem("items"));
+        b.forEach((element, i) => {
+          b[i].product = getBasket[0].product;
+        });
+        localStorage.setItem("items", JSON.stringify(b)); 
+        getItems();
+        message.success("Амжилттай устлаа");   
         
     }
     const columns = [
@@ -20,7 +75,7 @@ const Cart =  () =>{
           title: 'Зураг',
           dataIndex: 'img',
           key: 'img',
-          width: '70px',
+          width: '30px',
           ellipsis: true,
           render: (img) =><div><Image src={img} width={100}/></div>, 
         },
@@ -28,18 +83,18 @@ const Cart =  () =>{
           title: 'Барааны нэр',
           dataIndex: 'title',
           key: 'title',
-          width: '120px',
+          width: '30px',
           ellipsis: true,
         },
         {
           title: 'Тоо ширхэг',
           dataIndex: 'cnt',
           key: 'cnt',
-          width: '80px',
-          render: (cnt) =><div> 
-            <Button size="small" style={{marginRight: "5px"}}>-</Button>
+          width: '30px',
+          render: (cnt, bb) =><div> 
+            <Button size="small" style={{marginRight: "8px"}} onClick={()=>hasah(cnt, bb) }>-</Button>
              {cnt}
-            <Button size="small" style={{marginLeft: "5px"}}>+</Button>
+            <Button size="small" style={{marginLeft: "8px"}} onClick={()=>nemeh(cnt, bb)}>+</Button>
           </div>, 
           ellipsis: true,
         }, 
@@ -47,17 +102,20 @@ const Cart =  () =>{
             title: 'Үнэ',
             dataIndex: 'price',
             key: 'price',
-            width: '90px',
+            width: '20px',
             ellipsis: true,
+            render: (cnt) =><div> 
+            {cnt.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+          </div>,  
         },  
         {
           title: 'Төлөв',
           key: 'action',
-          width: '50px',
+          width: '20px',
           ellipsis: true,
-          render: (_, record) => (
+          render: (id, record, index) => (
             <Space size="middle"> 
-                <Button type="primary" icon={<i className="far fa-trash-alt" />}></Button>
+                <Button type="primary" icon={<i className="far fa-trash-alt" />} onClick={()=>deleteFunc(id, record, index)}></Button>
             </Space>
           ),
         },
@@ -77,60 +135,63 @@ const Cart =  () =>{
         <SidebarBreadCumb title="Сагс" />
        <section className="blog-details-area">
         <div className="container">
-            <div className="row justify-content-center"> 
+            {/* <div className="row justify-content-center"> 
                 Таны сагсанд байгаа зүйлс 
-            </div>
+            </div> */}
             <div className="row justify-content-center">  
-        <div className="col-lg-3 col-md-8 "> 
-              <aside className="breeder-sidebar">
-                <div className="widget breeder-widget">
-                  <div className="breeder-widget-title mb-20">
-                    <h5 className="title">Тооцоо хийх</h5>
-                  </div>
-                  <form  className="sidebar-find-pets">
-                    <div className="form-grp search-box">
-                      <input type="text" placeholder="Хайх" />
-                      <button><i className="fas fa-search" /></button>
-                    </div>
-                    <div className="form-grp">
-                      <i className="flaticon-location" />
-                      <input type="text" placeholder="Байршил" />
-                    </div>
-                    <div className="row">
-                      <div className="col-6">
-                        <div className="form-grp">
-                          <i className="flaticon-color-palette" />
-                          <input type="text" placeholder="Цагаан" />
+              <div className="col-lg-4 col-md-8 "> 
+                    <aside className="breeder-sidebar">
+                      <div className="widget breeder-widget">
+                        <div className="breeder-widget-title mb-20">
+                          <h5 className="title">Сагс нийт</h5>
                         </div>
+                        <form  className="sidebar-find-pets"> 
+                        {/* 1px solid #ebebeb */}
+                          {/* <div>
+                            <div style={{display: "flex", fontWeight: "600", justifyContent: "space-between", borderBottom: "1px solid #ebebeb",paddingBottom: "15px", marginBottom: "10px"}}>
+                              <div >Бараа </div>
+                              <div>Үнэ</div>
+                            </div>
+                            <div style={{borderBottom: "1px solid #ebebeb",paddingTop: "8px", paddingBottom: "15px", marginBottom: "10px"}}>
+                              <div style={{display: "flex", justifyContent: "space-between"}}>
+                                <div>nameffffff</div>
+                                <div>$22</div>
+                              </div>
+                              <div style={{display: "flex", justifyContent: "space-between"}}>
+                                <div>namessssss </div>
+                                <div>$22</div>
+                              </div>
+                            </div>
+                            <div style={{display: "flex", fontWeight: "600", justifyContent: "space-between", borderBottom: "1px solid #ebebeb",paddingBottom: "15px", marginBottom: "10px"}}>
+                              <div>Total</div>
+                              <div>123$</div>
+                            </div>
+                          </div> */}
+                              <div> 
+                            <div style={{paddingTop: "8px", paddingBottom: "15px", marginBottom: "10px"}}>
+                              <div style={{display: "flex", justifyContent: "space-between"}}>
+                                <div>Бүтээгдэхүүн:</div>
+                                <div>{totalPriceD}</div>
+                              </div> 
+                            </div>
+                            <div style={{display: "flex", fontWeight: "600", justifyContent: "space-between", borderBottom: "1px solid #ebebeb",paddingBottom: "15px", marginBottom: "10px"}}>
+                              <div>Нийт дүн:</div>
+                              <div>{totalPriceD}$</div>
+                            </div>
+                          </div>
+                            <Link to={"/checkout"}><button className="btn">Тооцоо хийх</button></Link>
+                        </form>
                       </div>
-                      <div className="col-6">
-                        <div className="form-grp">
-                          <i className="far fa-calendar-alt" />
-                          <input type="text" defaultValue={2021} />
-                        </div>
-                      </div>
-                    </div>
-                     
-                    <div className="form-grp">
-                      <i className="fas fa-dollar-sign" />
-                      <select name="name" className="selected">
-                        <option value>Price</option>
-                        <option value>100.000₮ - 150.000₮</option>
-                        <option value>150.000₮ - 250.000₮</option>
-                        <option value>250.000₮ - 350,000₮</option>
-                        <option value>350.000₮ - 550.000₮</option>
-                        <option value>550.000₮ - 100.000</option>
-                      </select>
-                    </div> 
-                    <button className="btn">Тооцоо хийх</button>
-                  </form>
+                    
+                    </aside> 
+              </div>
+              <div className="col-lg-8"> 
+                <Table columns={columns} dataSource={data}  scroll={{y: 600, x: "auto"}} bordered/>
+
+                <div style={{display: "flex", justifyContent: "space-between"}}>  
+                {/* <Link to={"/shop"}> <button className="btn">Худалдан авалт хийх</button></Link> */}
                 </div>
-               
-              </aside> 
-        </div>
-                <div className="col-lg-9"> 
-                  <Table columns={columns} dataSource={data}  scroll={{y: 600, x: 800}} />
-                </div>
+              </div>
             </div>
         </div> 
         </section>
