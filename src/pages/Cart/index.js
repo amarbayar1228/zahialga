@@ -21,7 +21,6 @@ const Cart =  () =>{
             setTotalPriceD(totalPrice.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,"));
             
         }
-        
     }
     const nemeh = (cnt, param2) =>{  
       let getBasket = []; 
@@ -105,7 +104,7 @@ const Cart =  () =>{
             width: '20px',
             ellipsis: true,
             render: (cnt) =><div> 
-            {cnt.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+            {cnt.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₮
           </div>,  
         },  
         {
@@ -145,38 +144,17 @@ const Cart =  () =>{
                         <div className="breeder-widget-title mb-20">
                           <h5 className="title">Сагс нийт</h5>
                         </div>
-                        <form  className="sidebar-find-pets"> 
-                        {/* 1px solid #ebebeb */}
-                          {/* <div>
-                            <div style={{display: "flex", fontWeight: "600", justifyContent: "space-between", borderBottom: "1px solid #ebebeb",paddingBottom: "15px", marginBottom: "10px"}}>
-                              <div >Бараа </div>
-                              <div>Үнэ</div>
-                            </div>
-                            <div style={{borderBottom: "1px solid #ebebeb",paddingTop: "8px", paddingBottom: "15px", marginBottom: "10px"}}>
-                              <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <div>nameffffff</div>
-                                <div>$22</div>
-                              </div>
-                              <div style={{display: "flex", justifyContent: "space-between"}}>
-                                <div>namessssss </div>
-                                <div>$22</div>
-                              </div>
-                            </div>
-                            <div style={{display: "flex", fontWeight: "600", justifyContent: "space-between", borderBottom: "1px solid #ebebeb",paddingBottom: "15px", marginBottom: "10px"}}>
-                              <div>Total</div>
-                              <div>123$</div>
-                            </div>
-                          </div> */}
-                              <div> 
+                        <form  className="sidebar-find-pets">  
+                          <div> 
                             <div style={{paddingTop: "8px", paddingBottom: "15px", marginBottom: "10px"}}>
                               <div style={{display: "flex", justifyContent: "space-between"}}>
                                 <div>Бүтээгдэхүүн:</div>
-                                <div>{totalPriceD}</div>
+                                <div>{totalPriceD}₮</div>
                               </div> 
                             </div>
                             <div style={{display: "flex", fontWeight: "600", justifyContent: "space-between", borderBottom: "1px solid #ebebeb",paddingBottom: "15px", marginBottom: "10px"}}>
                               <div>Нийт дүн:</div>
-                              <div>{totalPriceD}$</div>
+                              <div>{totalPriceD}₮</div>
                             </div>
                           </div>
                             <Link to={"/checkout"}><button className="btn">Тооцоо хийх</button></Link>
