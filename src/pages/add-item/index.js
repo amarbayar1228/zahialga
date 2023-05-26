@@ -26,8 +26,7 @@ useEffect(()=>{
   
   const data = itemList.map((e, i)=>( 
     {
-      key: i,
-      catLabel: e[1].itemList.catLabel, 
+      key: i, 
       title: e[1].itemList.title,  
       description: e[1].itemList.description, 
       price: e[1].itemList.price,  
@@ -42,18 +41,18 @@ useEffect(()=>{
     // axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value}"`).then((res)=>{ 
     //axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
     // setLoadingTable(true); 
-    // const token = localStorage.getItem("idToken");
-    // axios.get(`profile.json?orderBy="localId"&equalTo="3GGW9XdHSjgB01IIbrsNhMnPzkE3"&auth=${token}`).then((res)=>{ 
-      
-    //   const data = Object.entries(res.data).reverse();  
-    //   console.log("res: ", data[0][1].values.isAdmin);
-    //   setIsAdmin(data[0][1].values.isAdmin);
-    //     // setItemList(data)  
-    // }).catch((err)=>{
-    //     console.log("err: ", err)
-    // }).finally(()=>{
-    //   // setLoadingTable(false)
-    // }) 
+    const localId = localStorage.getItem("localId");
+    const token = localStorage.getItem("idToken");
+    axios.get(`itemList.json?orderBy="localId"&equalTo="${localId}"&auth=${token}`).then((res)=>{ 
+      const data = Object.entries(res.data).reverse();  
+      console.log("res: ", data);
+      // setIsAdmin(data[0][1].values.isAdmin);
+      setItemList(data)  
+    }).catch((err)=>{
+        console.log("err: ", err)
+    }).finally(()=>{
+      // setLoadingTable(false)
+    }) 
   }
   
 const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -201,14 +200,14 @@ return<div>
             </div>
             <div className="col-lg-9"> 
             <div className="d-flex   align-items-center justify-content-between"> 
-            <div style={{fontWeight: "600"}}> 
+            {/* <div style={{fontWeight: "600"}}> 
               <>Категори: </>
             <Select size="large" showSearch placeholder="Категори сонгох" style={{width: "220px"}} optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
             filterOption={(input, option) =>
               (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
             }
             options={dataJson.category.map((e)=>({value: e.value, label: e.label}))}/> 
-              </div> 
+              </div>  */}
                 <Add getItemList={getItemList}/>
               </div> 
                 <Table columns={columns} bordered dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} pagination={{ total: 0, showTotal: (total) => `Нийт: ${total} - Бараа` }} />

@@ -56,8 +56,7 @@ const EditItem = (props) =>{
             thumbUrl:  props.info.img[0],
           }, 
         ]);
-      } else if(props.info.img.length === 2){
-        console.log("2r dohi: ");
+      } else if(props.info.img.length === 2){ 
         setFileList([
           {
             uid: '-1',
@@ -179,24 +178,19 @@ const EditItem = (props) =>{
       setTimeout(() => { 
         const body = { 
           localId: localStorage.getItem("localId"),
-          itemList: {
-            catLabel: cateList.catLabel ? cateList.catLabel: cateList.label,
-            catName: cateList.catLabel ? cateList.catName: cateList.value,
-            quantity: values.quantity,
-            color: values.color,
-            evaluation: values.evaluation,
+          itemList: { 
+            id: values.id,
             description: values.description,
             id: values.id,
-            price: values.price,
-            size: values.size,
-            title: values.title, 
-            label: getInfo.catName,
+            price: values.price, 
+            title: values.title,  
             cnt: 1,
             img: img
           }
           
       }  
-        axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
+        axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{  
+          message.success("Амжилттай")  
           if(res.data.name) 
             message.success("Амжилттай") 
             setLoading(false);
@@ -226,16 +220,10 @@ const EditItem = (props) =>{
        <Button type="primary" onClick={showModal} size="small" icon={<EditOutlined style={{display: "block"}}/>}></Button>
         <Modal title="Бараа засах" open={isModalOpen} onCancel={handleCancel} footer={null}>
         <Form  size="middle" initialValues={{ remember: true,
-                  title: getInfo.title, 
-                  size: getInfo.size,
-                  evaluation: getInfo.evaluation,
-                  color: getInfo.color,
+                  title: getInfo.title,  
                   description: getInfo.description,
                   id: getInfo.id,
-                  price: getInfo.price,
-                  catLabel: getInfo.catLabel,
-                  quantity: getInfo.quantity, 
-                  catName: getInfo.catName, 
+                  price: getInfo.price,  
                   img:  getInfo.img ? getInfo.img[0] : "",
                 }}  onFinish={onFinish} >
             <Upload
@@ -249,37 +237,17 @@ const EditItem = (props) =>{
           </Upload> 
           <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancelImg}>
               <img alt="example"style={{width: '100%',}}src={previewImage}/>
-          </Modal> 
-            <Form.Item label="Id" name="id" rules={[{ required: true, message: 'Id гаа оруулна уу!'}]}>
-              <Input placeholder="Id" />
-            </Form.Item>
-            <Form.Item label="Категори" name="catLabel" rules={[{ required: true, message: 'Id гаа оруулна уу!'}]}>
-            <Select showSearch placeholder="Категори сонгох" style={{width: "100%"}} optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
-            filterOption={(input, option) =>
-              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-            }
-            options={dataJson.category.map((e)=>({value: e.value, label: e.label}))}/> 
-            </Form.Item>
-            
+          </Modal>  
+          <Form.Item label="ID" name="id" rules={[{ required: true, message: ' ID гаа оруулна уу!'}]}>
+                <Input placeholder="ID" />
+            </Form.Item> 
             <Form.Item label="Гарчиг" name="title" rules={[{ required: true, message: ' Гарчиг гаа оруулна уу!'}]}>
                 <Input placeholder="Гарчиг" />
             </Form.Item> 
             <Form.Item label="Үнэ" name="price" rules={[{ required: true, message: ' Үнэ ээ оруулна уу!'}]}>
                 <InputNumber  placeholder="Үнэ" formatter={(value) => `₮ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                               style={{width: "100%"}}/>
-            </Form.Item>
-            <Form.Item label="Тоо ширхэг" name="quantity" rules={[ { required: true, message: ' Тоо ширхэг ээ оруулна уу!'}]}>
-              <InputNumber  style={{width: "100%"}}/>
-            </Form.Item>  
-            <Form.Item label="Үнэлгээ" name="evaluation" rules={[ { required: true, message: ' Үнэлгээ ээ оруулна уу!'}]}>
-              <Input placeholder="evaluation" />
             </Form.Item> 
-            <Form.Item label="Хэмжээ" name="size" rules={[ { required: true, message: ' Хэмжээ гээ оруулна уу!'}]}>
-              <Input placeholder="Хэмжээ" />
-            </Form.Item>  
-            <Form.Item label="Өнгө" name="color" rules={[ { required: true, message: ' Өнгө өө оруулна уу!'}]}>
-              <Input placeholder="Өнгө" />
-            </Form.Item>  
             <Form.Item label="Дэлгэрэнгуй" name="description" rules={[ { required: true, message: 'Дэлгэрэнгуй мэдээлэлээ оруулна уу!'}]}>
               <TextArea placeholder="Дэлгэрэнгуй" showCount/>
             </Form.Item>  

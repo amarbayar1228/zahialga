@@ -18,8 +18,9 @@ function ShopArea() {
   
   const getItemList = () =>{ 
     //Category sort:  firebaseio.com/itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
+    const token = localStorage.getItem("idToken")
     setLoadingTable(true); 
-    axios.get(`itemList.json`).then((res)=>{ 
+    axios.get(`itemList.json?&auth=${token}`).then((res)=>{ 
         const data = Object.entries(res.data).reverse();  
         setItemList(data)  
     }).catch((err)=>{
@@ -29,21 +30,21 @@ function ShopArea() {
     }) 
   }
   
-  const categoryFunc = (value) =>{
-     setLoadingTable(true)
-    if(value.value === "all"){
-      getItemList();
-    }else{ 
-      axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value.value}"`).then((res)=>{ 
-        const data = Object.entries(res.data).reverse();  
-        setItemList(data)  
-      }).catch((err)=>{
-          console.log("err: ", err)
-      }).finally(()=>{
-        setLoadingTable(false)
-      }) 
-    }
-  }
+  // const categoryFunc = (value) =>{
+  //    setLoadingTable(true)
+  //   if(value.value === "all"){
+  //     getItemList();
+  //   }else{ 
+  //     axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value.value}"`).then((res)=>{ 
+  //       const data = Object.entries(res.data).reverse();  
+  //       setItemList(data)  
+  //     }).catch((err)=>{
+  //         console.log("err: ", err)
+  //     }).finally(()=>{
+  //       setLoadingTable(false)
+  //     }) 
+  //   }
+  // }
   
   const relatedProductFunc = (params, i ) =>{
     setBtnLoadIndex(i);
@@ -64,7 +65,7 @@ function ShopArea() {
           notArrived = false;
         }
       });
-
+      
       if (notArrived) {
         getBasket[i].product.push(params);
         localStorage.setItem("items", JSON.stringify(getBasket)); 
@@ -75,6 +76,8 @@ function ShopArea() {
         },400);
       } 
     }); 
+    
+   
 
   }
   return (
@@ -91,19 +94,13 @@ function ShopArea() {
                     </form>
                   </div>
                 </div>
-                <div className="widget">
+                {/* <div className="widget">
                   <h4 className="sidebar-title">Категори</h4>
                   <div className="shop-cat-list">
                     <ul>
                       {dataJson.category.map((e, i )=>(
                         <li key={i}><Link to="/shop" onClick={()=>categoryFunc(e)}>{e.label} <span>+</span></Link></li>
-                      ))}
-                    {/*                       
-                      <li><Link to="/shop">Нохойн хоол <span>+</span></Link></li>
-                      <li><Link to="/shop">Нохойн хэрэгсэл <span>+</span></Link></li>
-                      <li><Link to="/shop">Нохойн гэр <span>+</span></Link></li>
-                      <li><Link to="/shop">Аюулгүй хувцас <span>+</span></Link></li>
-                      <li><Link to="/shop">Тэжээвэр амьтдыг хамгаалах <span>+</span></Link></li> */}
+                      ))} 
                     </ul>
                   </div>
                 </div>
@@ -132,7 +129,7 @@ function ShopArea() {
                 </div>
                 <div className="widget shop-widget-banner">
                   <Link to="/shop"><img src="img/product/shop_add.jpg" alt="" /></Link>
-                </div>
+                </div> */}
               </aside>
             </div>
             <div className="col-lg-9">

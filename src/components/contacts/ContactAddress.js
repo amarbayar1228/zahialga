@@ -24,7 +24,7 @@ function ContactAddress() {
                       <li>
                         <div className="icon"><i className="fas fa-envelope-open" /></div>
                         <div className="content">
-                          <p>amarbayar@info.com</p>
+                          <p>Tursanaa@info.com</p>
                         </div>
                       </li>
                     </ul>

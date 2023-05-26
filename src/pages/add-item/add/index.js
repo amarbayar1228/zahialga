@@ -64,33 +64,27 @@ const Add = (props) =>{
         const body = {
             localId: localStorage.getItem("localId"),
             itemList:{
-                    title: values.title,
-                    evaluation: values.evaluation,
-                    size: values.size,
-                    quantity: values.quantity,
-                    color: values.color, 
-                    description: values.description, 
                     id: values.id,
+                    title: values.title,  
+                    description: values.description,  
                     price: values.price,  
-                    img: img,
-                    catName: values.catName,
-                    catLabel: catLabel,
+                    img: img,  
                     cnt: 1
             } 
-        }   
+        }    
         console.log("body: ", body);
         setTimeout(()=>{
           axios.post(`itemList.json?&auth=${token}`, body).then((res)=>{
             if(res.data.name)
             setBtnLoad(false)
             message.success("Амжилттай")   
-        }).catch((err)=>{  
-          setBtnLoad(false)
-        }).finally(()=>{
-          setBtnLoad(false);
-          props.getItemList();
-          setIsModalOpen(false);
-        })
+          }).catch((err)=>{  
+            setBtnLoad(false)
+          }).finally(()=>{
+            setBtnLoad(false);
+            props.getItemList();
+            setIsModalOpen(false);
+          })
         },800) 
     } 
     };
@@ -117,37 +111,17 @@ const Add = (props) =>{
           </Upload>
           <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancelImg}>
               <img alt="example"style={{width: '100%',}}src={previewImage}/>
-          </Modal> 
-          <Form.Item label="ID" name="id" rules={[{ required: true, message: 'Ped ID оруулна уу!'}]}>
+          </Modal>  
+          <Form.Item label="ID" name="id" rules={[{ required: true, message: 'ID аа оруулна уу!'}]}>
               <Input placeholder="ID" allowClear/>
-          </Form.Item>
-          <Form.Item label="Категори"  name="catName" rules={[{ required: true, message: 'Категори оруулна уу!'}]}>
-            
-          <Select showSearch placeholder="Категори сонгох" optionFilterProp="children" onChange={onChangeSelect} onSearch={onSearch}
-            filterOption={(input, option) =>
-              (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-            }
-            options={dataJson.category.map((e)=>({value: e.value, label: e.label}))}/>
-          </Form.Item>
+          </Form.Item> 
           <Form.Item label="Гарчиг" name="title" rules={[{ required: true, message: 'Гарчиг аа оруулна уу!'}]}>
               <Input placeholder="Гарчиг" allowClear/>
           </Form.Item> 
           <Form.Item label="Үнэ" name="price" rules={[{ required: true, message: 'Үнэ ээ оруулна уу!'}]}> 
               <InputNumber defaultValue={10000}  formatter={(value) => `₮ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
                           style={{width: "100%"}}/>
-          </Form.Item>
-          <Form.Item label="Үнэлгээ" name="evaluation" rules={[ { required: true, message: 'Нас аа оруулна уу!'}]}>
-              <InputNumber placeholder="Үнэлгээ" style={{width: "100%"}}/>
-          </Form.Item>  
-          <Form.Item label="Тоо ширхэг" name="quantity" rules={[ { required: true, message: 'Нас аа оруулна уу!'}]}>
-              <InputNumber placeholder="Тоо ширхэг" style={{width: "100%"}}/>
-          </Form.Item>   
-          <Form.Item label="Хэмжээ" name="size" rules={[ { required: true, message: 'Хэмжээ ээ оруулна уу!'}]}>
-              <Input placeholder="Хэмжээ" allowClear/>
-          </Form.Item>    
-          <Form.Item label="Өнгө" name="color" rules={[ { required: true, message: 'Өнгө өө оруулна уу!'}]}>
-              <Input placeholder="Өнгө" allowClear/>
-          </Form.Item>  
+          </Form.Item>      
           <Form.Item label="Дэлгэрэнгуй" name="description" rules={[ { required: true, message: 'Дэлгэрэнгуй мэдээлэл ээ оруулна уу!'}]}>
               <TextArea placeholder="Дэлгэрэнгуй" showCount allowClear />
           </Form.Item> 

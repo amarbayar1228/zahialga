@@ -1,14 +1,20 @@
-import { Button, Cascader, Checkbox, Col, Form, Input, InputNumber, Row, Select } from "antd";
+import { Button, Cascader, Checkbox, Col, Form, Input, InputNumber, Row, Select, message } from "antd";
 import SidebarBreadCumb from "../../components/sidebar/sidebarBreadCumb";
 import { useEffect, useState } from "react";
 import {Link}  from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import axios from "../../axios-orders";
 const { Option } = Select; 
 const Checkout = () =>{
   const [itemList, setItemList] = useState([]);
   const [totalPriceD, setTotalPriceD]  =  useState(0); 
   const [formData, setFormData] = useState({lastName: "",firstName: "", phone: "", address: "", mail: ""})
-   
-
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [mail, setMail] = useState("");
+  const history = useHistory();
     useEffect(()=>{
       getItems();
     },[])
@@ -26,13 +32,54 @@ const Checkout = () =>{
   }   
   const order = () =>{
     console.log("order: ", formData);
+    const localId = localStorage.getItem("localId");
+    const token = localStorage.getItem("idToken"); 
+    
+    if(lastName === "" || firstName === "" || phone === "" || address === "" || mail === ""){
+      message.error("Мэдээлэлээ бөглөнө уу?");
+    }else{ 
+      const totalSlice = Math.random();
+      const dd =  totalSlice + "";
+      const ff = dd.slice(9);
+      const body = {
+        localId: localId, 
+        orderHistory: {
+          orderId: "#ID" + ff, 
+          totalPrice: totalPriceD,
+          status: 0,
+          itemList:  itemList,
+          userInfo: {
+            lastName: lastName,
+            firstName: firstName,
+            phone: phone,
+            address: address,
+            email: mail,
+          }
+        }
+      } 
+      setTimeout(()=>{
+        axios.post(`orderHistory.json?&auth=${token}`, body).then((res)=>{
+          if(res.data)
+          // setBtnLoad(false)
+          message.success("Амжилттай");
+          localStorage.removeItem("items")
+          history.push("success");
+        }).catch((err)=>{  
+          // setBtnLoad(false)
+        }).finally(()=>{
+          // setBtnLoad(false);
+          // props.getItemList();
+          // setIsModalOpen(false);
+        })
+      },800)  
+    }
+
   }
   const ovogFunc = (e) =>{
-    console.log("e: ", e.target.value);
-    setFormData(...formData, {lastName: e.target.value})
+    console.log("e: ", e.target.value); 
   }
     return<div> 
-        <SidebarBreadCumb title="Захиалга" />
+      <SidebarBreadCumb title="Захиалга" />
        <section className="blog-details-area">
         <div className="container">
             {/* <div className="row justify-content-center"> 
@@ -65,9 +112,9 @@ const Checkout = () =>{
                               <div>Нийт үнэ:</div>
                               <div>{totalPriceD}₮</div>
                             </div>
-                          </div>  
-                          <button className="btn" onClick={order}>Захиалах</button>
+                          </div>   
                         </form>
+                        <button className="btn" onClick={order}>Захиалах</button>
                       </div>
                       
                     </aside> 
@@ -83,13 +130,13 @@ const Checkout = () =>{
                       <div className="col-6">
                         <div className="form-grp">
                           <i className="far fa-user" />
-                          <input type="text" placeholder="Овог"   onChange={ovogFunc}/>
+                          <input type="text" placeholder="Овог"   onChange={(e)=>setLastName(e.target.value)}/>
                         </div>
                       </div>
                       <div className="col-6">
                         <div className="form-grp">
                           <i className="far fa-user" />
-                          <input type="text"  placeholder="Нэр" />
+                          <input type="text"  placeholder="Нэр" onChange={(e)=>setFirstName(e.target.value)}/>
                         </div>
                       </div>
                     </div>
@@ -97,19 +144,19 @@ const Checkout = () =>{
                       <div className="col-6">
                         <div className="form-grp">
                           <i className="fa fa-envelope" />
-                          <input type="text" placeholder="Имэйл" /> 
+                          <input type="text" placeholder="Имэйл" onChange={(e)=>setMail(e.target.value)}/> 
                         </div>
                       </div>
                       <div className="col-6">
                         <div className="form-grp">
                           <i className="fa fa-phone-alt" />
-                          <input type="text" placeholder="Утасны дугаар" />
+                          <input type="text" placeholder="Утасны дугаар" onChange={(e)=>setPhone(e.target.value)}/>
                         </div>
                       </div>
                     </div>
                     <div className="form-grp">
                       <i className="flaticon-location" />
-                      <input type="text" placeholder="Байршил" />
+                      <input type="text" placeholder="Байршил" onChange={(e)=>setAddress(e.target.value)} />
                     </div> 
                   </form>
                 </div> 

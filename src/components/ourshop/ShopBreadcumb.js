@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 function ShopBreadcumb() {
   return (
-	  <section className="breadcrumb-area breadcrumb-bg" style={{ backgroundImage:'url("img/bg/breadcrumb_bg.jpg")'}}>
+	  <section className="breadcrumb-area breadcrumb-bg" style={{ backgroundImage:'url("img/bg/bg1.jpg")'}}>
         <div className="container">
           <div className="row">
             <div className="col-12">

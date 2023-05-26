@@ -11,10 +11,13 @@ function Footer() {
           <div className="col-3">
             <div className="footer-widget">
               <div className="f-logo">
-                <Link to="/"><img src="img/logo/logo3.png" alt="" /></Link>
+                <Link to="/">
+                  {/* <img src="img/logo/logo3.png" alt="" />  hvswel zurag hiij bolno*/}
+                  <span style={{fontWeight: "600", color: "red"}}>SANAA SHOP </span>
+                  </Link>
               </div>
               <div className="footer-text">
-                <p>Хамгийн сайн нохойны ДНХ-ийн шинжилгээ өгөх Embark Breed & Health Kit (Chewy-ээс үзэх) нь танд нохойн ерөнхий мэдээллийг өгдөг.</p>
+                <p>Хамгийн сайн  text text text text </p>
               </div>
               <div className="footer-contact">
                 <div className="icon"><i className="fas fa-headphones" /></div>
@@ -53,13 +56,7 @@ function Footer() {
             <div className="footer-widget">
               <h4 className="fw-title">Бидний үйлчилгээ</h4>
               <div className="fw-link">
-                <ul>
-                  <li><Link to="/breeder">Манай үржүүлэгч</Link></li>
-                  <li><Link to="/adoption">Бидний үрчлэлт</Link></li>
-                  <li><Link to="/contacts">Редакцийн бодлого</Link></li>
-                  {/* <li><Link to="/contacts">Return Policy</Link></li>
-                  <li><Link to="/contacts">Grievance Policy</Link></li>
-                  <li><Link to="/contacts">Redressal Policy</Link></li> */}
+                <ul> 
                   <li><Link to="/contacts">Бидэнтэй холбоо барих</Link></li>
                 </ul>
               </div>
@@ -70,27 +67,27 @@ function Footer() {
               <h4 className="fw-title">Instagram</h4>
               <div className="fw-insta">
                 <ul>
-                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img01.png" alt="" /></a></li>
-                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img02.png" alt="" /></a></li>
-                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img03.png" alt="" /></a></li>
-                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img04.png" alt="" /></a></li>
-                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img05.png" alt="" /></a></li>
-                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/images/insta_img06.png" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/bg/bg1.jpg" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/bg/bg1.jpg" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/bg/bg1.jpg" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/bg/bg1.jpg" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/bg/bg1.jpg" alt="" /></a></li>
+                  <li><a href="https://www.facebook.com/Ab1228/"><img src="img/bg/bg1.jpg" alt="" /></a></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="footer-shape"><img src="img/images/footer_shape01.png" alt="" /></div>
-      <div className="footer-shape shape-two"><img src="img/images/footer_shape02.png" alt="" /></div>
+      {/* <div className="footer-shape"><img src="img/images/footer_shape01.png" alt="" /></div>
+      <div className="footer-shape shape-two"><img src="img/images/footer_shape02.png" alt="" /></div> */}
     </div>
     <div className="copyright-area">
       <div className="container">
         <div className="row">
           <div className="col-md-8">
             <div className="copyright-text">
-              <p>Зохиогчийн эрх © 2023 Amraa. Бүх эрх хуулиар хамгаалагдсан.</p>
+              <p>Зохиогчийн эрх © 2023 SANAASHOP. Бүх эрх хуулиар хамгаалагдсан.</p>
             </div>
           </div>
           <div className="col-md-4 d-none d-md-block">

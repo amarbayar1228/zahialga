@@ -3,13 +3,14 @@ import {Link} from 'react-router-dom'
 import $ from 'jquery';
 import axios from 'axios'; 
 import { Button, Empty, message } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 function Header(){
   const [checkId, setCheckId] = useState(false); 
   const [localItems, setLocalItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [deleteLoad, setDelete] = useState(false); 
- 
+  const history = useHistory();
   const handleActive = (e)=>{
     document.querySelectorAll('.main-menu ul li').forEach( el => {
       el.classList.remove('active');
@@ -27,8 +28,9 @@ function Header(){
     if(localId){ 
       refreshToken();
       localStoreFunc();
-    }else{
-      setCheckId(false)
+    }else{ 
+      setCheckId(false);
+      history.push("/");
     }
     getItemsLocalFunc();
     
@@ -116,7 +118,7 @@ if ($('.menu-area li.menu-item-has-children ul').length) {
                 message.error("Token хугацаа дууссан тул refresh хийнэ үү!!")
             })
         }
-    }
+  }
   
 const deleteFunc = (params, index) =>{
   setDelete(true);
@@ -165,7 +167,7 @@ const menuFunc = () =>{
     }
     <li>
       <div className="total-price">
-        <span className="f-left">Total:</span>
+        <span className="f-left">Нийт дүн:</span>
         <span className="f-right">{totalPrice.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, "$&,")}₮</span>
       </div>
     </li>
@@ -215,41 +217,21 @@ const menuFunc = () =>{
                     <div className="logo" ><Link to="/"><span style={{fontWeight: "600", color: "red"}}>SANAA SHOP</span></Link></div> 
                     <div className="navbar-wrap main-menu d-none d-lg-flex">
                       <ul className="navigation">
-                        <li className="active menu-item-has-children"><Link to="/">Дэлгүүр</Link>
-                          {/* <ul className="submenu">
-                            <li className="active" onClick={(e)=> subActive(e)}><Link to="/">Home One</Link></li>
-                            <li><Link to="/home-two" onClick={(e)=> subActive(e)}>Home Two</Link></li>
-                          </ul> */}
-                        </li>
-                        {/* <li><Link to="/doglist" onClick={(e)=> handleActive(e)}>Dog List</Link></li> */}
-                        {/* <li className="menu-item-has-children"><Link to="/shop" onClick={(e)=> handleActive(e)}>Дэлгүүр</Link></li> */}
-                        {/* <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт авах</Link></li> */}
-                        {/* <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Үйлдвэр</Link>
-                          <ul className="submenu">
-                            <li><Link to="/breeder" onClick={(e)=> subActive(e)}>Манай үржүүлэгч</Link></li>
-                            <li><Link to="/breeder-details" onClick={(e)=> subActive(e)}>Үржүүлэгч дэлгэрэнгүй</Link></li>
-                          </ul>
-                        </li> */}
-                        {/* <li className="menu-item-has-children"><Link to="/blogs" onClick={(e)=> handleActive(e)}>Блог</Link>
-                          <ul className="submenu">
-                            <li><Link to="/blogs"  onClick={(e)=> subActive(e)}>Бидний Блог</Link></li>
-                            <li><Link to="/blog-details" onClick={(e)=> subActive(e)}>Блог дэлгэрэгүй</Link></li>
-                          </ul>
-                        </li> */}
+                      {checkId ? <li className="active menu-item-has-children"><Link to="/">Дэлгүүр</Link> </li>  : null}
                         <li><Link to="/contacts" onClick={(e)=> handleActive(e)}>Холбоо барих</Link></li>
                       </ul>
                     </div>
                     <div className="header-action d-md-none d-block">
                       <ul> 
-                      {menuFunc()}
+                      {checkId ? menuFunc() : null}
                       </ul>
                     </div>
                     <div className="header-action d-none d-md-block">
                       <ul>
                         <li className="header-search"><a href="/#"><i className="flaticon-search" /></a></li>
-                        {menuFunc()}
-                        {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li> : 
-                          <li className="header-btn"><Link to="/dashboard" className="btn">Самбар<img src="img/icon/w_pawprint.png" alt="" /></Link></li> 
+                        {checkId ? menuFunc() : null}
+                        {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх  </Link></li> : 
+                          <li className="header-btn"><Link to="/dashboard" className="btn">Самбар </Link></li> 
                         }
                       </ul>
                     </div>
@@ -265,8 +247,8 @@ const menuFunc = () =>{
                         
                     </div>
                     <div style={{marginTop: "20px", display: "flex", justifyContent: "center"}}>
-                      {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх <img src="img/icon/w_pawprint.png" alt="" /></Link></li> : 
-                            <li className="header-btn"><Link to="/dashboard" className="btn">Самбар<img src="img/icon/w_pawprint.png" alt="" /></Link></li> 
+                      {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх  </Link></li> : 
+                            <li className="header-btn"><Link to="/dashboard" className="btn">Самбар </Link></li> 
                       }
                     </div>
                     <div className="social-links">

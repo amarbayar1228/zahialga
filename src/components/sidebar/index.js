@@ -12,16 +12,15 @@ const Sidebar = (props) =>{
     const getProfile = () =>{
     const token = localStorage.getItem("idToken");
     const localId = localStorage.getItem("localId");
-    axios.get(`profile.json?orderBy="localId"&equalTo="${localId}"&auth=${token}`).then((res)=>{ 
-      
-      const data = Object.entries(res.data).reverse();   
-      setIsAdmin(data[0][1].values.isAdmin);
-        // setItemList(data)  
-    }).catch((err)=>{
-        console.log("err: ", err)
-    }).finally(()=>{
-      // setLoadingTable(false)
-    }) 
+        axios.get(`profile.json?orderBy="localId"&equalTo="${localId}"&auth=${token}`).then((res)=>{  
+        const data = Object.entries(res.data).reverse();   
+        setIsAdmin(data[0][1].values.isAdmin);
+            // setItemList(data)  
+        }).catch((err)=>{
+            console.log("err: ", err)
+        }).finally(()=>{
+        // setLoadingTable(false)
+        }) 
     }
     const logout  = () =>{ 
         localStorage.removeItem("idToken")
@@ -38,10 +37,11 @@ const Sidebar = (props) =>{
                 {isAdmin === 0 ? null :  <Link to="/add-item"><div className={css.Links}><div>Бараа нэмэх</div> <i className="fas fa-angle-double-right" /></div></Link> }
 
                 {/* <Link to="/dog-add"><div className={css.Links}><div>Нохой нэмэх</div> <i className="fas fa-angle-double-right" /></div></Link> */}
-                <div className={css.Links}>
+                {/* <div className={css.Links}>
                     <div>Захиалгын түүх</div>
                     <i className="fas fa-angle-double-right" />
-                </div>
+                </div> */}
+                <Link to="/order-history"> <div className={css.Links}><div>Захиалгын түүх</div> <i className="fas fa-angle-double-right" /></div></Link>
                 <div className={css.Links}>
                     <div>Лог</div>
                     <i className="fas fa-angle-double-right" />
