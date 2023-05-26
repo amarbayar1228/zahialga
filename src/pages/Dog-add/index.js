@@ -18,22 +18,15 @@ const [loadingTable, setLoadingTable] = useState(false);
 useEffect(()=>{
   const localId = localStorage.getItem("localId"); 
   if(localId){
-    getDogList();
+    // getDogList();
   } 
 },[])
   const data = dogList.map((e, i)=>( 
     {
       key: i,
-      title: e[1].values.title,
-      age: e[1].values.age,
-      size: e[1].values.size,
-      gender: e[1].values.gender,
-      color: e[1].values.color,
-      description: e[1].values.description,
-      pedId: e[1].values.pedId,
-      price: e[1].values.price,
-      birth: e[1].values.birth,
-      country: e[1].values.country,
+      title: e[1].values.title, 
+      description: e[1].values.description, 
+      price: e[1].values.price, 
       type: e[1].values.type,
       img:  e[1].values.img ? e[1].values.img[0] : "",
       action: e,
@@ -119,15 +112,7 @@ const columns = [
     key: 'key',
     width: '50px',
     ellipsis: true,
-  },
-  {
-      title: 'Pet ID',
-      dataIndex: 'pedId',
-      key: 'pedId',
-      width: '100px',
-      ellipsis: true,
-      ...getColumnSearchProps('pedId'), 
-    },
+  }, 
   {
     title: 'Гарчиг',
     dataIndex: 'title',
@@ -135,14 +120,6 @@ const columns = [
     width: '100px',
     ellipsis: true,
     ...getColumnSearchProps('title'), 
-  },
-  {
-    title: 'Төрсөн он',
-    dataIndex: 'birth',
-    key: 'birth',
-    width: '130px',
-    ellipsis: true,
-    ...getColumnSearchProps('birth'), 
   },
   {
     title: 'Зураг',
@@ -159,56 +136,7 @@ const columns = [
     width: '100px',
     ellipsis: true,
     ...getColumnSearchProps('price'), 
-  },
-  {
-    title: 'Нас',
-    dataIndex: 'age',
-    key: 'age',
-    width: '80px',
-    ellipsis: true,
-    ...getColumnSearchProps('age'), 
-  },
-  {
-    title: 'Төрөл',
-    dataIndex: 'type',
-    key: 'type',
-    width: '120px',
-    ellipsis: true,
-    ...getColumnSearchProps('type'), 
-  },
-  {
-    title: 'Хүйс',
-    dataIndex: 'gender',
-    key: 'gender',
-    width: '80px',
-    ellipsis: true,
-    ...getColumnSearchProps('gender'),
-  
-  },
-  {
-    title: 'Өнгө',
-    dataIndex: 'color',
-    key: 'color',
-    width: '100px',
-    ellipsis: true,
-    ...getColumnSearchProps('color'), 
-  },
-  {
-      title: 'Хэмжээ',
-      dataIndex: 'size',
-      key: 'size',
-      width: '100px',
-      ellipsis: true,
-      ...getColumnSearchProps('size'), 
   }, 
-  {
-      title: 'Хот',
-      dataIndex: 'country',
-      key: 'country',
-      width: '100px',
-      ellipsis: true,
-      ...getColumnSearchProps('size'), 
-  },
   {
     title: 'Дэлгэрэнгуй',
     dataIndex: 'description',
@@ -217,11 +145,7 @@ const columns = [
     ellipsis: true,
     ...getColumnSearchProps('description'),
     sorter: (a, b) => a.description.length - b.description.length,
-    sortDirections: ['descend', 'ascend'],
-  //   render: (a)=> <div style={{display: "flex"}}> 
-  //                   <Paragraph copyable={{text: a }}></Paragraph>
-  //                   <div style={{paddingLeft: "5px"}}>{a}</div>
-  //                 </div>
+    sortDirections: ['descend', 'ascend'], 
   },
   {
     title: 'Үйлдэл',
@@ -235,6 +159,34 @@ const columns = [
       </div> 
   },
 ];
+
+const getUserInfo = () =>{
+  
+  const body = {
+    email: "",
+    password: "",
+    returnSecureToken: true
+}
+axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBh7ZZbLjzUSTmVC-lNk4I3svpZSNmqvHE", body).then((res)=>{ 
+    if(res.data.registered === true){ 
+        const expIn =  res.data.expiresIn;
+        const expireDate = new Date(new Date().getTime() + parseInt(expIn) * 1000); 
+        localStorage.setItem("idToken",  res.data.idToken)
+        localStorage.setItem("localId",  res.data.localId) 
+        localStorage.setItem("expireDate", expireDate)
+        localStorage.setItem("refreshToken",  res.data.refreshToken)  
+        // document.location.replace("/");
+    }else{ 
+        // message.error(res.data.errors[0].message)
+    }
+}).catch((err)=>{
+    if(err.response.data.error.message === "EMAIL_NOT_FOUND"){
+        // setMsj("Имэйл олдсонгүй!");
+    }else if(err.response.data.error.message === "INVALID_PASSWORD"){
+        // setMsj("Нууц үг буруу байна!");
+    }
+})  
+}
     return<div>
        <SidebarBreadCumb title="Нохой нэмэх"/>
        <section style={{marginLeft: "0px", padding: "50px 0"}}>
@@ -243,6 +195,7 @@ const columns = [
                 <div className="col-lg-3 col-md-8 ">
                    <Sidebar />
                 </div>
+
                 <div className="col-lg-9"> 
                     <AddDogModal getDogList={getDogList}/>
                     <Table columns={columns} bordered dataSource={data}  scroll={{y: 600, x: 1200}} loading={loadingTable} pagination={{ total: 0, showTotal: (total) => `Нийт: ${total} - Нохой` }} />

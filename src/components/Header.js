@@ -212,35 +212,30 @@ const menuFunc = () =>{
                 <div className="mobile-nav-toggler"><i className="fas fa-bars" /></div>
                 <div className="menu-wrap">
                   <nav className="menu-nav show">
-                    <div className="logo"><Link to="/"><img src="img/logo/logo3.png" alt="" /></Link></div> 
+                    <div className="logo" ><Link to="/"><span style={{fontWeight: "600", color: "red"}}>SANAA SHOP</span></Link></div> 
                     <div className="navbar-wrap main-menu d-none d-lg-flex">
                       <ul className="navigation">
-                        <li className="active menu-item-has-children"><Link to="/">Үндсэн хуудас</Link>
+                        <li className="active menu-item-has-children"><Link to="/">Дэлгүүр</Link>
                           {/* <ul className="submenu">
                             <li className="active" onClick={(e)=> subActive(e)}><Link to="/">Home One</Link></li>
                             <li><Link to="/home-two" onClick={(e)=> subActive(e)}>Home Two</Link></li>
                           </ul> */}
                         </li>
-                        <li><Link to="/doglist" onClick={(e)=> handleActive(e)}>Dog List</Link></li>
-                        <li className="menu-item-has-children"><Link to="/shop" onClick={(e)=> handleActive(e)}>Дэлгүүр</Link>
-                          {/* <ul className="submenu">
-                            <li><Link to="/shop" onClick={(e)=> subActive(e)}>Our Shop</Link></li>
-                            <li><Link to="/shop-details" onClick={(e)=> subActive(e)}>Shop Details</Link></li>
-                          </ul> */}
-                        </li>
-                        <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт авах</Link></li>
-                        <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Үйлдвэр</Link>
+                        {/* <li><Link to="/doglist" onClick={(e)=> handleActive(e)}>Dog List</Link></li> */}
+                        {/* <li className="menu-item-has-children"><Link to="/shop" onClick={(e)=> handleActive(e)}>Дэлгүүр</Link></li> */}
+                        {/* <li><Link to="/adoption" onClick={(e)=> handleActive(e)}>Үрчлэлт авах</Link></li> */}
+                        {/* <li className="menu-item-has-children"><Link to="/breeder" onClick={(e)=> handleActive(e)}>Үйлдвэр</Link>
                           <ul className="submenu">
                             <li><Link to="/breeder" onClick={(e)=> subActive(e)}>Манай үржүүлэгч</Link></li>
                             <li><Link to="/breeder-details" onClick={(e)=> subActive(e)}>Үржүүлэгч дэлгэрэнгүй</Link></li>
                           </ul>
-                        </li>
-                        <li className="menu-item-has-children"><Link to="/blogs" onClick={(e)=> handleActive(e)}>Блог</Link>
+                        </li> */}
+                        {/* <li className="menu-item-has-children"><Link to="/blogs" onClick={(e)=> handleActive(e)}>Блог</Link>
                           <ul className="submenu">
                             <li><Link to="/blogs"  onClick={(e)=> subActive(e)}>Бидний Блог</Link></li>
                             <li><Link to="/blog-details" onClick={(e)=> subActive(e)}>Блог дэлгэрэгүй</Link></li>
                           </ul>
-                        </li>
+                        </li> */}
                         <li><Link to="/contacts" onClick={(e)=> handleActive(e)}>Холбоо барих</Link></li>
                       </ul>
                     </div>
@@ -290,7 +285,7 @@ const menuFunc = () =>{
               </div>
             </div>
           </div>
-          <div className="header-shape" style={{backgroundImage:"url('img/bg/header_shape.png')"}}/>
+          {/* <div className="header-shape" style={{backgroundImage:"url('img/bg/header_shape.png')"}}/> */}
         </div>
        
         <div className="search-popup-wrap" tabIndex={-1} role="dialog" aria-hidden="true">

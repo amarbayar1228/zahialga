@@ -9,49 +9,24 @@ import Newsletter from '../components/NewsLetter'
 import BlogsHome from '../components/BlogsHome'
 import BreedServices from '../components/BreedServices' 
 import AdoptionShop from '../components/AdoptionShop' 
+import ShopPages from './ShopPages'
 function HometwoPage() {
-	useEffect(()=>{
-		// refreshToken();
-		console.log("app");
-    
-	},[]);
-		// const refreshToken = async () =>{
-    //     const expireDate = new Date(localStorage.getItem("expireDate"));
-    //     if(expireDate > new Date()){
-    //         const expIn = expireDate.getTime() - new Date().getTime(); 
-    //         await setTimeout(()=>{ 
-    //             history.push("/");
-    //         },expIn)
-    //     } else {
-    //         const body = {
-    //             grant_type: "refresh_token",
-    //             refresh_token: localStorage.getItem("refreshToken")
-    //         }
-    //         axios.post("https://securetoken.googleapis.com/v1/token?key=AIzaSyAA_wX14i2xQr-owSd7-iAxcp4J3qRdgMI", body).then((res)=>{ 
-    //             const expIn =  res.data.expires_in; 
-    //             const expireDate = new Date(new Date().getTime() + parseInt(expIn) * 1000); 
-    //             localStorage.setItem("idToken",  res.data.id_token)
-    //             localStorage.setItem("localId",  res.data.user_id) 
-    //             localStorage.setItem("expireDate", expireDate)
-    //             localStorage.setItem("refreshToken",  res.data.refresh_token) 
-    //             router.push("/");
-    //         }).catch((err)=>{
-    //             console.log("err", err)
-    //         })
-    //     }
-    // }
+	useEffect(()=>{ 
+		console.log("app"); 
+	},[]); 
   return (
 	 <main> 
-		<HomeTwoSlider/>
-		<Find/>    
-		<AdoptionShop/>
+		{/* <HomeTwoSlider/> */}
+		{/* <Find/>     */}
+    <ShopPages />
+		{/* <AdoptionShop/> */}
 		{/* <BreederAdoption/> */}
 		{/* <BreedServices/> */}
-		<AdoptionPuppies/>
-		<Faq afterElment="faq-area"/>
-		<Brand/> 
+		{/* <AdoptionPuppies/> */}
+		{/* <Faq afterElment="faq-area"/> */}
+		{/* <Brand/>  */}
 		{/* <BlogsHome/> */}
-		<Newsletter/>
+		{/* <Newsletter/> */}
 	 </main>
   )
 }

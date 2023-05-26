@@ -7,9 +7,7 @@ const history = useHistory();
 const [getForm, setForm] = useState({email: '', password: ''});
 const [getMsj, setMsj] = useState(false);
  
-const Send = () =>{    
-
-
+const Send = () =>{     
     if(getForm.email === '' || getForm.password === ''){
         setMsj("Емайл болон Нууц үгээ оруулна уу!");
     }else{
@@ -19,7 +17,7 @@ const Send = () =>{
             password: parseInt(getForm.password),
             returnSecureToken: true
         }
-        axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDH453cwnl9H3yp0QrYeXG_hnoM4zHn5eM", body).then((res)=>{ 
+        axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBh7ZZbLjzUSTmVC-lNk4I3svpZSNmqvHE", body).then((res)=>{ 
             if(res.data.registered === true){ 
                 const expIn =  res.data.expiresIn;
                 const expireDate = new Date(new Date().getTime() + parseInt(expIn) * 1000); 
