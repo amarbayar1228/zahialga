@@ -14,6 +14,7 @@ const [loadingTable, setLoadingTable] = useState(false);
 const [itemList, setItemList] = useState([]); 
 const [searchText, setSearchText] = useState('');
 const [searchedColumn, setSearchedColumn] = useState('');
+const [isAdmin, setIsAdmin] = useState(0);
 const searchInput = useRef(null);
 // itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
 useEffect(()=>{
@@ -27,14 +28,9 @@ useEffect(()=>{
     {
       key: i,
       catLabel: e[1].itemList.catLabel, 
-      title: e[1].itemList.title, 
-      size: e[1].itemList.size,
-      quantity: e[1].itemList.quantity,
-      color: e[1].itemList.color,
-      description: e[1].itemList.description,
-      id: e[1].itemList.id,
-      price: e[1].itemList.price, 
-      evaluation: e[1].itemList.evaluation, 
+      title: e[1].itemList.title,  
+      description: e[1].itemList.description, 
+      price: e[1].itemList.price,  
       img:  e[1].itemList.img ? e[1].itemList.img[0] : "",
       action: e,
       allData: e
@@ -43,15 +39,21 @@ useEffect(()=>{
 
   const getItemList = () =>{ 
     //Category sort:  firebaseio.com/itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
-    setLoadingTable(true); 
-    axios.get(`itemList.json`).then((res)=>{ 
-        const data = Object.entries(res.data).reverse();  
-        setItemList(data)  
-    }).catch((err)=>{
-        console.log("err: ", err)
-    }).finally(()=>{
-      setLoadingTable(false)
-    }) 
+    // axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value}"`).then((res)=>{ 
+    //axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
+    // setLoadingTable(true); 
+    // const token = localStorage.getItem("idToken");
+    // axios.get(`profile.json?orderBy="localId"&equalTo="3GGW9XdHSjgB01IIbrsNhMnPzkE3"&auth=${token}`).then((res)=>{ 
+      
+    //   const data = Object.entries(res.data).reverse();  
+    //   console.log("res: ", data[0][1].values.isAdmin);
+    //   setIsAdmin(data[0][1].values.isAdmin);
+    //     // setItemList(data)  
+    // }).catch((err)=>{
+    //     console.log("err: ", err)
+    // }).finally(()=>{
+    //   // setLoadingTable(false)
+    // }) 
   }
   
 const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -119,23 +121,7 @@ const handleSearch = (selectedKeys, confirm, dataIndex) => {
       key: 'key',
       width: '50px',
       ellipsis: true,
-    },
-    {
-        title: 'ID',
-        dataIndex: 'id',
-        key: 'id',
-        width: '100px',
-        ellipsis: true,
-        ...getColumnSearchProps('id'), 
-    },
-    {
-      title: 'Категори',
-      dataIndex: 'catLabel',
-      key: 'catLabel',
-      width: '140px',
-      ellipsis: true,
-      ...getColumnSearchProps('catLabel'), 
-  },
+    }, 
     {
       title: 'Гарчиг',
       dataIndex: 'title',
@@ -160,39 +146,6 @@ const handleSearch = (selectedKeys, confirm, dataIndex) => {
       ellipsis: true,
       sorter: (a, b) => a.quantity - b.quantity,
       ...getColumnSearchProps('price'), 
-    },
-    {
-      title: 'Тоо ширхэг',
-      dataIndex: 'quantity',
-      key: 'quantity',
-      width: '140px',
-      ellipsis: true,
-      sorter: (a, b) => a.quantity - b.quantity,
-      ...getColumnSearchProps('quantity'), 
-    },
-    {
-      title: 'Үнэлгээ',
-      dataIndex: 'evaluation',
-      key: 'evaluation',
-      width: '120px',
-      ellipsis: true,
-      ...getColumnSearchProps('type'), 
-    }, 
-    {
-      title: 'Өнгө',
-      dataIndex: 'color',
-      key: 'color',
-      width: '100px',
-      ellipsis: true,
-      ...getColumnSearchProps('color'), 
-    },
-    {
-        title: 'Хэмжээ',
-        dataIndex: 'size',
-        key: 'size',
-        width: '100px',
-        ellipsis: true,
-        ...getColumnSearchProps('size'), 
     },  
     {
       title: 'Дэлгэрэнгуй',
@@ -221,18 +174,19 @@ const handleSearch = (selectedKeys, confirm, dataIndex) => {
     // setCatLabel(list.label)
     console.log("value: ", value);
     // firebaseio.com/itemList.json?orderBy="itemList/catName"&equalTo="dogClothes"
-    if(value === "all"){
-      getItemList();
-    }else{ 
-      axios.get(`itemList.json?orderBy="itemList/catName"&equalTo="${value}"`).then((res)=>{ 
-        const data = Object.entries(res.data).reverse();  
-        setItemList(data)  
-      }).catch((err)=>{
-          console.log("err: ", err)
-      }).finally(()=>{
-        setLoadingTable(false)
-      }) 
-    }
+    //axios.patch(`itemList/${props.data}.json?&auth=${token}`, body).then((res)=>{   
+    // if(value === "all"){
+    //   getItemList();
+    // }else{ 
+    //   axios.get(`itemList.json?&auth=${token}orderBy="itemList/catName"&equalTo="${value}"`).then((res)=>{ 
+    //     const data = Object.entries(res.data).reverse();  
+    //     setItemList(data)  
+    //   }).catch((err)=>{
+    //       console.log("err: ", err)
+    //   }).finally(()=>{
+    //     setLoadingTable(false)
+    //   }) 
+    // }
   }
   const onSearch = (value) => {
     console.log('search:', value);
@@ -243,7 +197,7 @@ return<div>
     <div className="container">
         <div className="row justify-content-center"> 
             <div className="col-lg-3 col-md-8 ">
-                <Sidebar />
+                <Sidebar isAdmin={isAdmin}/>
             </div>
             <div className="col-lg-9"> 
             <div className="d-flex   align-items-center justify-content-between"> 
