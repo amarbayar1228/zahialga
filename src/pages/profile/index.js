@@ -50,16 +50,18 @@ const Profile = () =>{
     );
     const showModal = () => {
         console.log("data: ", data);
-    if(data.img.length === 1){
-        setFileList([
-            {
-            uid: '-1',
-            name: 'image.png',
-            status: 'done',
-            thumbUrl:  data.img[0],
-            }, 
-        ]);
-    }
+        if(data.img){
+          if(data.img.length === 1){
+            setFileList([
+                {
+                uid: '-1',
+                name: 'image.png',
+                status: 'done',
+                thumbUrl:  data.img[0],
+                }, 
+            ]);
+          }
+        } 
       setIsModalOpen(true);
     };
     const handleOk = () => {
