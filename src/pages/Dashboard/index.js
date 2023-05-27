@@ -121,18 +121,7 @@ return<div>
                    <Sidebar />
                 </div>
                 <div className="col-lg-9">
-                  <Upload onPreview={onPreview} beforeUpload={beforeUploadFunc} listType="picture-card" fileList={fileList} onChange={handleChange} >{fileList.length < 1 && "+ Image"}</Upload>
-                  {blon ?
-                    <>
-                    {getDogList.map((e)=>(
-                        <div>
-                             <Image src={e[1].img}/>
-                            <img  src={e[1].img[1]}/>
-                        </div>
-                    ))}
-                    </> : ""}
-                  <Button onClick={getZurag}>Get</Button>
-                  <Button onClick={sendZurag}>Sent</Button>
+                  Тун удахгүй
                 </div>
             </div>
         </div> 

@@ -61,24 +61,35 @@ const onFinish = (values) => {
         password: values.password,
         returnSecureToken: true
     }
-        axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBh7ZZbLjzUSTmVC-lNk4I3svpZSNmqvHE", body).then((res)=>{
-        const body2 = {
-            localId: res.data.localId,
-            values: {nickName: values.nickName,
+      axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBh7ZZbLjzUSTmVC-lNk4I3svpZSNmqvHE", body).then((res)=>{
+      const body2 = {
+          localId: res.data.localId,
+          values: {
+                    img: "",
+                    lastName: values.lastName,
+                    firstName: values.firstName,
+                    email: values.email, 
                     isAdmin: 0,
-                    phone: values.password,
-                    }
+                    phone: values.phone,
+                  }
         } 
-            axios2.post(`profile.json?&auth=${res.data.idToken}`, body2).then((res)=>{
-                if(res.data.name);
-                message.success("Амжилттай")  
-                history.push("/sign-in")
-            }).catch((err)=>{ 
-                message.error("Амжилтгүй") 
-            }) 
-        }).catch((err)=>{
-            console.log("err: ", err)
-        }) 
+          axios2.post(`profile.json?&auth=${res.data.idToken}`, body2).then((res)=>{
+              if(res.data.name);
+              message.success("Амжилттай")  
+              history.push("/sign-in")
+          }).catch((err)=>{ 
+              message.error("Амжилтгүй") 
+          }) 
+      }).catch((err)=>{
+          if(err.response.data.error.message === "WEAK_PASSWORD : Password should be at least 6 characters"){
+              message.error("Нууц үг заавал 6н оронтой байх шаардлагатай!")
+          }else if(err.response.data.error.message === "EMAIL_EXISTS"){
+            message.error("Бүртгэлтэй Имайл хаяг байна");
+          } else {
+            message.error("Алдаа");
+          }
+          console.log("err: ", err)
+      }) 
        
 };
 const Send = () =>{   
@@ -131,9 +142,8 @@ return<section className="adoption-shop-area">
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ['zhejiang', 'hangzhou', 'xihu'],
-        prefix: '86',
+      initialValues={{ 
+        prefix: '976',
       }}
       style={{
         maxWidth: 600,
@@ -180,10 +190,12 @@ return<section className="adoption-shop-area">
               }return Promise.reject(new Error('The two passwords that you entered do not match!'));}})]}>
         <Input.Password />
       </Form.Item>
-
-      <Form.Item name="nickname" label="Nickname" tooltip="What do you want others to call you?" rules={[{required: true, message: 'Please input your nickname!', whitespace: true}]}>
+      <Form.Item name="lastName" label="LastName"   rules={[{required: true, message: 'Please input your LastName!', whitespace: true}]}>
         <Input />
       </Form.Item> 
+      <Form.Item name="firstName" label="firstName"  rules={[{required: true, message: 'Please input your firstName!', whitespace: true}]}>
+        <Input />
+      </Form.Item>  
       <Form.Item name="phone" label="Phone Number" rules={[{required: true,message: 'Please input your phone number!'}]}>
         <Input addonBefore={prefixSelector} style={{width: '100%'}}/>
       </Form.Item>  
@@ -208,25 +220,7 @@ return<section className="adoption-shop-area">
         </Button>
       </Form.Item>
     </Form>
-            {/* <div className="contact-wrap-content"> 
-                <form className="contact-form"> 
-                    <div className="form-grp">
-                        <label htmlFor="email">Емайл хаяг <span>*</span></label>
-                        <input type="email" id="email" placeholder="info.example@.com" onChange={(e)=> setForm({...getForm, email: e.target.value})} />
-                    </div> 
-                    <div className="form-grp">
-                        <label htmlFor="name">Нууц үг <span>*</span></label>
-                        <input type="password" id="name" placeholder="Шинэ нууц үгээ оруулна уу..." onChange={(e)=> setForm({...getForm, password1: e.target.value})}/>
-                    </div>  
-                    <div className="form-grp">
-                        <label htmlFor="name">Давтах нууц үг <span>*</span></label>
-                        <input type="password" id="name" placeholder="Нууц үгээ давтаж оруулна уу..." onChange={(e)=> setForm({...getForm, password2: e.target.value})}/>
-                    </div> 
-                    <h5 class="sub-title" style={{color: "red"}}>{getMsj ? getMsj : ""}</h5>
-                   
-                </form>
-                <button onClick={Send} className="btn">Бүртгүүлэх<img src="img/icon/w_pawprint.png" alt=""/></button>
-            </div>  */}
+          
         </div>
     </div>
 </div> 

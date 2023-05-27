@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 import $ from 'jquery';
 import axios from 'axios'; 
-import { Button, Empty, message } from 'antd';
+import { Button, Empty, Tooltip, message } from 'antd';
 import { useHistory } from 'react-router-dom';
+import { UserOutlined } from '@ant-design/icons';
 
 function Header(){
   const [checkId, setCheckId] = useState(false); 
@@ -228,7 +229,13 @@ const menuFunc = () =>{
                     </div>
                     <div className="header-action d-none d-md-block">
                       <ul>
-                        <li className="header-search"><a href="/#"><i className="flaticon-search" /></a></li>
+                        {/* <li className="header-search"><a href="/#"><i className="flaticon-search" /></a></li> */}
+                        {checkId ? 
+                        <Tooltip title={"Профайл"} placement='bottomRight' color='red'>
+                          <Link to="/profile"> 
+                            <Button icon={<UserOutlined />}></Button>
+                          </Link>
+                        </Tooltip>  : null }
                         {checkId ? menuFunc() : null}
                         {!checkId ? <li className="header-btn"><Link to="/sign-in" className="btn">Нэвтрэх  </Link></li> : 
                           <li className="header-btn"><Link to="/dashboard" className="btn">Самбар </Link></li> 

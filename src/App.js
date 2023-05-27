@@ -16,6 +16,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Check-out';
 import OrderHistory from './pages/order-history';
 import Success from './pages/success';
+import Profile from './pages/profile';
 function App() { 
   return (
     <ConfigProvider theme={{
@@ -36,6 +37,9 @@ function App() {
             </ScrollToTopRoute> */}
             <ScrollToTopRoute exact={true} path='/order-history'>
               <OrderHistory />
+            </ScrollToTopRoute>
+            <ScrollToTopRoute exact={true} path='/profile'>
+              <Profile />
             </ScrollToTopRoute>
             <ScrollToTopRoute exact={true} path='/success'>
               <Success />

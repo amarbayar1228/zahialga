@@ -45,8 +45,7 @@ const EditItem = (props) =>{
     const uploadButton = (
       <div> <PlusOutlined /> <div style={{marginTop: 8}}>Зураг</div></div>
     );
-    const showModal = () => { 
-      console.log("props: ", props);
+    const showModal = () => {  
       if(props.info.img.length === 1){
         setFileList([
           {

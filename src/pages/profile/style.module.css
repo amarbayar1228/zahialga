@@ -1,0 +1,25 @@
+.Content{
+    display: flex;
+}
+.ZuragCont{
+    display: flex;
+    flex-direction: column;
+}
+.description{
+    padding: 0px 50px;
+    width: 500px;
+}
+.Title{
+    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+@media only screen and (max-width: 600px) {
+    .Content{
+        flex-direction: column;
+    }
+    .description{
+        padding: 0px;
+        width: 100%;
+    }
+  }

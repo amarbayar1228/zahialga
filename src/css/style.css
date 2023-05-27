@@ -2040,7 +2040,7 @@ label {
 
 /* 15. Adoption Shop */
 .adoption-shop-area {
-	background-image: url(../img/bg/adoption_shop_bg.jpg);
+	/* background-image: url(../img/bg/adoption_shop_bg.jpg); */
 	background-position: center;
 	background-size: cover;
 	padding: 110px 0 60px;
@@ -3842,7 +3842,8 @@ label {
 
 /* 21. Footer */
 .footer-bg {
-    background-image: url(../img/bg/footer_bg.jpg);
+    /* background-image: url(../img/bg/footer_bg.jpg); */
+    background: #f4f1ea;
     background-position: center;
     background-size: cover;
     position: relative;

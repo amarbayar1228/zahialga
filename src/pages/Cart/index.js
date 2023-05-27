@@ -67,6 +67,10 @@ const Cart =  () =>{
         localStorage.setItem("items", JSON.stringify(b)); 
         getItems();
         message.success("Амжилттай устлаа");   
+        setTimeout(()=>{
+          window.location.reload();
+        }, 600)
+        
         
     }
     const columns = [
