@@ -56,7 +56,7 @@ function ContactForm() {
                   <h2 className="title">Асуултаа ярилцъя<span>.</span></h2>
                 </div>
                 <div className="contact-wrap-content">
-                  <p>Гэрийн нохой бол чонын идэштэн юм. Нохой нь эртний, устаж үгүй болсон чоно, орчин үеийн саарал өнгөнөөс гаралтай.</p>
+                  <p>text text text text .</p>
                   <form className="contact-form">
                     <div className="form-grp">
                       <label htmlFor="name">Нэр <span>*</span></label>
