@@ -42,10 +42,10 @@ const Sidebar = (props) =>{
                     <i className="fas fa-angle-double-right" />
                 </div> */}
                 <Link to="/order-history"> <div className={css.Links}><div>Захиалгын түүх</div> <i className="fas fa-angle-double-right" /></div></Link>
-                <div className={css.Links}>
+                {/* <div className={css.Links}>
                     <div>Лог</div>
                     <i className="fas fa-angle-double-right" />
-                </div>
+                </div> */}
                 <div className={css.Links}>
                     <div>Тохиргоо</div>
                     <i className="fas fa-angle-double-right" />

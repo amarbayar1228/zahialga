@@ -188,7 +188,7 @@ const menuFunc = () =>{
               <div className="col-md-7">
                 <div className="header-top-left">
                   <ul>
-                    <li>Утас: 94262047</li>
+                    <li>Утас: 00000</li>
                     <li><i className="far fa-clock" />Нээх цаг: 7:00 am - 9:00 pm (Mon - Sun)</li>
                   </ul>
                 </div>

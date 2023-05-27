@@ -37,20 +37,18 @@ function Footer() {
             </div>
           </div>
           <div className="col-2">
-            <div className="footer-widget">
+            {/* <div className="footer-widget">
               <h4 className="fw-title">Манай бодлого</h4>
               <div className="fw-link">
                 <ul>
                   <li><Link to="/contacts">Нууцлалын бодлого</Link></li>
                   <li><Link to="/contacts">Үйлчилгээний нөхцөл</Link></li>
                   <li><Link to="/contacts">Редакцийн бодлого</Link></li>
-                  <li><Link to="/contacts">Буцаах бодлого</Link></li>
-                  {/* <li><Link to="/contacts">IP Policy</Link></li>
-                  <li><Link to="/contacts">Grievance Redressal Policy</Link></li> */}
+                  <li><Link to="/contacts">Буцаах бодлого</Link></li> 
                   <li><Link to="/contacts">Бидний нөхцөл</Link></li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="col-2">
             <div className="footer-widget">
