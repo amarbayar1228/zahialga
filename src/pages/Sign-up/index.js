@@ -153,15 +153,15 @@ return<section className="adoption-shop-area">
     >
       <Form.Item
         name="email"
-        label="E-mail"
+        label="Имайл"
         rules={[
           {
             type: 'email',
-            message: 'The input is not valid E-mail!',
+            message: 'Оруулсан имэйл буруу байна!',
           },
           {
             required: true,
-            message: 'Please input your E-mail!',
+            message: 'Имайл ээ оруулна уу!',
           },
         ]}
       >
@@ -170,11 +170,11 @@ return<section className="adoption-shop-area">
 
       <Form.Item
         name="password"
-        label="Password"
+        label="Нууц үг"
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
+            message: 'Нууц үг ээ оруулна ууу!',
           },
         ]}
         hasFeedback
@@ -182,21 +182,21 @@ return<section className="adoption-shop-area">
         <Input.Password />
       </Form.Item>
 
-      <Form.Item name="confirm" label="Confirm Password" dependencies={['password']} hasFeedback
-        rules={[{required: true, message: 'Please confirm your password!'},
+      <Form.Item name="confirm" label="баталгаажуулах нууц үг" dependencies={['password']} hasFeedback
+        rules={[{required: true, message: 'Нууц үгээ баталгаажуулна уу!'},
           ({ getFieldValue }) => ({validator(_, value) {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
-              }return Promise.reject(new Error('The two passwords that you entered do not match!'));}})]}>
+              }return Promise.reject(new Error('Таны оруулсан хоёр нууц үг таарахгүй байна!'));}})]}>
         <Input.Password />
       </Form.Item>
-      <Form.Item name="lastName" label="LastName"   rules={[{required: true, message: 'Please input your LastName!', whitespace: true}]}>
+      <Form.Item name="lastName" label="Нэр"   rules={[{required: true, message: 'Нэр ээ оруулна уу!', whitespace: true}]}>
         <Input />
       </Form.Item> 
-      <Form.Item name="firstName" label="firstName"  rules={[{required: true, message: 'Please input your firstName!', whitespace: true}]}>
+      <Form.Item name="firstName" label="Овог"  rules={[{required: true, message: 'Овог оо оруулна!', whitespace: true}]}>
         <Input />
       </Form.Item>  
-      <Form.Item name="phone" label="Phone Number" rules={[{required: true,message: 'Please input your phone number!'}]}>
+      <Form.Item name="phone" label="Утасны дугаар" rules={[{required: true,message: 'Утасны дугаар аа оруулна!'}]}>
         <Input addonBefore={prefixSelector} style={{width: '100%'}}/>
       </Form.Item>  
       <Form.Item
@@ -205,13 +205,13 @@ return<section className="adoption-shop-area">
         rules={[
           {
             validator: (_, value) =>
-              value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+              value ? Promise.resolve() : Promise.reject(new Error('Гэрээг хүлээн зөвшөөрөх ёстой')),
           },
         ]}
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          Би гэрээг  <a href="">уншсан</a>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
