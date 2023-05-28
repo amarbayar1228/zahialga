@@ -76,7 +76,7 @@ return<section className="adoption-shop-area">
                             </div>  
                             <h5 class="sub-title" style={{color: "red"}}>{getMsj ? getMsj : ""}</h5> 
                         </form>
-                        <button onClick={Send} className="btn">Нэвтрэх<img src="img/icon/w_pawprint.png" alt=""/></button>
+                        <button onClick={Send} className="btn">Нэвтрэх<img src="" alt=""/></button>
                     </div> 
                 </div>
             </div>
